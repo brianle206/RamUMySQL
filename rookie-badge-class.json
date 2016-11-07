@@ -1,0 +1,7 @@
+{
+    "name": "Rookie Badge Issuer",
+    "description": "Issues great new Open Badges to self.",
+    "image": "http://www.rammount.com/app/assets/images/rookie-badge-issuer.png",
+    "criteria": "http://www.rammount.com/rookie-badge-criteria.html",
+    "issuer": "http://www.rammount.com/badge-issuer.json"
+}
