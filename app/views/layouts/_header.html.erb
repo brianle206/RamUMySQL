@@ -8,7 +8,7 @@
 			
 			<% Category.all.each do |category| %>
 			<li>
-				<%= link_to category.name, articles_path(category: category.name), :class=>"category" %>
+				<%= link_to category.name, articles_path(category: category.name), class: "category" %>
 			</li>
 			<% end %>
 			<li>
