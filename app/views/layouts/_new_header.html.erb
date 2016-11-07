@@ -15,19 +15,19 @@
 				<ul class="nav navbar-nav navbar-right">
 				<% if !user_signed_in? || !current_user.admin %>
 					<li>
-						<a class='dropdown-toggle scroll' data-toggle='dropdown'>Category
-							<ul class='two dropdown-menu'>
-								<% Category.all.each do |category| %>
+						<a class='dropdown-toggle scroll' data-toggle='dropdown'>Category</a>
+						<ul class='two dropdown-menu'>
+							<% Category.all.each do |category| %>
 								<li class='scroll'>
 									<%= link_to category.name, articles_path(category: category.name) %>
 								</li>
-								<% end %>
-							</ul>
+							<% end %>
+						</ul>
 					</li>
 					<li>
 						<%= link_to "Learn", learn_index_path, class: "category" %>
 					</li>
-					<% end %>
+				<% end %>
 					<li >
 						<form action="/search" class='form-inline'>
 							<div class='form-group'>
@@ -36,40 +36,40 @@
 							</div>
 						</form>
 					</li>
-					<% if !user_signed_in? %>
+				<% if !user_signed_in? %>
 					<li class='scroll'>
 						<%= link_to "Sign In", new_user_session_path %>
 					</li>
-					<% else %>
+				<% else %>
 					<li class='scroll'>
 						<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
 					</li>
-					<% if !current_user.try(:admin?) %>
+				<% end %>
+				<% if !current_user.try(:admin?) %>
 					<li class='scroll'>
 						<%= link_to "Dashboard", dashboard_index_path %>
 					</li>
-					<% end %>
 				<% end %>
 			
 				<% if current_user.try(:admin?) %>
-				
 					<li>
-						<a class='dropdown-toggle scroll' data-toggle='dropdown'>Category
+						<a class='dropdown-toggle scroll' data-toggle='dropdown'>Category</a>
 						<ul class='dropdown-menu'>
 							<% Category.all.each do |category| %>
-							<li class='scroll'>
-								<%= link_to category.name, admin_index_path(category: category.name) %>
-							</li>
+								<li class='scroll'>
+									<%= link_to category.name, admin_index_path(category: category.name) %>
+								</li>
 							<% end %>
 						</ul>
+					</li>
 					<li>
-						<a class='dropdown-toggle scroll' data-toggle='dropdown'>Admin Stuff
+						<a class='dropdown-toggle scroll' data-toggle='dropdown'>Admin Stuff</a>
 						<ul class='dropdown-menu'>
 							<li>
 								<%= link_to "New Article", new_article_path %>
 							</li>
 							<li>
-								<%= link_to("Manage", "/admin/manage")  %>
+								<%= link_to("Manage", "/admin/manage") %>
 							</li>
 							<li>
 								<%= link_to "Learning Modules", learn_index_path %>
@@ -79,7 +79,6 @@
 							</li>
 						</ul>
 					</li>
-				</ul>
 				<% end %>
 				</ul>
 			</div>
