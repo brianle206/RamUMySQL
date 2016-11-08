@@ -1,5 +1,5 @@
 %h1= @section.title
-
+%p= @section.description
 -if current_user
 	-is_enrolled(params[:id])
 	-if @enrolled != true

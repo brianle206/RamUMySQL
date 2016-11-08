@@ -84,7 +84,7 @@ class LearnController < ApplicationController
   end
 
   def learn_params
-    params.require(:learn).permit(:title)
+    params.require(:learn).permit(:title, :description, :img)
   end
 
   def find_section

@@ -1,0 +1,10 @@
+learn admin
+
+<%= link_to "Create New Learning Section", new_learn_path, class: 'btn btn-default'%>
+
+<%= link_to "Lecture List", lecture_index_path, class: 'btn btn-default' %>
+
+<% @module.each do |m| %>
+	<li><%= m.title %> <li>
+	<%= link_to "Edit", edit_learn_path(m) %>
+<% end %>

@@ -31,5 +31,10 @@ class AdminController < ApplicationController
 		User.find(params[:id]).destroy
 		redirect_to '/admin/manage'
 	end
+
+	def learn
+		@module = Learn.all
+	end
+
 end
 
