@@ -1,21 +1,21 @@
 <h1>Lecture Index</h1>
 <% @learn.each do |learn| %>
 <div class='question-box'>
-	<h2><%= learn.title %></h2>
-	<%= link_to "New Lecture", "/learn/#{learn.id}/add_lecture"%>
+  <h2><%= learn.title %></h2>
+  <%= link_to "New Lecture", "/learn/#{learn.id}/add_lecture"%>
 <table class='table table-bordered'>
-	<tr>
-		<th>Title</th>
-		<th>Edit</th>
-		<th>Destroy</th>
-	</tr>
- 	<% learn.lectures.each do |lecture| %>
- 	<tr>
- 		<td><%= lecture.title %></td>
- 		<td><%= link_to "Edit", "/learn/#{learn.id}/lecture/#{lecture.id}/edit" %></td>
-		<td>Destroy</td>
-	<% end %>
- 	</tr>
+  <tr>
+    <th>Title</th>
+    <th>Edit</th>
+    <th>Destroy</th>
+  </tr>
+  <% learn.lectures.each do |lecture| %>
+  <tr>
+    <td><%= lecture.title %></td>
+    <td><%= link_to "Edit", "/learn/#{learn.id}/lecture/#{lecture.id}/edit" %></td>
+    <td>Destroy</td>
+  <% end %>
+  </tr>
 </table>
 </div>
 <% end %>
