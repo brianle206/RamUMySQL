@@ -37,18 +37,18 @@ ul{
 	background-size: cover;
 }
 .background { 
-   background:url('https://www.rammount.com/images/ramu/ramuwatermark.png') fixed center center;
-    background-size: cover;
+   background:url('https://www.rammount.com/images/ramu/ramuwatermark3.png') fixed center center;
+    #background-size: center;
+    #background-repeat: no-repeat;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 9999;
-    opacity: 0.1;
+    z-index: 1;
 }
 body{
-	padding-top: 70px;
+	padding-top: 100px;
 	padding-bottom: 70px;
 	z-index: 1;
 }
