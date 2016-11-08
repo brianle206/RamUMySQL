@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :articles, :lecture, :admin, :dashboard, :learn, :question, :quiz
+  resources :articles, :lecture, :admin, :dashboard, :learn, :question, :quiz, :data
 
   #Progress Tracker
   get '/progress/add/:learn_id/:user_id/:lecture_id' => 'progress#add'
@@ -31,9 +31,4 @@ Rails.application.routes.draw do
   get '/learn/:id/quiz/:qid' => 'quiz#show', as: :take_quiz_path
   post '/learn/:id/quiz/create' => 'quiz#create'
   post '/learn/:id/quiz/:uid' => 'quiz#create_user_answer', as: :user_quiz_answer_path
-
-  #Badge json routes
-  get '/rookie-badge-award.json'
-  get '/rookie-badge-class.json'
-  get '/badge-issuer.json'
 end
