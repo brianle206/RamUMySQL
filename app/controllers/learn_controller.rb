@@ -26,9 +26,14 @@ class LearnController < ApplicationController
   end
   
   def update
+    @learn = Learn.find(params[:id])
+    if @learn.update(learn_params)
+      redirect_to '/admin/learn/manage'
+    end
   end
 
   def edit
+    @learn = Learn.find(params[:id])
   end
 
   def destroy

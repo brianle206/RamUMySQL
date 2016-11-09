@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/admin/manage' => 'admin#manage'
   get '/dashboard/progress' => 'dashboard#progress'
   get '/admin/learn/manage' => 'admin#learn', as: :admin_learn_path
+  
   #Article Routes
   root 'articles#landing'
   get '/search' => 'articles#search'

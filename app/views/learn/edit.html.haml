@@ -1,0 +1,7 @@
+%h1 Learn#edit
+%p Find me in app/views/learn/edit.html.erb</p>
+= simple_form_for @learn, :url => {:action => :update, :controller => :learn} do |f|
+	=	f.input :title
+	=   f.input :description
+	=   f.input :img
+	= 	f.submit

@@ -24,14 +24,15 @@
 
 
 
-.row
-	- @module.each do |n|
+
+- @module.each do |n|
+
+	.col-md-6.block
 		=link_to learn_path(n) do 
-			.col-md-6.block
-				.col-md-2 
-					%img{:src => "#{n.img}", :class => "img-responsive"}
-				.col-md-10
-					.row
-						%h2= n.title
-					.row
-						%p= n.description
+			.col-md-2 
+				%img{:src => "#{n.img}", :class => "img-responsive"}
+			.col-md-10
+				.row
+					%h2= n.title
+				.row
+					%p= n.description

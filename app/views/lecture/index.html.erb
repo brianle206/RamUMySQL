@@ -1,8 +1,8 @@
 <h1>Lecture Index</h1>
 <% @learn.each do |learn| %>
 <div class='question-box'>
-  <h2><%= learn.title %></h2>
-  <%= link_to "New Lecture", "/learn/#{learn.id}/add_lecture"%>
+  <h2><%= learn.title %> <%= link_to "Edit", edit_learn_path(learn) %></h2>
+  <%= link_to "New Lecture", "/learn/#{learn.id}/add_lecture", class: 'btn btn-default'%>
 <table class='table table-bordered'>
   <tr>
     <th>Title</th>

@@ -32,9 +32,5 @@ class AdminController < ApplicationController
 		redirect_to '/admin/manage'
 	end
 
-	def learn
-		@module = Learn.all
-	end
-
 end
 
