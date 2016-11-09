@@ -1,0 +1,16 @@
+- @module.each do |m|
+	=link_to learn_path(m) do
+		.col-md-6.col-sm-3.flip-container
+			.flipper
+				.front.tile
+					.front-title= m.title
+					.col-sm-4
+						%img{:src => "#{m.img}", class: "img-responsive"}
+					.col-sm-8
+						%p= m.description
+				.back.tile
+					.back-title
+						-m.lectures.each do |l|
+							- if l.learn_id == m.id
+								.col-sm-6
+									%p= l.title			

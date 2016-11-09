@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :articles, :lecture, :admin, :dashboard, :learn, :question, :quiz, :data
 
   #Progress Tracker
