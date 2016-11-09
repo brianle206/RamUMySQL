@@ -1,38 +1,24 @@
 .container
-	/ .row
-	/ 	-if current_user.try(:admin?)
-	/ 		.btn.btn-default
-	/ 			=link_to "Create New Learning Section", new_learn_path
-	/ 		.btn.btn-default
-	/ 			=link_to "Lecture List",  lecture_index_path
+	.row
+		-if current_user.try(:admin?)
+			.btn.btn-default
+				=link_to "Create New Learning Section", new_learn_path
+			.btn.btn-default
+				=link_to "Lecture List",  lecture_index_path
 
-	/ - @module.each do |m|
-	/ 	=link_to learn_path(m) do
-	/ 		.col-md-6.col-sm-3.flip-container
-	/ 			.flipper
-	/ 				.front.tile
-	/ 					.front-title= m.title
-
-	/ 					=image_tag 'book2.jpeg', class: "img-responsive img-centered"
-	/ 				.back.tile
-	/ 					.back-title
-	/ 						-m.lectures.each do |l|
-	/ 							- if l.learn_id == m.id
-	/ 								%li
-	/ 									%p= l.title			
-
-
-
-
-
-- @module.each do |n|
-
-	.col-md-6.block
-		=link_to learn_path(n) do 
-			.col-md-2 
-				%img{:src => "#{n.img}", :class => "img-responsive"}
-			.col-md-10
-				.row
-					%h2= n.title
-				.row
-					%p= n.description
+	- @module.each do |m|
+		=link_to learn_path(m) do
+			.col-md-6.col-sm-3.flip-container
+				.flipper
+					.front.tile
+						.front-title= m.title
+						.col-sm-4
+							%img{:src => "#{m.img}", class: "img-responsive"}
+						.col-sm-8
+							%p= m.description
+					.back.tile
+						.back-title
+							-m.lectures.each do |l|
+								- if l.learn_id == m.id
+									%li
+										%p= l.title			

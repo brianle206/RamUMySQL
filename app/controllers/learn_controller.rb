@@ -28,7 +28,7 @@ class LearnController < ApplicationController
   def update
     @learn = Learn.find(params[:id])
     if @learn.update(learn_params)
-      redirect_to '/admin/learn/manage'
+      redirect_to lecture_index_path
     end
   end
 
