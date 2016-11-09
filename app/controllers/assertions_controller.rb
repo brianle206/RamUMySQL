@@ -73,6 +73,6 @@ class AssertionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assertion_params
-      params.require(:assertion).permit(:user_id, :badge_id, :uid, :recipient, :badge, :verify, :issued_on, :expires, :token, :is_baked)
+      params.require(:assertion).permit(:user_id, :badge_id, :uid, :recipient, :badge, :verify, :issued_on, :expires)
     end
 end

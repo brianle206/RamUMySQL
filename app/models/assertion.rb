@@ -13,7 +13,7 @@ class Assertion < ActiveRecord::Base
 		self.token = SecureRandom.urlsafe_base64(16)
 	end
 
-	after_commit :bake, :if => :update_assertion?
+	#after_commit :bake, :if => :update_assertion?
 
 	def recipient
 		self.user.try(:email)
