@@ -29,6 +29,31 @@ ActiveRecord::Schema.define(version: 20161110214204) do
     t.datetime "updated_at",                null: false
   end
 
+  create_table "assertions", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "badge_id",   limit: 4
+    t.string   "uid",        limit: 255
+    t.text     "recipient",  limit: 65535
+    t.string   "badge",      limit: 255
+    t.text     "verify",     limit: 65535
+    t.datetime "issued_on"
+    t.datetime "expires"
+    t.string   "token",      limit: 255
+    t.boolean  "is_baked"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.string   "image",       limit: 255
+    t.string   "criteria",    limit: 255
+    t.string   "issuer",      limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false

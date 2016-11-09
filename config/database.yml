@@ -24,10 +24,10 @@ default: &default
 development:
   <<: *default
   database: RamUniversity1_development
-  # username: root
-  # password: hoyohom7
-  # socket: /var/run/mysqld/mysqld.sock
-  # reconnect: true
+  username: root
+  password: hoyohom7
+  socket: /var/run/mysqld/mysqld.sock
+  reconnect: true
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

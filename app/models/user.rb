@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
   has_many :articles
   has_many :lectures,  :through => :articles
   has_many :completes
+  has_many :user_quiz_results
 end
