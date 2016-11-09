@@ -54,9 +54,9 @@ group :development, :test do
   gem 'mysql2'
 end
 
-# group :production do
+group :production do
   gem 'rails_12factor'
   gem 'pg', '~> 0.15'
-# end
+end
 
 # ruby '2.2.4'
