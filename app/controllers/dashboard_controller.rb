@@ -7,8 +7,10 @@ class DashboardController < ApplicationController
 
   def settings
   end
+  
   def show
   end
+
   def lessons
   end
 
