@@ -20,7 +20,7 @@
 <div class='quizCard'>
 <h1><%= @quiz.title %></h1>
  <%= form_tag do %>
- <%= hidden_field :quiz_id, params[:qid] %>
+ <%= hidden_field :quiz_id, params[:id] %>
   <ol class="questions">
    <% @questions.each do |question| %>
    <li>
@@ -37,7 +37,10 @@
    <% end %>
   </ol>
 
-  <div><%= submit_tag("Submit", :class => "btn btn-warning") %></div>
+  <div>
+    <%= submit_tag("Submit", :class => "btn btn-warning") %>
+    <%# link_to "Submit", user_quiz_answer_path, class: "btn btn-warning" %>
+  </div>
 
 <% end %>
 </div>
