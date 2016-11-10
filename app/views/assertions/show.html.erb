@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_assertion_path(@assertion) %> |
-<%= link_to 'Back', assertions_path %>
+<div class="container">
+  <%= @assertion.to_json %>
+</div>

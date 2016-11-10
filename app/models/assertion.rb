@@ -3,21 +3,22 @@ require 'json'
 require 'net/http'
 
 class Assertion < ActiveRecord::Base
-	has_one :badge
-	has_one :user
+	#has_one :badge
+	#has_one :user
 
 	validates_presence_of :badge_id
 	validates_presence_of :user_id
 
-	before_validation(on: :create) do |
-		self.token = SecureRandom.urlsafe_base64(16)
+	before_validation(on: :create) do
+	  #self.token = SecureRandom.urlsafe_base64(16)
+	  self.uid = SecureRandom.urlsafe_base64(8)
 	end
 
 	#after_commit :bake, :if => :update_assertion?
 
-	def recipient
-		self.user.try(:email)
-	end
+	# def recipient
+	# 	self.user.try(:email)
+	# end
 		
 	# def update_assertion?
 	# 	persisted? && !is_baked?

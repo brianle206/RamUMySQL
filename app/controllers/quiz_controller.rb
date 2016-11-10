@@ -25,6 +25,7 @@ class QuizController < ApplicationController
       redirect_to root_path
     end
   end
+  
   def show
     @quiz = Quiz.find(params[:qid])
     @questions = Question.where(quiz_id: @quiz.id).sample(5)

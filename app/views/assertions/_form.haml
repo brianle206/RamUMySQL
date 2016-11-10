@@ -1,0 +1,15 @@
+= simple_form_for(@assertion) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :user_id, label: 'User ID'
+    = f.input :badge_id, label: 'Badge ID'
+    = f.hidden_field :uid
+    = f.input :recipient
+    = f.input :badge
+    = f.input :verify
+    = f.input :issued_on
+    = f.input :expires
+
+  .form-actions
+    = f.button :submit

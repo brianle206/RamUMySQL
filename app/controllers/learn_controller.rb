@@ -4,6 +4,7 @@ class LearnController < ApplicationController
   before_action :this_lecture, only: [:lecture_show, :lecture_edit, :lecture_update]
   before_action :find_status, only: [:lecture_show]
   include LearnHelper
+  
   def index
     @course = Course.all
   end
