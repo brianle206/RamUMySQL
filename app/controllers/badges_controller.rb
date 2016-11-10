@@ -1,3 +1,5 @@
+require 'json'
+
 class BadgesController < ApplicationController
   before_action :set_badge, only: [:show, :edit, :update, :destroy]
 

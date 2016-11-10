@@ -1,12 +1,12 @@
 = simple_form_for(@badge) do |f| 
   = f.error_notification 
 
-  .class="form-inputs"
+  .form-inputs
     = f.input :name
     = f.input :description
     = f.input :image
     = f.input :criteria
     = f.input :issuer
 
-  .class="form-actions"
+  .form-actions
     = f.button :submit
