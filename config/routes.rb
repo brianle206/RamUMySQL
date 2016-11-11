@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   get '/unmake_admin/:id' => 'admin#unmake_admin'
   get '/admin/manage' => 'admin#manage'
   get '/dashboard/progress' => 'dashboard#progress'
-  get '/admin/learn/manage' => 'admin#learn', as: :admin_learn_path
+  get '/admin/learn/manage' => 'admin#learn', as: :admin_learn
   
   #Article Routes
   root 'articles#landing'
@@ -27,13 +27,12 @@ Rails.application.routes.draw do
   get '/learn/:id/lecture/:lid' => 'learn#lecture_show'
   get '/learn/:id/lecture/:lid/edit' => 'learn#lecture_edit' 
   post '/learn/:id/create_lecture' => 'learn#create_lecture'
-  get '/admin' => 'admin#index', as: :admin_path
   delete '/learn/:id/lecture/:lid' => 'learn#lecture_destroy'
   get '/enroll/:course_id' => 'enrollment#add'
 
   #Quiz Routes
   get '/learn/:id/quiz/new' => 'quiz#new'
-  get '/learn/:id/quiz/:id' => 'quiz#show', as: :take_quiz_path
+  get '/learn/:id/quiz/:id' => 'quiz#show', as: :take_quiz
   post '/learn/:id/quiz/create' => 'quiz#create'
-  post '/learn/:id/quiz/:user_id' => 'quiz#create_user_answer', as: :user_quiz_answer_path
+  post '/learn/:id/quiz/:user_id' => 'quiz#create_user_answer', as: :user_quiz_answer
 end

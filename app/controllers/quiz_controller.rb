@@ -4,7 +4,7 @@ class QuizController < ApplicationController
   end
 
   def new
-    @quizz = Quiz.new
+    @quiz = Quiz.new
   end
 
   def edit
@@ -22,7 +22,7 @@ class QuizController < ApplicationController
     @quiz = Learn.find(params[:id])
     @quiz_make = @quiz.quizzes.build(quiz_params)
     if @quiz_make.save
-      redirect_to root_path
+      redirect_to quiz_index_path
     end
   end
 
@@ -49,17 +49,15 @@ class QuizController < ApplicationController
 
     record = ((@correct.to_f/params[:answer].count)*100).round
 
-    if check_for_quiz(current_user.id,@quiz_id)
-     
-        if @users_quiz.score < record
-          @users_quiz.update(score: record)
-          @users_quiz.attempts +=1
-          @users_quiz.save
-        else
-          @users_quiz.attempts +=1
-          @users_quiz.save
-        end
-     
+    if check_for_quiz(current_user.id, @quiz_id)
+      if @users_quiz.score < record
+        @users_quiz.update(score: record)
+        @users_quiz.attempts +=1
+        @users_quiz.save
+      else
+        @users_quiz.attempts +=1
+        @users_quiz.save
+      end
     elsif @users_quiz.blank?
       @score = UserQuizResult.new(quiz_id: @quiz_id, user_id: current_user.id, score: record)
       if @score.save
@@ -69,6 +67,24 @@ class QuizController < ApplicationController
         @success = "Uh Oh! something went wrong"
       end
     end
+
+    # Assertion generator
+    # if @users_quiz.score >= 85.00
+    #   @assertion = Asssertion.new
+    #   recipient = { type: "email", identity: current_user.email, hashed: false }
+    #   badge = "http://frozen-dawn-78535.herokuapp.com/badges/1"
+    #   verify = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
+    #   @assertion.create(user_id: current_user.id, badge_id: 1, recipient: recipient, badge: badge, verify: verify, issued_on: DateTime.now, expires: DateTime.now + 2.years)
+    #   if @assertion.save
+    #     redirect_to dashboard_path
+    #     @notice = "Congratulations! You passed!"
+    #   else
+    #     @error = "Uh Oh! Something went wrong."
+    #   end
+    # else
+    #   redirect_to dashboard_path
+    #   @notice = "Sorry, you did not pass the test. Please try again!"
+    # end
   end
 
   def destroy
@@ -109,5 +125,4 @@ class QuizController < ApplicationController
   def check_for_quiz(user,quiz)
     @users_quiz =  UserQuizResult.find_by(quiz_id: quiz.to_i, user_id: user)
   end
-
 end

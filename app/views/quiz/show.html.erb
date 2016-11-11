@@ -17,32 +17,32 @@
 				<input type='submit' value='Submit' class='btn btn-warning'>
 	<%# end %>
 </div> -->
+
 <div class='quizCard'>
-<h1><%= @quiz.title %></h1>
- <%= form_tag do %>
- <%= hidden_field :quiz_id, params[:id] %>
-  <ol class="questions">
-   <% @questions.each do |question| %>
-   <li>
-   <h1><%= question.question %></h1>
-     <ol class="answers">
-     <% question.answers.each do |answer| %>
+  <h1><%= @quiz.title %></h1>
+  <%= form_tag do %>
+    <%= hidden_field :quiz_id, params[:id] %>
+    <ol class="questions">
+      <% @questions.each do |question| %>
       <li>
-        <%= radio_button_tag("answer[#{question.id}]", answer.id) %>
-        <%= label("answer_".concat(answer.id.to_s).to_sym, answer.content) %>
+        <h1><%= question.question %></h1>
+          <ol class="answers">
+            <% question.answers.each do |answer| %>
+            <li>
+              <%= radio_button_tag("answer[#{question.id}]", answer.id) %>
+              <%= label("answer_".concat(answer.id.to_s).to_sym, answer.content) %>
+            </li>
+            <% end %>
+          </ol>
       </li>
-     <% end %>
-     </ol>
-   </li>
-   <% end %>
-  </ol>
+      <% end %>
+    </ol>
 
-  <div>
-    <%= submit_tag("Submit", :class => "btn btn-warning") %>
-    <%# link_to "Submit", user_quiz_answer_path, class: "btn btn-warning" %>
-  </div>
-
-<% end %>
+    <div>
+      <%# submit_tag("Submit", :class => "btn btn-warning") %>
+      <%= link_to "Submit", user_quiz_answer_path(current_user.id, @quiz.id), class: "btn btn-warning" %>
+    </div>
+  <% end %>
 </div>
 
 	
