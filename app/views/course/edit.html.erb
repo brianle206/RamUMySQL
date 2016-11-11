@@ -1,0 +1,12 @@
+<h1>Course Edit</h1>
+<%= render 'form' %>
+<% @course.learns.each do |learn| %>
+	<ul>
+	<li><%= link_to "#{learn.title}", edit_learn_path(learn) %></li>
+	<% learn.lectures.each do |lecture| %>
+		<ul>
+			<li><td><%= link_to "#{lecture.title}", "/learn/#{learn.id}/lecture/#{lecture.id}/edit" %></td></li>
+		</ul>
+	<% end %>
+	</ul>
+<% end %>

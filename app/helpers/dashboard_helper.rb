@@ -1,7 +1,7 @@
 module DashboardHelper
 
 	def courses
-    	@courses = Course.where(user_id: current_user.id)
+    	@courses = Enrollment.where(user_id: current_user.id)
     rescue
     	nil
 	end

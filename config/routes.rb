@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'enrollment/add'
+
+  get 'enrollment/update'
+
   devise_for :users, controllers: { registrations: "registrations" }
-  resources :articles, :lecture, :admin, :dashboard, :learn, :question, :quiz, :data
+  resources :articles, :lecture, :admin, :dashboard, :learn, :question, :quiz, :data, :course
 
   #Progress Tracker
   get '/progress/add/:learn_id/:user_id/:lecture_id' => 'progress#add'
@@ -25,7 +29,7 @@ Rails.application.routes.draw do
   post '/learn/:id/create_lecture' => 'learn#create_lecture'
   get '/admin' => 'admin#index', as: :admin_path
   delete '/learn/:id/lecture/:lid' => 'learn#lecture_destroy'
-  get '/add/course/:learn_id' => 'course#add'
+  get '/enroll/:course_id' => 'enrollment#add'
 
   #Quiz Routes
   get '/learn/:id/quiz/new' => 'quiz#new'

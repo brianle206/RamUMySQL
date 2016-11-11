@@ -40,7 +40,7 @@
     - else
       - @courses.each do |course|
         .row
-          - find_learn(course.learn_id)
+          - find_learn(course.course_id)
           - @learn.each do |learn|
             .dropdown
               %h4.dropdown-toggle{"data-toggle" => "dropdown"}

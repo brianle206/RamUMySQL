@@ -1,6 +1,6 @@
 module LearnHelper
-	def is_enrolled(learn_id)
-		@enroll = Course.where(learn_id: learn_id, user_id: current_user.id)
+	def is_enrolled(course_id)
+		@enroll = Enrollment.where(course_id: course_id, user_id: current_user.id)
 		@enrolled = false
 		@enroll.each do |enroll|
 			if enroll.learn_id = learn_id

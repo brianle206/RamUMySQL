@@ -5,7 +5,7 @@ class LearnController < ApplicationController
   before_action :find_status, only: [:lecture_show]
   include LearnHelper
   def index
-    @module = Learn.all
+    @course = Course.all
   end
 
   def create
@@ -89,7 +89,7 @@ class LearnController < ApplicationController
   end
 
   def learn_params
-    params.require(:learn).permit(:title, :description, :img)
+    params.require(:learn).permit(:title, :description, :img, :course_id)
   end
 
   def find_section

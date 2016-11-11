@@ -3,7 +3,7 @@
   <h2 class='black'>Current Courses Progress</h2>
   <% courses %>
   <% @courses.each do |course| %>
-    <% find_learn(course.learn_id) %>
+    <% find_learn(course.course_id) %>
     <% @learn.each do |learn| %>
       <div class="row">
       	<hr>

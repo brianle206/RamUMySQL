@@ -4,7 +4,7 @@
 	-is_enrolled(params[:id])
 	-if @enrolled != true
 		Add this course now to start your journey on becoming RAM certified!
-		.btn.btn-default= link_to "Add Course", "/add/course/#{@section.id}"
+		.btn.btn-default= link_to "Add Course", "/enroll/#{@section.id}"
 
 
 -if current_user && !current_user.try(:admin?)
