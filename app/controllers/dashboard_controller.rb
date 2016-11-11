@@ -2,9 +2,6 @@ class DashboardController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_user, :progress, :find_lessons
 
-  def index
-  end
-
   def settings
   end
   

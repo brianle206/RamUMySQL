@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+
   def update
   	@course = Course.find(params[:id])
   	if @course.update(course_params)
@@ -24,7 +25,7 @@ class CoursesController < ApplicationController
   end
 
   def index
-  	@course = Course.all
+  	@courses = Course.all
   end
 
   def show

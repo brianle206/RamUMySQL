@@ -25,7 +25,7 @@
 						</ul>
 					</li>
 					<li>
-						<%= link_to "Learn", learn_index_path, class: "category" %>
+						<%= link_to "Learn", courses_path, class: "category" %>
 					</li>
 				<% end %>
 					<li >
@@ -47,7 +47,7 @@
 				<% end %>
 				<% if !current_user.try(:admin?) && user_signed_in? %>
 					<li class='scroll'>
-						<%= link_to "Dashboard", dashboard_index_path %>
+						<%= link_to "Dashboard", dashboard_path %>
 					</li>
 				<% end %>
 			
@@ -57,7 +57,7 @@
 						<ul class='dropdown-menu'>
 							<% Category.all.each do |category| %>
 								<li class='scroll'>
-									<%= link_to category.name, admin_index_path(category: category.name) %>
+									<%= link_to category.name, admins_path(category: category.name) %>
 								</li>
 							<% end %>
 						</ul>
@@ -75,7 +75,7 @@
 								<%= link_to "Courses", courses_path %>
 							</li>
 							<li>
-								<%= link_to "Quiz Options", quiz_index_path %>
+								<%= link_to "Quiz Options", quizzes_path %>
 							</li>
 						</ul>
 					</li>

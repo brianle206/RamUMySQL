@@ -1,4 +1,4 @@
-class LectureController < ApplicationController
+class LecturesController < ApplicationController
 	before_action :find_lecture, only: [:destroy]
   before_action :find_lec_edit, except: [:edit, :index]
   before_action :authenticate_user!

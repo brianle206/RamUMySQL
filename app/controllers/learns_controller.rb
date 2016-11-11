@@ -1,4 +1,4 @@
-class LearnController < ApplicationController
+class LearnsController < ApplicationController
   before_filter :find_section, only: [:show, :destroy]
   before_action :find_lecture, only: [:show, :add_lecture]
   before_action :this_lecture, only: [:lecture_show, :lecture_edit, :lecture_update]
