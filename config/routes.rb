@@ -2,13 +2,13 @@ Rails.application.routes.draw do
   root 'articles#landing'
 
   devise_for :users, controllers: { registrations: "registrations" }
-  resources :articles, :admins, :questions, :courses, :badges, :assertions #, :data
+  resources :articles, :admins, :questions, :courses, :badges, :assertions, :quiz #, :data
   resources :dashboard
 
   resources :courses do
     resources :learns, controller: 'learns' do
       resources :lectures, controller: 'lectures'
-      resource :quiz, controller: 'quiz'
+     
     end
     #resource :exam, controller: 'exams'
   end
@@ -17,12 +17,13 @@ Rails.application.routes.draw do
   get '/progress/add/:learn_id/:user_id/:lecture_id' => 'progress#add'
 
   #Admin Routes
-  get '/destroy/:id' => 'admin#destroy'
-  get '/make_admin/:id' => 'admin#make_admin'
-  get '/unmake_admin/:id' => 'admin#unmake_admin'
-  get '/admin/manage' => 'admin#manage'
+  get '/destroy/:id' => 'admins#destroy'
+  get '/make_admin/:id' => 'admins#make_admin'
+  get '/unmake_admin/:id' => 'admins#unmake_admin'
+  get '/admin/manage' => 'admins#show'
   get '/dashboard/progress' => 'dashboard#progress'
-  get '/admin/learn/manage' => 'admin#learn', as: :admin_learn
+  get '/admin/learn/manage' => 'admins#learn', as: :admin_learn
+  get '/admin/manage_courses' => 'admins#manage_courses', as: :manage_courses
   
   #Article Routes
   get '/search' => 'articles#search'
@@ -31,10 +32,11 @@ Rails.application.routes.draw do
   get '/dashboard' => 'dashboard#show'
 
   #Learn Routes and Lectures
-  get '/learn/:id/add_lecture' => 'learn#add_lecture'
+  get '/learn/:id/add_lecture' => 'learns#add_lecture'
   # get '/learn/:id/lecture/:id' => 'learn#lecture_show'
-  # get '/learn/:id/lecture/:id/edit' => 'learn#lecture_edit' 
-  post '/learn/:id/create_lecture' => 'learn#create_lecture'
+  get '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_edit' , as: :edit_lecture
+  post '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_update', as: :update_lecture
+  post '/learn/:id/create_lecture' => 'learns#create_lecture'
   # delete '/learn/:id/lecture/:id' => 'learn#lecture_destroy'
 
   # Enrollment Routes

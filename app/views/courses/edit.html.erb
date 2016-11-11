@@ -2,11 +2,17 @@
 <%= render 'form' %>
 <% @course.learns.each do |learn| %>
 	<ul>
-	<li><%= link_to "#{learn.title}", edit_learn_path(learn) %></li>
+	<li><%= link_to "#{learn.title}", edit_course_learn_path(params[:id],learn) %></li>
 	<% learn.lectures.each do |lecture| %>
 		<ul>
-			<li><td><%= link_to "#{lecture.title}", "/learn/#{learn.id}/lecture/#{lecture.id}/edit" %></td></li>
+			<li><td><%= link_to "#{lecture.title}", edit_lecture_path(@course,learn, lecture) %></td></li>
 		</ul>
 	<% end %>
 	</ul>
+<% end %>
+
+<h2>Add Sections to this Course </h2>
+<% @learns = Learn.all %>
+<% @learns.each do |learns| %>
+  <h3><%= link_to "#{learns.title}", edit_course_learn_path(params[:id],learns) %> </h3>
 <% end %>

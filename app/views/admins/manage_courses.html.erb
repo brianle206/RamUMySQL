@@ -1,0 +1,4 @@
+<h1>Admin Manage Courses</h1>
+<% @courses.each do |course| %> 
+	<h1><%= course.title %> <%= link_to "Edit", edit_course_path(course) %></h1>
+<% end %>

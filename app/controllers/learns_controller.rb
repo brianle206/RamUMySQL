@@ -29,7 +29,7 @@ class LearnsController < ApplicationController
   def update
     @learn = Learn.find(params[:id])
     if @learn.update(learn_params)
-      redirect_to lecture_index_path
+      redirect_to course_learn_path
     end
   end
 
@@ -49,7 +49,7 @@ class LearnsController < ApplicationController
     @section = Learn.find(params[:id])
     @lecture = @section.lectures.build(lecture_params)
     if @lecture.save
-      redirect_to lecture_index_path
+      redirect_to course_learn_path
     end
   end
 
@@ -59,12 +59,12 @@ class LearnsController < ApplicationController
   end
 
   def lecture_edit
-    
+    @lecture = Lecture.find(params[:lid])
   end
 
   def lecture_update
     @lecture.update(lecture_params)
-    redirect_to @lecture
+    redirect_to course_learn_path
   end
 
   def lecture_destroy

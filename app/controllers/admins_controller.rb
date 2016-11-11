@@ -1,4 +1,4 @@
-class AdminController < ApplicationController
+class AdminsController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
@@ -20,9 +20,9 @@ class AdminController < ApplicationController
 		
 	end
 
-  def manage_courses
-  	@courses = Course.all
-  end
+	def manage_courses
+		@courses = Course.all
+	end
 
 	def make_admin
 		user = User.find(params[:id])
