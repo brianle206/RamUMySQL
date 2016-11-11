@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }
   resources :articles, :admins, :questions, :courses, :badges, :assertions #, :data
-  # resource :dashboard
+  resources :dashboard
 
   resources :courses do
     resources :learns, controller: 'learns' do

@@ -11,7 +11,7 @@ This is Course Overview page
   	<% end %>
 <% end %>
 <% @course.learns.each do |m| %>
-  <%= link_to learn_path(m) do %>
+  <%= link_to course_learn_path(@course,m.id) do %>
     <div class="col-md-6 col-sm-3 flip-container">
       <div class="flipper">
         <div class="front tile">
@@ -33,7 +33,7 @@ This is Course Overview page
               <% if l.learn_id == m.id %>
                 <div class="col-sm-6">
                   <p>
-                    <%= l.title	 %>
+                    <%= l.title  %>
                   </p>
                 </div>
               <% end %>

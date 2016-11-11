@@ -27,7 +27,7 @@ class QuizController < ApplicationController
   end
 
   def show
-    @quiz = Quiz.find(params[:id])
+    @quiz = Quiz.find_by(learn_id: params[:learn_id])
     @questions = Question.where(quiz_id: @quiz.id).sample(5)
   end
 

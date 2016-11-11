@@ -24,7 +24,7 @@
           <% if @complete/@number_of_lectures * 100 == 100 %>
             <div class="btn btn-primary">
               <% learn.quizzes.each do |quiz| %>
-                <%= link_to 'Take Quiz', "/learn/#{learn.id}/quiz/#{quiz.id}", class: "course-title" %>
+                <%= link_to 'Take Quiz', course_learn_quiz_path(course, learn), :method => "get", class: "course-title" %>
               <% end %>
             </div>
           <% else %>
