@@ -1,4 +1,4 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
   def update
   	@course = Course.find(params[:id])
   	if @course.update(course_params)

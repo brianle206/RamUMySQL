@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'enrollment/update'
 
   devise_for :users, controllers: { registrations: "registrations" }
-  resources :articles, :lecture, :admin, :dashboard, :learn, :question, :quiz, :data, :course
+  resources :articles, :lecture, :admin, :dashboard, :learn, :question, :quiz, :data, :courses
 
   #Progress Tracker
   get '/progress/add/:learn_id/:user_id/:lecture_id' => 'progress#add'
