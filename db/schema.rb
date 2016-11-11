@@ -70,10 +70,11 @@ ActiveRecord::Schema.define(version: 20161114163828) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
     t.string   "title",       limit: 255
     t.string   "description", limit: 255
+    t.integer  "learn_id",    limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "enrollments", force: :cascade do |t|
