@@ -1,15 +1,7 @@
 This is Course Overview page
 <h1><%= @course.title%></h1>
 <p><%= @course.description %></p>
-<% if current_user %>
-<% is_enrolled(@course.id) %>
-  	<% if @enrolled != true %>
-    	Add this course now to start your journey on becoming RAM certified!
-	    <div class="btn btn-default">
-	      <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
-	    </div>
-  	<% end %>
-<% end %>
+
 <% @course.learns.each do |m| %>
   <%= link_to course_learn_path(@course,m.id) do %>
     <div class="col-md-6 col-sm-3 flip-container">
@@ -45,3 +37,14 @@ This is Course Overview page
   <% end %>
 <% end %>
 
+<!-- 
+<% if current_user %>
+<% is_enrolled(@course.id) %>
+    <% if @enrolled != true %>
+      Add this course now to start your journey on becoming RAM certified!
+      <div class="btn btn-default">
+        <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
+      </div>
+    <% end %>
+<% end %>
+-->
