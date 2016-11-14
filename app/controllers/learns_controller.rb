@@ -15,12 +15,12 @@ class LearnsController < ApplicationController
     @module = Learn.all
     @learn = Learn.create(learn_params)
     if @learn.save
-      render 'index'
+      redirect_to courses_path
     end
   end
 
   def new 
-    @learn = @course.learns.build
+    @learn = @courses.learns.build
   end
   
   def show
@@ -79,7 +79,7 @@ class LearnsController < ApplicationController
   private
 
   def set_course
-    @course = Course.find_by(id: params[:course_id])
+    @courses = Course.find_by(id: params[:course_id])
   end
 
   def find_lecture

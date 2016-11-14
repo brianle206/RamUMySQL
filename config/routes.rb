@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :articles, :admins, :questions, :courses, :badges, :assertions, :quiz #, :data
   resources :dashboard
 
-  resources :courses do
-    resources :learns, controller: 'learns' do
+  resources :courses, shallow: true do
+    resources :learns, shallow: true do
       resources :lectures, controller: 'lectures'
      
     end
@@ -34,9 +34,9 @@ Rails.application.routes.draw do
   #Learn Routes and Lectures
   get '/learn/:id/add_lecture' => 'learns#add_lecture'
   # get '/learn/:id/lecture/:id' => 'learn#lecture_show'
-  get '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_edit' , as: :edit_lecture
-  post '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_update', as: :update_lecture
-  post '/learn/:id/create_lecture' => 'learns#create_lecture'
+  # get '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_edit' , as: :edit_lecture
+  # post '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_update', as: :update_lecture
+  # post '/learn/:id/create_lecture' => 'learns#create_lecture'
   # delete '/learn/:id/lecture/:id' => 'learn#lecture_destroy'
 
   # Enrollment Routes

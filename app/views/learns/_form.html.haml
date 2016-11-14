@@ -1,7 +1,6 @@
-= simple_form_for [@courses, @learn] do |f|
+= simple_form_for @learn do |f|
 	=	f.input :title
 	=   f.input :description
 	=   f.input :img
 	= 	f.hidden_field :course_id, :value => "#{params[:course_id]}"
 	= 	f.submit
-

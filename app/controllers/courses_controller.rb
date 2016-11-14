@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
   def create
   	@course = Course.create(course_params)
   	if @course.save
-  		redirect_to courses_path
+  		redirect_to course_path
   	end
   end
 
