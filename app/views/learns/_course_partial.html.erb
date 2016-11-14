@@ -15,8 +15,8 @@
 								.col-sm-6
 									%p= l.title			 -->
 Courses
-<% if !@course.empty? %>
-	<% @course.each do |course| %>
+<% if !@courses.empty? %>
+	<% @courses.each do |course| %>
 		<h1><%= link_to "#{course.title}", course_path(course) %></h1>
 		<p><%= course.description %></p>
 	<% end %>

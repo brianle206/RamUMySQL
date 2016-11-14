@@ -1,14 +1,10 @@
 <div class="container">
   <h1 class="text-center">RAM University Courses</h1>
 
-	<% if !@courses.empty? %>
-		<% @courses.each do |course| %>
-		  <a href='/courses/<%= course.id %>'>
-			  <div class="col-sm-4">
-					<h2 class="text-center"><%= course.title %></h2>
-					<p><%= course.description %></p>
-				</div>
-			</a>
-		<% end %>
-	<% end %>
+<% if user_signed_in? %>
+	<%= render 'learns/course_partial' %>
+<% else %>
+	<%= render 'learns/intro_partial' %>
+<% end %>
 </div>
+
