@@ -1,18 +1,18 @@
 .container
-	%h1= @section.title
-	%p= @section.description
-	
+	%h1= @section.title  #@learn.title
+	%p= @section.description   #@learn.description
 
-	-if current_user && !current_user.try(:admin?)
-		=will_paginate @lectures	
-		- @lectures.each do |l|
-			=render partial: 'lectures/show', locals: {:lecture => l}
-	-elsif current_user.try(:admin?)
-		- @lectures.each do |l|
-			=render partial: 'lectures/show', locals: {:lecture => l}
-	-else
-		- @lectures.each do |l|
-			%h2= l.title
+	-if current_user
+		-is_enrolled(params[:id])
+		-if @enrolled != true
+			Add this course now to start your journey on becoming RAM certified!
+			.btn.btn-default= link_to "Add Course", "/enroll/#{@section.id}"
 
-	= will_paginate @lectures
+		-if current_user or current_user.try(:admin?)
+			- @lectures.each do |l|
+				=render partial: 'learns/lecture_show', locals: {:lecture => l}
+		-else
+			- @lectures.each do |l|
+				%h2= l.title
 
+		= will_paginate @lectures

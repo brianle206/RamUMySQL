@@ -8,10 +8,13 @@ Rails.application.routes.draw do
   resources :courses, shallow: true do
     resources :learns, shallow: true do
       resources :lectures, controller: 'lectures'
-     
     end
-    #resource :exam, controller: 'exams'
+    resource :exam, controller: 'exams', only: :show
   end
+
+  get '/exams' => 'exams#index', as: :exams_index
+  post 'courses/:id/exam' => 'exams#create_user_answer', as: :user_exam_answer
+
 
   #Progress Tracker
   get '/progress/add/:learn_id/:user_id/:lecture_id' => 'progress#add'

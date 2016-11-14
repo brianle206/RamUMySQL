@@ -51,6 +51,33 @@
 </div>
 
 
+<div class="row">
+  <%= link_to course_exam_path(@course) do %>
+    <div class="col-sm-8 col-sm-offset-2 flip-container">
+      <div class="flipper">
+        <div class="front tile">
+          <div class="front-title">
+            <%= @course.title %> Exam
+          </div>
+          <div class="col-sm-4">
+            <img class="img-responsive" src="<%# @course.img %>"/>
+          </div>
+          <div class="col-sm-8">
+            <p>
+              <%= @course.description %>
+            </p>
+          </div>
+        </div>
+        <div class="back tile">
+          <div class="back-title">
+            <h2>Take Exam!</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 <!-- 
 <% if current_user %>
 <% is_enrolled(@course.id) %>
