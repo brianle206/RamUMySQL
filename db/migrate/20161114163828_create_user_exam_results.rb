@@ -4,9 +4,8 @@ class CreateUserExamResults < ActiveRecord::Migration
       t.integer :exam_id
       t.integer :user_id
       t.integer :score
-      t.integer :attempts
-      t.boolean{default :passing
-      t.string :false}
+      t.integer :attempts, default: 0
+      t.boolean :passing, default: false
 
       t.timestamps null: false
     end

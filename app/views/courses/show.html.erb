@@ -1,7 +1,15 @@
 This is Course Overview page
 <h1><%= @course.title%></h1>
 <p><%= @course.description %></p>
-
+<div>
+<% if current_user %>
+  <% is_enrolled(params[:id]) %>
+    <% if @enrolled != true %>
+      <p>Add This Course now to start learning</p>
+      <a href="/enroll/<%= @course.id%>" class='btn btn-default'>Enroll</a>
+    <% end %>
+<% end %>
+</div>
 <% @course.learns.each do |m| %>
   <%= link_to course_learn_path(@course,m.id) do %>
     <div class="col-md-6 col-sm-3 flip-container">

@@ -6,6 +6,10 @@ module DashboardHelper
     	nil
 	end
 
+	def course_title(id)
+		@course = Course.find(id)
+	end
+
 	def find_learn(id)
 		@learn = Learn.where(id: id)
 	    @number_of_lectures = find_lecture(id).count

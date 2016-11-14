@@ -1,5 +1,6 @@
 class LearnsController < ApplicationController
   before_filter :find_section, only: [:show, :destroy]
+  before_action :set_course, only: [:new, :create]
   before_action :find_lecture, only: [:show, :add_lecture]
   before_action :this_lecture, only: [:lecture_show, :lecture_edit, :lecture_update]
   before_action :find_status, only: [:lecture_show]
@@ -19,7 +20,7 @@ class LearnsController < ApplicationController
   end
 
   def new 
-    @learn = Learn.new
+    @learn = @course.learns.build
   end
   
   def show
@@ -76,6 +77,10 @@ class LearnsController < ApplicationController
   end
 
   private
+
+  def set_course
+    @course = Course.find_by(id: params[:course_id])
+  end
 
   def find_lecture
     @lecture = Lecture.where(learn_id: params[:id])

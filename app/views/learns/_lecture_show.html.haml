@@ -1,16 +1,16 @@
 
 %h2= lecture.title
--if user_signed_in? && (@enrolled == true)
+-if user_signed_in?
 	.htmlMarkUp
 		%p= markdown(lecture.content)
 
 
 
-- if current_user.try(:admin?)	
-	.btn-group
-		= link_to "Back", :back, class: "btn btn-default"
-		= link_to "Edit",  "/learn/#{params[:id]}/lecture/#{params[:lid]}/edit",class: "btn btn-default"
-		= link_to "Destroy", "/learn/#{params[:id]}/lecture/#{params[:lid]}",method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"
+/ - if current_user.try(:admin?)	
+/ 	.btn-group
+/ 		= link_to "Back", :back, class: "btn btn-default"
+/ 		= link_to "Edit",  "/learn/#{params[:id]}/lecture/#{params[:lid]}/edit",class: "btn btn-default"
+/ 		= link_to "Destroy", "/learn/#{params[:id]}/lecture/#{params[:lid]}",method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"
 	
 -find_status(lecture.id)
 -@status.each do |status|	

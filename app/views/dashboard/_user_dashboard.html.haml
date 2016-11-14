@@ -39,17 +39,20 @@
       %h3 You are currently not enrolled in any courses
     - else
       - @courses.each do |course|
-        .row
-          - find_learn(course.course_id)
-          - @learn.each do |learn|
-            .dropdown
-              %h4.dropdown-toggle{"data-toggle" => "dropdown"}
-                = learn.title
-                %span.caret
-              %ul.dropdown-menu.relative
-                - learn.lectures.each do |lecture|
-                  %li
-                    = link_to lecture.title, "/learn/#{learn.id}/lecture/#{lecture.id}"
+      - course_title(course.course_id)
+        %h4= @course.title
+        - @course.learns.each do |learn|
+          %ul
+            - find_learn(learn.id)
+            - @learn.each do |learn|
+              .dropdown
+                %li.dropdown-toggle{"data-toggle" => "dropdown"}
+                  = learn.title
+                  %span.caret
+                %ul.dropdown-menu.relative
+                  - learn.lectures.each do |lecture|
+                    %li
+                      = link_to lecture.title, "/learn/#{learn.id}/lecture/#{lecture.id}"
 
 
 

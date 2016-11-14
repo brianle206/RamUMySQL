@@ -3,8 +3,10 @@
   <h2 class='black'>Current Courses Progress</h2>
   <% courses %>
   <% @courses.each do |course| %>
-    <% find_learn(course.course_id) %>
-    <% @learn.each do |learn| %>
+    <% course_title(course.course_id) %>
+    <h3><%=@course.title%></h3>
+      <% @course.learns.each do |learn|%>
+      <% find_learn(learn.id) %>
       <div class="row">
       	<hr>
         <div class="col-sm-7">
@@ -24,7 +26,7 @@
           <% if @complete/@number_of_lectures * 100 == 100 %>
             <div class="btn btn-primary">
               <% learn.quizzes.each do |quiz| %>
-                <%= link_to 'Take Quiz', course_learn_quiz_path(course, learn), :method => "get", class: "course-title" %>
+                <%= link_to 'Take Quiz', take_quiz_path(learn, quiz), :method => "get", class: "course-title" %>
               <% end %>
             </div>
           <% else %>

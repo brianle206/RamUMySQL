@@ -3,7 +3,7 @@ module LearnHelper
 		@enroll = Enrollment.where(course_id: course_id, user_id: current_user.id)
 		@enrolled = false
 		@enroll.each do |enroll|
-			if enroll.learn_id = learn_id
+			if enroll.course_id = course_id
 				@enrolled = true
 			end
 		end
