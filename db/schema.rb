@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161110172716) do
+ActiveRecord::Schema.define(version: 20161114163828) do
 
   create_table "answers", force: :cascade do |t|
     t.integer  "question_id", limit: 4
@@ -70,11 +70,10 @@ ActiveRecord::Schema.define(version: 20161110172716) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string   "title",       limit: 255
-    t.string   "description", limit: 255
-    t.integer  "learn_id",    limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "title",       limit: 255
+    t.string   "description", limit: 255
   end
 
   create_table "enrollments", force: :cascade do |t|
@@ -84,12 +83,20 @@ ActiveRecord::Schema.define(version: 20161110172716) do
     t.datetime "updated_at",           null: false
   end
 
+  create_table "exams", force: :cascade do |t|
+    t.integer  "course_id",  limit: 4
+    t.string   "title",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "learns", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "description", limit: 255
     t.string   "img",         limit: 255
+    t.integer  "course_id",   limit: 4
   end
 
   create_table "lectures", force: :cascade do |t|
@@ -113,6 +120,15 @@ ActiveRecord::Schema.define(version: 20161110172716) do
     t.string   "title",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "user_exam_results", force: :cascade do |t|
+    t.integer  "exam_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.integer  "score",      limit: 4
+    t.integer  "attempts",   limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "user_quiz_results", force: :cascade do |t|
