@@ -1,6 +1,8 @@
-.container
-	%h1 Learn#edit
-	%p Find me in app/views/learn/edit.html.erb</p>
+%h1 Edit Learn
 
-
-	= render 'form'
+= simple_form_for @learn, :url => course_learn_path(params[:course_id], @learn), :method => 'put' do |f|
+	=	f.input :title
+	= f.input :description
+	= f.input :img, label: 'Image'
+	=	f.input :course_id, label: 'Course ID'
+	= f.submit

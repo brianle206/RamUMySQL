@@ -6,9 +6,11 @@
 <% if current_user %>
   <% is_enrolled(@course.id) %>
 	<% if @enrolled != true %>
-  	Add this course now to start your journey on becoming RAM certified!
-    <div class="btn btn-default">
-      <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
+    <div class="row">
+    	<p>Add this course now to start your journey on becoming RAM certified!</p>
+      <div class="btn btn-default">
+        <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
+      </div>
     </div>
 	<% end %>
 <% end %>
