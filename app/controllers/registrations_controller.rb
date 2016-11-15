@@ -2,6 +2,6 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    '/courses' # Or :prefix_to_your_route
+    '/courses' # Redirect after devise sign-up
   end
 end
