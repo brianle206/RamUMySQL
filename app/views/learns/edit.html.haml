@@ -1,8 +1,5 @@
 %h1 Learn#edit
 %p Find me in app/views/learn/edit.html.erb</p>
-= simple_form_for @learn, :url => course_learn_path(params[:course_id], @learn), :method => 'put' do |f|
-	=	f.input :title
-	=   f.input :description
-	=   f.input :img
-	=	f.input :course_id
-	= 	f.submit
+
+
+= render 'form'

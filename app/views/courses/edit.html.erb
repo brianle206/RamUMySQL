@@ -5,11 +5,12 @@
 <br><br>
 <% @course.learns.each do |learn| %>
 	<ul>
-	<li><%= link_to "#{learn.title}", edit_learn_path(learn) %></li>
+	<li><%= link_to "#{learn.title}", edit_learn_path(learn) %> <%= link_to "Destroy", learn_path(learn), class: "
+	btn btn-danger", data: {:confirm => 'Are you sure?'}, :method => :delete %></li>
 	<%= link_to "New Lecture", new_learn_lecture_path(learn.id), class: "btn btn-default"%>
 	<% learn.lectures.each do |lecture| %>
 		<ul>
-			<li><td><%= link_to "#{lecture.title}", edit_lecture_path(lecture) %></td></li>
+			<li><td><%= link_to "#{lecture.title}", edit_lecture_path(lecture.id) %></td></li>
 		</ul>
 	<% end %>
 	</ul>

@@ -1,6 +1,7 @@
-= simple_form_for [@course,@learn,@lecture]do |f|
+= simple_form_for [@learn,@lecture] do |f|
 	=	f.input :title
 	= 	f.input :content,:input_html => {:rows => 5, :placeholder => "Enter some text.", :class => "span6", "data-provide" => "markdown" }
+	=	f.hidden_field :learn_id, :value => "#{params[:learn_id]}"
 	=	f.submit
 
 	/ Lecture.new ,:url => {:action => :create_lecture, :controller => :learn} 

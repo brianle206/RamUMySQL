@@ -1,5 +1,6 @@
 class LecturesController < ApplicationController
   before_action :set_learn, only: [:new]
+  before_action :find_lecture, only: [:edit, :update]
   before_action :authenticate_user!
   def index
     @learn = Learn.all
@@ -13,7 +14,7 @@ class LecturesController < ApplicationController
 
   def update
     @lecture.update(lecture_params)
-    redirect_to '/learn'
+    redirect_to manage_courses_path
   end
 
   def destroy
@@ -38,9 +39,6 @@ class LecturesController < ApplicationController
     @learn = Learn.find_by(id: params[:learn_id])
   end
 
-  def find_lec_edit
-    @lecture = Lecture.find(params[:id])
-  end
   def find_lecture 
   	@lecture = Lecture.find(params[:id])
   end

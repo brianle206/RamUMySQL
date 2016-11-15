@@ -15,7 +15,7 @@ class LearnsController < ApplicationController
     @module = Learn.all
     @learn = Learn.create(learn_params)
     if @learn.save
-      redirect_to courses_path
+      redirect_to manage_courses_path
     end
   end
 
@@ -30,7 +30,7 @@ class LearnsController < ApplicationController
   def update
     @learn = Learn.find(params[:id])
     if @learn.update(learn_params)
-      redirect_to course_learn_path
+      redirect_to manage_courses_path
     end
   end
 
@@ -40,6 +40,7 @@ class LearnsController < ApplicationController
 
   def destroy
     @section.destroy
+    redirect_to manage_courses_path
   end
 
   def add_lecture

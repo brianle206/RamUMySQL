@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   #Quiz Routes
   # get '/learn/:id/quiz/new' => 'quiz#new'
-  get '/learn/:id/quiz/:id' => 'quiz#show', as: :take_quiz
+  get '/learn/:learn_id/quiz/:quiz_id' => 'quiz#show', as: :take_quiz
   # post '/learn/:id/quiz/create' => 'quiz#create'
   get '/quizzes' => 'quiz#index'
   post '/learn/:id/quiz/:user_id' => 'quiz#create_user_answer', as: :user_quiz_answer
