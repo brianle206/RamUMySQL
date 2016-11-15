@@ -1,15 +1,10 @@
 .container
 	%h1= @section.title
 	%p= @section.description
-	/ -if current_user
-	/ 	-is_enrolled(params[:id])
-	/ 	-if @enrolled != true
-	/ 		Add this course now to start your journey on becoming RAM certified!
-	/ 		.btn.btn-default= link_to "Add Course", "/enroll/#{@section.id}"
-	-is_enrolled(params[:id])
+	
 
 	-if current_user && !current_user.try(:admin?)
-		
+		=will_paginate @lectures	
 		- @lectures.each do |l|
 			=render partial: 'learns/lecture_show', locals: {:lecture => l}
 	-elsif current_user.try(:admin?)
