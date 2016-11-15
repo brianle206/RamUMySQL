@@ -4,15 +4,17 @@
 	<% params[:answer].each do |answer| %>
 		<% question_content(answer[0]) %>
 			<h2><%= @question.question %></h2>
-				<li>Correct Answer: <%= @question.answer %></li>
+				<li class='correct'><strong>Correct Answer:</strong> <%= @question.answer %></li>
 
 				<% answer_content(answer[1]) %>
-					<li>Your Answer <%= @answer %> </li>
+					<li class='response'><strong>Your Answer:</strong> <%= @answer %> </li>
 
 	<% end %>
 
 	<h1>You Got <%= @correct %> / <%= params[:answer].count%> correct!</h1>
-
+	<% if @correct < 3 %>
+		<h1 class='red'>Wow you got some more learn'n 'ta do <strong><%= current_user.email %></strong></h1>
+	<% end %>
 	<h1><%= @success %></h1>
 
 	<a href="/dashboard">Return To Dashboard</a>
