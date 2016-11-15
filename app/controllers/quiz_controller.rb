@@ -28,7 +28,7 @@ class QuizController < ApplicationController
 
   def show
     @quiz = Quiz.find_by(learn_id: params[:learn_id])
-    @questions = Question.where(quiz_id: @quiz.id).sample(5)
+    @questions = Question.where(quiz_id: params[:quiz_id]).sample(5)
   end
 
   def create_user_answer
@@ -85,6 +85,7 @@ class QuizController < ApplicationController
     #   redirect_to dashboard_path
     #   @notice = "Sorry, you did not pass the test. Please try again!"
     # end
+    render 'create_user_answer'
   end
 
   def destroy
