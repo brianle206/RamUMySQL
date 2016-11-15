@@ -1,12 +1,3 @@
-<!-- <div class="container">
-  <h1 class="text-center">RAM University Courses</h1>
-	<% if user_signed_in? %>
-		<%= render 'learns/course_partial' %>
-	<% else %>
-		<%= render 'learns/intro_partial' %>
-	<% end %>
-</div> -->
-
 <% if user_signed_in? %>
 <div class='container'>
 	<%= render 'learns/course_partial' %>
@@ -14,4 +5,3 @@
 <% else %>
 	<%= render 'learns/intro_partial' %>
 <% end %>
-

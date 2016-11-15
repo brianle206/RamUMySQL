@@ -15,19 +15,16 @@
 								.col-sm-6
 									%p= l.title			 -->
 
-
-
 <h1 class='text-center'>Welcome to the <strong>RAM</strong> University course list</h1>
 <br>
 <br>
+
 <% if @courses %>
 	<% @courses.each do |course| %>
-	  	<a href='/courses/<%= course.id %>'>
-		  	<div class="col-sm-4 clearfix">
-		  		<div class='course-card'>
-					<h2 class="text-center"><%= course.title %></h2>
-					<p><%= course.description %></p>
-				</div>
+	  <a href='/courses/<%= course.id %>'>
+		  <div class="col-sm-4 course-card">
+				<h2 class="text-center"><%= course.title %></h2>
+				<p><%= course.description %></p>
 			</div>
 		</a>
 	<% end %>
