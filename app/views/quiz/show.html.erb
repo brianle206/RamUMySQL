@@ -21,7 +21,7 @@
 <div class='quizCard'>
   <h1><%= @quiz.title %></h1>
   <%= form_tag do %>
-    <%= hidden_field :quiz_id, params[:id] %>
+    <%= hidden_field_tag :quiz_id, @quiz.id %>
     <ol class="questions">
       <% @questions.each do |question| %>
       <li>

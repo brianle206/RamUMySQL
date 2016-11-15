@@ -42,10 +42,7 @@ class QuizController < ApplicationController
       end
     end
     puts params[:quiz_id]
-    @quiz_id = 0
-    params[:quiz_id].each do |quiz_id|
-      @quiz_id = quiz_id[0]
-    end
+    
 
     record = ((@correct.to_f/params[:answer].count)*100).round
 
@@ -59,7 +56,7 @@ class QuizController < ApplicationController
         @users_quiz.save
       end
     elsif @users_quiz.blank?
-      @score = UserQuizResult.new(quiz_id: @quiz_id, user_id: current_user.id, score: record)
+      @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: record)
       if @score.save
         @success = "You successfully submitted your quiz!"
         update_attempt
