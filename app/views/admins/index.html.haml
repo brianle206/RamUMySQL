@@ -1,18 +1,19 @@
-%h1 Welcome to RAM University Admin Dashboard
+.container
+	%h1 Welcome to RAM University Admin Dashboard
 
-%table.table.table-bordered
-	%thead
-		%tr
-			%td Titles
-			%td Created at
-			%td Updated at
-			%td Edit
-			%td Delete
-	%tbody
-		- @article.each do |article|
+	%table.table.table-bordered
+		%thead
 			%tr
-				%td= link_to article.title, article
-				%td= article.created_at.strftime('%b %d, %Y')
-				%td= article.updated_at.strftime('%b %d, %Y')
-				%td= link_to "Edit", edit_article_path(article.id), class: "btn btn-default"
-				%td= link_to "Delete", article_path(article.id),method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"
+				%td Titles
+				%td Created at
+				%td Updated at
+				%td Edit
+				%td Delete
+		%tbody
+			- @article.each do |article|
+				%tr
+					%td= link_to article.title, article
+					%td= article.created_at.strftime('%b %d, %Y')
+					%td= article.updated_at.strftime('%b %d, %Y')
+					%td= link_to "Edit", edit_article_path(article.id), class: "btn btn-default"
+					%td= link_to "Delete", article_path(article.id),method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"

@@ -1,11 +1,12 @@
-%h1= @article.title
+.container
+	%h1= @article.title
 
-.htmlMarkUp
-	%p= markdown(@article.content)
+	.htmlMarkUp
+		%p= markdown(@article.content)
 
--if current_user.try(:admin?)
-	.btn-group
-		= link_to "Back", root_path, class: "btn btn-default"
-		- if user_signed_in?
-			= link_to "Edit", edit_article_path(@article), class: "btn btn-default"
-			= link_to "Delete", article_path(@article),method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"
+	-if current_user.try(:admin?)
+		.btn-group
+			= link_to "Back", root_path, class: "btn btn-default"
+			- if user_signed_in?
+				= link_to "Edit", edit_article_path(@article), class: "btn btn-default"
+				= link_to "Delete", article_path(@article),method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-default"

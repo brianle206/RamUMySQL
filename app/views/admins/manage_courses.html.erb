@@ -1,5 +1,7 @@
-<h1>Admin Manage Courses</h1>
-<%= link_to "New Course", new_course_path %>
-<% @courses.each do |course| %> 
-	<h1><%= course.title %> <%= link_to "Edit", edit_course_path(course) %></h1>
-<% end %>
+<div class='container'>
+	<h1>Admin Manage Courses</h1>
+	<%= link_to "New Course", new_course_path %>
+	<% @courses.each do |course| %> 
+		<h1><%= course.title %> <%= link_to "Edit", edit_course_path(course) %></h1>
+	<% end %>
+</div>

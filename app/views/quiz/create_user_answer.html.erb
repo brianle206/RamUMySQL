@@ -1,17 +1,19 @@
-<h1>You've completed the quiz! Nice!</h1>
+<div class='container'>
+	<h1>You've completed the quiz! Nice!</h1>
 
-<% params[:answer].each do |answer| %>
-	<% question_content(answer[0]) %>
-		<h2><%= @question.question %></h2>
-			<li>Correct Answer: <%= @question.answer %></li>
+	<% params[:answer].each do |answer| %>
+		<% question_content(answer[0]) %>
+			<h2><%= @question.question %></h2>
+				<li>Correct Answer: <%= @question.answer %></li>
 
-			<% answer_content(answer[1]) %>
-				<li>Your Answer <%= @answer %> </li>
+				<% answer_content(answer[1]) %>
+					<li>Your Answer <%= @answer %> </li>
 
-<% end %>
+	<% end %>
 
-<h1>You Got <%= @correct %> / <%= params[:answer].count%> correct!</h1>
+	<h1>You Got <%= @correct %> / <%= params[:answer].count%> correct!</h1>
 
-<h1><%= @success %></h1>
+	<h1><%= @success %></h1>
 
-<a href="/dashboard">Return To Dashboard</a>
+	<a href="/dashboard">Return To Dashboard</a>
+</div>

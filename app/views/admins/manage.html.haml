@@ -1,20 +1,21 @@
-%h1 User Management
-%table.table.table-bordered
-	%thead
-		%tr 
-			%th Email
-			%th Admin Status
-			%th Make Admin
-			%th Unmake Admin
-			%th Delete
-	%tbody
-		- @users.each do |user|
-			%tr
-				%td= user.email
-				%td= user.admin
-				%td
-					%p= link_to("Make Admin?", "/make_admin/#{user.id}")
-				%td 
-					%p= link_to("Unmake Admin?", "/unmake_admin/#{user.id}")
-				%td
-					%p= link_to("Delete", "/destroy/#{user.id}", data: {confirm: "Are you sure?"})
+.container
+	%h1 User Management
+	%table.table.table-bordered
+		%thead
+			%tr 
+				%th Email
+				%th Admin Status
+				%th Make Admin
+				%th Unmake Admin
+				%th Delete
+		%tbody
+			- @users.each do |user|
+				%tr
+					%td= user.email
+					%td= user.admin
+					%td
+						%p= link_to("Make Admin?", "/make_admin/#{user.id}")
+					%td 
+						%p= link_to("Unmake Admin?", "/unmake_admin/#{user.id}")
+					%td
+						%p= link_to("Delete", "/destroy/#{user.id}", data: {confirm: "Are you sure?"})

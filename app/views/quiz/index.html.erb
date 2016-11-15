@@ -1,26 +1,28 @@
-<h1>Quiz#index</h1>
-<p>Find me in app/views/quiz/index.html.erb</p>
-<table class='table'>
-	<% @courses.each do |course| %>
-			<tr>
-				<th>Course Name</th>
-				<th>Quiz Name</th>
-				<th>Edit</th>
-				<th>Delete</th>
-				<th>Create</th>
-			</tr>
-			<tr>
-				<td><%= course.title %></td>
-			<% course.quizzes.each do |quiz| %>
-				<td><%=link_to quiz.title, edit_quiz_path(quiz) %></td>
-				<td><%= link_to edit_quiz_path(quiz),class: "btn btn-primary" do %>
-    					<span class="glyphicon glyphicon-pencil"></span>
-					<% end %></td>
-				<td><%=link_to quiz_path(quiz), :method => "delete", class: "btn btn-danger" do %>
-						<span class="glyphicon glyphicon-trash"></span>
+<div class='container'>
+	<h1>Quiz#index</h1>
+	<p>Find me in app/views/quiz/index.html.erb</p>
+	<table class='table'>
+		<% @courses.each do |course| %>
+				<tr>
+					<th>Course Name</th>
+					<th>Quiz Name</th>
+					<th>Edit</th>
+					<th>Delete</th>
+					<th>Create</th>
+				</tr>
+				<tr>
+					<td><%= course.title %></td>
+				<% course.quizzes.each do |quiz| %>
+					<td><%=link_to quiz.title, edit_quiz_path(quiz) %></td>
+					<td><%= link_to edit_quiz_path(quiz),class: "btn btn-primary" do %>
+	    					<span class="glyphicon glyphicon-pencil"></span>
 						<% end %></td>
-			<% end %>
-				<td><%= link_to "Create Quiz For this course", "/learn/#{course.id}/quiz/new" %></td>
-			</tr>
-	<% end %>
-</table>
+					<td><%=link_to quiz_path(quiz), :method => "delete", class: "btn btn-danger" do %>
+							<span class="glyphicon glyphicon-trash"></span>
+							<% end %></td>
+				<% end %>
+					<td><%= link_to "Create Quiz For this course", "/learn/#{course.id}/quiz/new" %></td>
+				</tr>
+		<% end %>
+	</table>
+</div>
