@@ -1,11 +1,11 @@
 module DashboardHelper
 
-	def courses
-    @courses = Enrollment.where(user_id: current_user.id) rescue nil
+	def enrollments_lookup
+    @enrollments = Enrollment.where(user_id: current_user.id) rescue nil
 	end
 
-	def course_title(id)
-		@course = Course.find_by(id: id)
+	def find_course(id)
+		@course = Course.find(id)
 	end
 
 	def find_learn(id)
