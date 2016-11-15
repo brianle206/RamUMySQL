@@ -46,7 +46,7 @@ class QuizController < ApplicationController
 
     record = ((@correct.to_f/params[:answer].count)*100).round
 
-    if check_for_quiz(current_user.id, @quiz_id)
+    if check_for_quiz(current_user.id, params[:quiz_id])
       if @users_quiz.score < record
         @users_quiz.update(score: record)
         @users_quiz.attempts +=1
