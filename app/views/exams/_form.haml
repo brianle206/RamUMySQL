@@ -1,0 +1,9 @@
+= simple_form_for(@exam) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :course_id, label: 'Course ID'
+    = f.input :title
+
+  .form-actions
+    = f.button :submit
