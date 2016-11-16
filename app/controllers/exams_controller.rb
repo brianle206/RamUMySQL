@@ -7,6 +7,7 @@ class ExamsController < ApplicationController
 
   def show
   	@course = Course.find_by(params[:id])
+    @exam = Exam.find_by(id: @course)
   	@exam_result = UserExamResult.new
   	@user = User.find_by(id: current_user.id)
   	puts @user
@@ -45,7 +46,7 @@ class ExamsController < ApplicationController
 
     record = ((@correct.to_f/params[:answer].count)*100).round
 
-    if check_for_exam(current_user.id, params[:id])
+    if check_for_exam(current_user.id, @exam)
       if @users_exam.score < record
         @users_exam.update(score: record)
         @users_exam.attempts += 1
@@ -55,7 +56,7 @@ class ExamsController < ApplicationController
         @users_exam.save
       end
     elsif @users_exam.blank?
-      @score = UserExamResult.new(exam_id: params[:id], user_id: current_user.id, score: record)
+      @score = UserExamResult.new(exam_id: @exam, user_id: current_user.id, score: record)
       if @score.save
         @success = "You successfully submitted your exam!"
         update_attempt
