@@ -1,25 +1,25 @@
 
 <% if current_user.admin == false %>
   <h2 class='black'>Current Courses Progress</h2>
-  <% courses %>
   <% @courses.each do |course| %>
-    <% course_title(course.course_id) %>
-    <h3><%=@course.title%></h3>
-      <% @course.learns.each do |learn|%>
+    <h3><%= course.title %></h3>
+    <% course.learns.each do |learn| %>
       <% find_learn(learn.id) %>
       <div class="row">
-      	<hr>
+    	  <hr>
         <div class="col-sm-7">
           <div class='dropdown'>
             <h5 class='grey dropdown-toggle' data-toggle='dropdown'>
               <%= learn.title %><span class='caret'></span>
             </h5>
-                <% learn.lectures.each do |lecture| %>
-                  <ul class='dropdown-menu relative dashboard'>
-                    <%= lecture.title %> <% complete(current_user.id, lecture.id, learn.id) %> <% if @done %> <span class='glyphicon glyphicon-ok'></span><% end %>
-
-                  </ul>
-                <% end %>
+              <% learn.lectures.each do |lecture| %>
+                <ul class='dropdown-menu relative dashboard'>
+                  <%= lecture.title %> <% complete(current_user.id, lecture.id, learn.id) %> 
+                  <% if @done %> 
+                    <span class='glyphicon glyphicon-ok'></span> 
+                  <% end %>
+                </ul>
+              <% end %>
           </div>
         </div>
         <div class="col-sm-5 text-center">
@@ -34,7 +34,6 @@
               <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="100" class="progress-bar" role="progressbar" style="width:<%= number_with_precision(@percentage, :precision => 2)%>%">
                 <%= number_with_precision(@percentage, :precision => 2) %>%
               </div>
-              
             </div>
           <% end %>
         </div>

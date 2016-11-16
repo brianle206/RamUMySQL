@@ -1,6 +1,10 @@
 .container
-	%h1 Learn#edit
-	%p Find me in app/views/learn/edit.html.erb</p>
+	.col-sm-8.col-sm-offset-2
+		%h1 Edit Learn
 
-
-	= render 'form'
+		= simple_form_for @learn, :method => 'put' do |f|
+			=	f.input :title
+			= f.input :description
+			= f.input :img, label: 'Image'
+			=	f.input :course_id, label: 'Course ID'
+			= f.submit

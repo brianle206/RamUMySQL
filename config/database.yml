@@ -24,6 +24,7 @@ default: &default
 development:
   <<: *default
   database: RamUniversity1_development
+  # host: localhost
   # username: root
   # password: hoyohom7
   # socket: /var/run/mysqld/mysqld.sock

@@ -1,20 +1,18 @@
 module DashboardHelper
 
-	def courses
-    	@courses = Enrollment.where(user_id: current_user.id)
-    rescue
-    	nil
+	def enrollments_lookup
+    @enrollments = Enrollment.where(user_id: current_user.id) rescue nil
 	end
 
-	def course_title(id)
+	def find_course(id)
 		@course = Course.find(id)
 	end
 
 	def find_learn(id)
 		@learn = Learn.where(id: id)
-	    @number_of_lectures = find_lecture(id).count
-	    @complete = find_complete(id).count
-	    @percentage = ((@complete.to_f/@number_of_lectures) * 100)
+	  @number_of_lectures = find_lecture(id).count
+	  @complete = find_complete(id).count
+	  @percentage = ((@complete.to_f/@number_of_lectures) * 100)
 	end
 
 	def find_lecture(id)

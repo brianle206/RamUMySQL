@@ -2,9 +2,15 @@ class LecturesController < ApplicationController
   before_action :set_learn, only: [:new]
   before_action :find_lecture, only: [:edit, :update, :show]
   before_action :authenticate_user!
+
   def index
     @learn = Learn.all
   end
+
+  def show
+    @lecture = Lecture.find(params[:id])
+  end
+
   def create
     @lecture = Lecture.create(lecture_params)
     if @lecture.save
@@ -37,9 +43,14 @@ class LecturesController < ApplicationController
     @learn = Learn.find_by(id: params[:learn_id])
   end
 
+  def find_lec_edit
+    @lecture = Lecture.find(params[:id])
+  end
+
   def find_lecture 
   	@lecture = Lecture.find(params[:id])
   end
+
   def lecture_params
     params.require(:lecture).permit(:title, :content, :learn_id)
   end

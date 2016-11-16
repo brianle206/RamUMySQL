@@ -6,12 +6,12 @@
 .menu-wrap
   .menu-sidebar
     %ul.menu
-    - courses
-    - if @courses.empty?
+    - enrollments_lookup
+    - if @enrollments.empty?
       %h3 You are currently not enrolled in any courses
     - else
-      - @courses.each do |course|
-      - course_title(course.course_id)
+      - @enrollments.each do |roll|
+        - find_course(roll.course_id)
         %h4= @course.title
         - @course.learns.each do |learn|
           %ul
@@ -25,3 +25,5 @@
                   - learn.lectures.each do |lecture|
                     %li
                       = link_to lecture.title, learn_path(learn)
+
+

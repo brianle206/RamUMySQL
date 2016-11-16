@@ -1,17 +1,34 @@
-.container
-	%h1= @section.title
-	%p= @section.description
+/ .container
+/ 	%h1= @section.title
+/ 	%p= @section.description
 	
 
-	-if current_user && !current_user.try(:admin?)
+/ 	-if current_user && !current_user.try(:admin?)
+/ 		=will_paginate @lectures	
+/ 		- @lectures.each do |l|
+/ 			=render partial: 'lectures/show', locals: {:lecture => l}
+/ 	-elsif current_user.try(:admin?)
+/ 		- @lectures.each do |l|
+/ 			=render partial: 'lectures/show', locals: {:lecture => l}
+/ 	-else
+/ 		- @lectures.each do |l|
+/ 			%h2= l.title
+
+/ 	=will_paginate @lectures
+
+.container
+	%h1= @section.title  #@learn.title
+	%p= @section.description   #@learn.description
+
+
+
+
+	-if current_user or current_user.try(:admin?)
 		=will_paginate @lectures	
-		- @lectures.each do |l|
-			=render partial: 'lectures/show', locals: {:lecture => l}
-	-elsif current_user.try(:admin?)
 		- @lectures.each do |l|
 			=render partial: 'lectures/show', locals: {:lecture => l}
 	-else
 		- @lectures.each do |l|
 			%h2= l.title
 
-	=will_paginate @lectures
+	= will_paginate @lectures

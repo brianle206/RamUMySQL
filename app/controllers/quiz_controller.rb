@@ -1,6 +1,7 @@
 class QuizController < ApplicationController
+  
   def index
-    @courses = Learn.all
+    @learns = Learn.all
   end
 
   def new
@@ -14,15 +15,15 @@ class QuizController < ApplicationController
   def update
     @quiz = Quiz.find(params[:id])
     if @quiz.update(quiz_params)
-      redirect_to quiz_index_path
+      redirect_to quizzes_path
     end
   end
 
   def create
-    @quiz = Learn.find(params[:id])
-    @quiz_make = @quiz.quizzes.build(quiz_params)
-    if @quiz_make.save
-      redirect_to quiz_index_path
+    @learn = Learn.find(params[:id])
+    @quiz = @learn.quizzes.build(quiz_params)
+    if @quiz.save
+      redirect_to quizzes_path
     end
   end
 
@@ -64,30 +65,13 @@ class QuizController < ApplicationController
         @success = "Uh Oh! something went wrong"
       end
     end
-
-    # Assertion generator
-    # if @users_quiz.score >= 85.00
-    #   @assertion = Asssertion.new
-    #   recipient = { type: "email", identity: current_user.email, hashed: false }
-    #   badge = "http://frozen-dawn-78535.herokuapp.com/badges/1"
-    #   verify = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
-    #   @assertion.create(user_id: current_user.id, badge_id: 1, recipient: recipient, badge: badge, verify: verify, issued_on: DateTime.now, expires: DateTime.now + 2.years)
-    #   if @assertion.save
-    #     redirect_to dashboard_path
-    #     @notice = "Congratulations! You passed!"
-    #   else
-    #     @error = "Uh Oh! Something went wrong."
-    #   end
-    # else
-    #   redirect_to dashboard_path
-    #   @notice = "Sorry, you did not pass the test. Please try again!"
-    # end
-    render 'create_user_answer'
   end
 
   def destroy
     @quiz = Quiz.find(params[:id])
-    @quiz.destroy
+    if @quiz.destroy
+      redirect_to quizzes_path
+    end
   end
 
   private 

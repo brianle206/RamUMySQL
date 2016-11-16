@@ -1,0 +1,19 @@
+.row
+  .h1.text-center= @course.title + " Exam"
+
+.row
+  .col-sm-8.col-sm-offset-2
+    = form_tag do
+      %ol.questions
+        - @course.learns.each do |learn|
+          - @quiz = Quiz.find_by(learn_id: learn.id)
+          - @questions = Question.where(quiz_id: @quiz)
+          - @questions.each do |question|
+            %li
+              %h2= question.question
+              %ol.answers
+                - question.answers.each do |answer|
+                  %li
+                    = radio_button_tag("answer[#{question.id}]", answer.id)
+                    = label("answer_".concat(answer.id.to_s).to_sym, answer.content)
+      = button_to "Submit", user_exam_answer_path(user_id: @user.id, exam_id: 1, id: 1), class: 'btn btn-primary'
