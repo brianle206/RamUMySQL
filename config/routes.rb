@@ -31,14 +31,6 @@ Rails.application.routes.draw do
   #Dashboard Routes
   get '/dashboard' => 'dashboard#show'
 
-  #Learn Routes and Lectures
-  get '/learn/:id/add_lecture' => 'learns#add_lecture'
-  # get '/learn/:id/lecture/:id' => 'learn#lecture_show'
-  # get '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_edit' , as: :edit_lecture
-  # post '/course/:course_id/learn/:id/lecture/:lid/edit' => 'learns#lecture_update', as: :update_lecture
-  # post '/learn/:id/create_lecture' => 'learns#create_lecture'
-  # delete '/learn/:id/lecture/:id' => 'learn#lecture_destroy'
-
   # Enrollment Routes
   # !!!!!!! These two are probably post & patch
   get 'enrollment/add'
@@ -46,9 +38,9 @@ Rails.application.routes.draw do
   get '/enroll/:course_id' => 'enrollment#add'
 
   #Quiz Routes
-  # get '/learn/:id/quiz/new' => 'quiz#new'
+  get '/learn/:id/quiz/new' => 'quiz#new'
   get '/learn/:learn_id/quiz/:quiz_id' => 'quiz#show', as: :take_quiz
-  # post '/learn/:id/quiz/create' => 'quiz#create'
+  post '/learn/:id/quiz/create' => 'quiz#create'
   get '/quizzes' => 'quiz#index'
   post '/learn/:id/quiz/:user_id' => 'quiz#create_user_answer', as: :user_quiz_answer
 end

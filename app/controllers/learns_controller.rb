@@ -1,11 +1,7 @@
 class LearnsController < ApplicationController
   before_filter :find_section, only: [:show, :destroy]
   before_action :set_course, only: [:new, :create]
-  before_action :find_lecture, only: [:show, :add_lecture]
-  before_action :this_lecture, only: [:lecture_show, :lecture_edit, :lecture_update]
-  before_action :find_status, only: [:lecture_show]
-  include LearnHelper
-  
+
   def index
     @course = Course.all
   end
@@ -43,56 +39,10 @@ class LearnsController < ApplicationController
     redirect_to manage_courses_path
   end
 
-  def add_lecture
-    @lecture = Lecture.new
-  end
-
-  def create_lecture
-    @section = Learn.find(params[:id])
-    @lecture = @section.lectures.build(lecture_params)
-    if @lecture.save
-      redirect_to course_learn_path
-    end
-  end
-
-  def lecture_show
-    @lecture = Lecture.where(id: params[:lid])
-    render 'lecture_show'
-  end
-
-  def lecture_edit
-    @lecture = Lecture.find(params[:lid])
-  end
-
-  def lecture_update
-    @lecture.update(lecture_params)
-    redirect_to course_learn_path
-  end
-
-  def lecture_destroy
-    @lecture = Lecture.find(params[:lid])
-    if @lecture.present? 
-      @lecture.destroy
-    end
-    redirect_to root_path
-  end
-
   private
 
   def set_course
     @courses = Course.find_by(id: params[:course_id])
-  end
-
-  def find_lecture
-    @lecture = Lecture.where(learn_id: params[:id])
-  end
-
-  def this_lecture
-    @lecture = Lecture.find(params[:lid])
-  end
-
-  def lecture_params
-    params.require(:lecture).permit(:title, :content, :learn_id)
   end
 
   def learn_params
@@ -103,10 +53,5 @@ class LearnsController < ApplicationController
     @section = Learn.find(params[:id])
     @lectures = @section.lectures.page(params[:page]).per_page(1).order('id ASC')
   end
-
-  def find_status
-    @lecture = Lecture.find(params[:lid])
-    @status = Complete.where(user_id: current_user.id, lecture_id: @lecture.id)
-  end
-  
+ 
 end

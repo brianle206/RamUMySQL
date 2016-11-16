@@ -1,6 +1,6 @@
 class LecturesController < ApplicationController
   before_action :set_learn, only: [:new]
-  before_action :find_lecture, only: [:edit, :update]
+  before_action :find_lecture, only: [:edit, :update, :show]
   before_action :authenticate_user!
   def index
     @learn = Learn.all
@@ -18,9 +18,7 @@ class LecturesController < ApplicationController
   end
 
   def destroy
-  	@lecture.destroy
 
-    redirect_to '/learn'
   end
 
   def new 

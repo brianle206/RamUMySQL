@@ -1,4 +1,0 @@
-= simple_form_for Lecture.new ,:url => {:action => :create_lecture, :controller => :learn} do |f|
-	=	f.input :title
-	= 	f.input :content,:input_html => {:rows => 5, :placeholder => "Enter some text.", :class => "span6", "data-provide" => "markdown" }
-	=	f.submit

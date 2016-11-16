@@ -6,10 +6,10 @@
 	-if current_user && !current_user.try(:admin?)
 		=will_paginate @lectures	
 		- @lectures.each do |l|
-			=render partial: 'learns/lecture_show', locals: {:lecture => l}
+			=render partial: 'lectures/show', locals: {:lecture => l}
 	-elsif current_user.try(:admin?)
 		- @lectures.each do |l|
-			=render partial: 'learns/lecture_show', locals: {:lecture => l}
+			=render partial: 'lectures/show', locals: {:lecture => l}
 	-else
 		- @lectures.each do |l|
 			%h2= l.title
