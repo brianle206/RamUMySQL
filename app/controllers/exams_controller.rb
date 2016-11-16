@@ -13,13 +13,13 @@ class ExamsController < ApplicationController
   end
 
   def new
-  	@exam = Course.exam.new
+  	@exam = Exam.new
   end
 
   def create
-    @exam = Course.exam.build(exam_params)
+    @exam = Exam.new(exam_params)
     if @exam.save
-    	redirect_to exam_index_path
+    	redirect_to exams_path
     end
   end
 
@@ -89,6 +89,10 @@ class ExamsController < ApplicationController
 
   def find_exam
   	@exam = Exam.find_by(params[:id])
+  end
+
+  def exam_params
+    params.require(:exam).permit(:course_id, :title)
   end
 
   def find_question(id)
