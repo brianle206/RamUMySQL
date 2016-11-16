@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations" }
   resources :articles, :admins, :questions, :courses, :badges, :assertions, :quiz #, :data
+  resources :exams, except: :show
   resources :dashboard
 
   resources :courses, shallow: true do
@@ -12,7 +13,7 @@ Rails.application.routes.draw do
     resource :exam, controller: 'exams', only: :show
   end
 
-  get '/exams' => 'exams#index', as: :exams_index
+  # Submit Exam, assign badge
   post 'courses/:id/exam' => 'exams#create_user_answer', as: :user_exam_answer
 
 
