@@ -25,9 +25,7 @@
         <div class="col-sm-5 text-center">
           <% if @complete/@number_of_lectures * 100 == 100 %>
             <div class="btn btn-primary">
-              <% learn.quizzes.each do |quiz| %>
-                <%= link_to 'Take Quiz', take_quiz_path(learn, quiz), :method => "get", class: "course-title" %>
-              <% end %>
+              <%= link_to 'Take Quiz', take_quiz_path(learn, learn.quiz), :method => "get", class: "course-title" %>
             </div>
           <% else %>
             <div class="progress">
