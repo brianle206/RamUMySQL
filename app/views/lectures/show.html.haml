@@ -19,4 +19,4 @@
 			%button.btn.btn-success Completed
 -if @status.empty?
 	.btn-group
-		= link_to "Complete", "/progress/add/#{params[:id]}/#{current_user.id}/#{lecture.id}", class: "btn btn-primary"
+		= link_to "Complete", "/progress/add/#{params[:id]}/#{current_user.id}/#{lecture.id}", class: "btn btn-warning complete"
