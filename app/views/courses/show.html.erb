@@ -16,7 +16,7 @@
   <% end %>
 
   <% @course.learns.each do |m| %>
-    <%= link_to course_learns_path(@course,m.id) do %>
+    <%= link_to learn_path(m.id) do %>
       <div class="col-md-6 col-sm-3 flip-container">
         <div class="flipper">
           <div class="front tile">
