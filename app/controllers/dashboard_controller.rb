@@ -3,14 +3,14 @@ class DashboardController < ApplicationController
   before_filter :find_user, :progress, :find_lessons
 
   def index
-    @courses = Course.all
+    
   end
 
   def settings
   end
   
   def show
-    @courses = Course.all
+    
   end
 
   def lessons

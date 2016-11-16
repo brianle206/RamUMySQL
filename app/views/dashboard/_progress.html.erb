@@ -1,9 +1,11 @@
 
 <% if current_user.admin == false %>
   <h2 class='black'>Current Courses Progress</h2>
-  <% @courses.each do |course| %>
-    <h3><%= course.title %></h3>
-    <% course.learns.each do |learn| %>
+  <% enrollments_lookup %>
+  <% @enrollments.each do |course| %>
+  <% find_course(course.course_id) %>
+    <h3><%= @course.title %></h3>
+    <% @course.learns.each do |learn| %>
       <% find_learn(learn.id) %>
       <div class="row">
     	  <hr>

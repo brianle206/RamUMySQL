@@ -9,7 +9,7 @@ module DashboardHelper
 	end
 
 	def find_learn(id)
-		@learn = Learn.where(id: id)
+	  @learn = Learn.where(id: id)
 	  @number_of_lectures = find_lecture(id).count
 	  @complete = find_complete(id).count
 	  @percentage = ((@complete.to_f/@number_of_lectures) * 100)
