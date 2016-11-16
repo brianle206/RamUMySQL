@@ -1,6 +1,7 @@
 class QuizController < ApplicationController
+  
   def index
-    @courses = Learn.all
+    @learns = Learn.all
   end
 
   def new
@@ -14,15 +15,15 @@ class QuizController < ApplicationController
   def update
     @quiz = Quiz.find(params[:id])
     if @quiz.update(quiz_params)
-      redirect_to quiz_index_path
+      redirect_to quizzes_path
     end
   end
 
   def create
-    @quiz = Learn.find(params[:id])
-    @quiz_make = @quiz.quizzes.build(quiz_params)
-    if @quiz_make.save
-      redirect_to quiz_index_path
+    @learn = Learn.find(params[:id])
+    @quiz = @learn.quizzes.build(quiz_params)
+    if @quiz.save
+      redirect_to quizzes_path
     end
   end
 
@@ -68,7 +69,9 @@ class QuizController < ApplicationController
 
   def destroy
     @quiz = Quiz.find(params[:id])
-    @quiz.destroy
+    if @quiz.destroy
+      redirect_to quizzes_path
+    end
   end
 
   private 

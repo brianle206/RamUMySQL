@@ -1,8 +1,10 @@
-%h1 Edit Learn
+.container
+	.col-sm-8.col-sm-offset-2
+		%h1 Edit Learn
 
-= simple_form_for @learn, :url => course_learn_path(params[:course_id], @learn), :method => 'put' do |f|
-	=	f.input :title
-	= f.input :description
-	= f.input :img, label: 'Image'
-	=	f.input :course_id, label: 'Course ID'
-	= f.submit
+		= simple_form_for @learn, :method => 'put' do |f|
+			=	f.input :title
+			= f.input :description
+			= f.input :img, label: 'Image'
+			=	f.input :course_id, label: 'Course ID'
+			= f.submit
