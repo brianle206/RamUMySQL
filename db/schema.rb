@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20161114211942) do
   create_table "courses", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.string   "description", limit: 255
-    t.integer  "learn_id",    limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
@@ -128,9 +127,10 @@ ActiveRecord::Schema.define(version: 20161114211942) do
     t.integer  "exam_id",    limit: 4
     t.integer  "user_id",    limit: 4
     t.integer  "score",      limit: 4
-    t.integer  "attempts",   limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.integer  "attempts",   limit: 4, default: 0
+    t.boolean  "passing",              default: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "user_quiz_results", force: :cascade do |t|

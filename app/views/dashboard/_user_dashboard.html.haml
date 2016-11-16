@@ -59,7 +59,7 @@
   .menu-sidebar
     %ul.menu
     - enrollments_lookup
-    - if @enrollments.nil?
+    - if @enrollments.empty?
       %h3 You are currently not enrolled in any courses
     - else
       - @enrollments.each do |roll|

@@ -31,24 +31,24 @@
                 <%= m.description %>
               </p>
             </div>
-            <div class="back tile">
-              <div class="back-title">
-                <% m.lectures.each do |l| %>
-                  <% if l.learn_id == m.id %>
-                    <div class="col-sm-6">
-                      <p>
-                        <%= l.title  %>
-                      </p>
-                    </div>
-                  <% end %>
+          </div>
+          <div class="back tile">
+            <div class="back-title">
+              <% m.lectures.each do |l| %>
+                <% if l.learn_id == m.id %>
+                  <div class="col-sm-6">
+                    <p>
+                      <%= l.title  %>
+                    </p>
+                  </div>
                 <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 
 
   <div class="row">
