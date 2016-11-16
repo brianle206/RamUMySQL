@@ -42,15 +42,12 @@ class ExamsController < ApplicationController
         @correct += 1
       end
     end
-    puts params[:exam_id]
-    @exam_id = 0
-    params[:exam_id].each do |exam_id|
-      @exam_id = exam_id[0]
-    end
+    
+
 
     record = ((@correct.to_f/params[:answer].count)*100).round
 
-    if check_for_exam(current_user.id, @exam_id)
+    if check_for_exam(current_user.id, params[:id])
       if @users_exam.score < record
         @users_exam.update(score: record)
         @users_exam.attempts += 1
@@ -59,8 +56,26 @@ class ExamsController < ApplicationController
         @users_exam.attempts += 1
         @users_exam.save
       end
+      # Assertion generator
+      if @users_exam.score >= 50.00
+        @assertion = Asssertion.new
+        recipient = { type: "email", identity: current_user.email, hashed: false }
+        @badge = Badge.find_by(course_id: @course)
+        badge = "http://frozen-dawn-78535.herokuapp.com/badges/#{@badge}"
+        verify = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
+        @assertion.create(user_id: current_user.id, badge_id: @badge, recipient: recipient, badge: badge, verify: verify, issued_on: DateTime.now, expires: DateTime.now + 2.years)
+        if @assertion.save
+          redirect_to dashboard_index_path
+          @notice = "Congratulations! You passed!"
+        else
+          @error = "Uh Oh! Something went wrong."
+        end
+      else
+        redirect_to dashboard_index_path
+        @notice = "Sorry, you did not pass the exam. Please try again!"
+      end
     elsif @users_exam.blank?
-      @score = UserExamResult.new(exam_id: @exam_id, user_id: current_user.id, score: record)
+      @score = UserExamResult.new(exam_id: params[:id], user_id: current_user.id, score: record)
       if @score.save
         @success = "You successfully submitted your exam!"
         update_attempt
@@ -69,24 +84,6 @@ class ExamsController < ApplicationController
       end
     end
 
-    # Assertion generator
-    if @users_exam.score >= 85.00
-      @assertion = Asssertion.new
-      recipient = { type: "email", identity: current_user.email, hashed: false }
-      @badge = Badge.find_by(course_id: @course)
-      badge = "http://frozen-dawn-78535.herokuapp.com/badges/#{@badge}"
-      verify = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
-      @assertion.create(user_id: current_user.id, badge_id: @badge, recipient: recipient, badge: badge, verify: verify, issued_on: DateTime.now, expires: DateTime.now + 2.years)
-      if @assertion.save
-        redirect_to dashboard_path
-        @notice = "Congratulations! You passed!"
-      else
-        @error = "Uh Oh! Something went wrong."
-      end
-    else
-      redirect_to dashboard_path
-      @notice = "Sorry, you did not pass the exam. Please try again!"
-    end
   end
 
   private
