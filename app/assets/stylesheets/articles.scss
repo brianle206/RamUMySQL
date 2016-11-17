@@ -1,3 +1,114 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bg-grey{
+	background-color: #e5e4e2;
+	background-size: cover;
+	padding-bottom: 50px;
+	padding-top: 50px;
+
+}
+
+.home-banner{
+	background-image: url("http://ibttech.com/wp-content/uploads/2016/06/learning.jpg");
+	background-size: cover;
+	height: 700px;
+	margin-top: -30px;
+}
+.blocks2{
+
+	box-shadow: 1px 1px 1px 1px #d1d0ce;
+	margin-bottom: 10px;
+	background: white;
+
+}
+.block-header{
+	font-size: 24px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	background: #78c7c7;
+	color: white;
+	margin-bottom: 0 !important;
+}
+.flag{
+	font-size: 40px;
+	background: white;
+}
+.padding-none{
+	padding: 0 !important;
+}
+.block-text{
+	padding: 15px;
+}
+.circle{
+	border-radius: 80px;
+}
+.feedback{
+	background-color: white;
+	padding: 10px;
+}
+.user-feedback{
+
+}
+
+p.speech {
+  position: relative;
+  width: auto;
+  height: auto;
+  text-align: center;
+  line-height: 100px;
+  background-color: #fff;
+  border: 8px solid #666;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: 2px 2px 4px #888;
+  -moz-box-shadow: 2px 2px 4px #888;
+  box-shadow: 2px 2px 4px #888;
+}
+p.speech:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 30px;
+  top: 100px;
+  border: 25px solid;
+  border-color: #666 transparent transparent #666;
+}
+p.speech:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 38px;
+  top: 100px;
+  border: 15px solid;
+  border-color: #fff transparent transparent #fff;
+}
+/* Colors */
+
+.purple{
+	background: #a74ac7;
+}
+.green{
+	background: #4e9258;
+}
+.pink{
+	background: #fc6c85;
+}
+.light-blue{
+	background: #00ffff;
+}
+.orange{
+	background: #e66c2c;
+}
+.red{
+	background: #c11b17;
+}
+.gold{
+ 	color: #fdd017;
+}
+span{
+	color: white;
+}

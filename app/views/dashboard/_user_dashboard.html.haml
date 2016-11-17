@@ -18,12 +18,13 @@
             - find_learn(learn.id)
             - @learn.each do |learn|
               .dropdown
-                %li.dropdown-toggle{"data-toggle" => "dropdown"}
-                  = learn.title
-                  %span.caret
-                %ul.dropdown-menu.relative
-                  - learn.lectures.each do |lecture|
-                    %li
-                      = link_to lecture.title, learn_path(learn)
+                .row
+                  %li.dropdown-toggle{"data-toggle" => "dropdown"}
+                    = learn.title
+                    %span.caret
+                  %ul.dropdown-menu.relative.dashboard
+                    - learn.lectures.each do |lecture|
+                      %li
+                        = link_to lecture.title, learn_path(learn)
 
 
