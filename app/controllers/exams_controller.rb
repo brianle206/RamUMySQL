@@ -67,19 +67,10 @@ class ExamsController < ApplicationController
 
     # Assertion generator
     if @score.score >= 85.00
-      @assertion = Asssertion.new
       recipient = { type: "email", identity: current_user.email, hashed: false }
       @badge = Badge.find_by(course_id: @course)
       badge = "http://frozen-dawn-78535.herokuapp.com/badges/#{@badge}"
-      verify = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
-      @assertion.create(user_id: current_user.id, badge_id: @badge, recipient: recipient, badge: badge, verify: verify, issued_on: DateTime.now, expires: DateTime.now + 2.years)
-      
-      if @assertion.save
-        redirect_to dashboard_index_path
-        @notice = "Congratulations! You passed the #{@course.title} Exam!"
-      else
-        @error = "Uh Oh! Something went wrong."
-      end
+      Assertion.create(user_id: current_user.id, badge_id: @badge, recipient: recipient, badge: badge, issued_on: DateTime.now, expires: DateTime.now + 2.years)
     else
       redirect_to dashboard_index_path
       @notice = "Sorry, you did not pass the exam. Please try again!"

@@ -29,13 +29,14 @@ class AssertionsController < ApplicationController
   # POST /assertions.json
   def create
     @assertion = Assertion.new(assertion_params)
+    @assertion[:verify] = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
 
     respond_to do |format|
       if @assertion.save
-        format.html { redirect_to @assertion, notice: 'Assertion was successfully created.' }
+        format.html { redirect_to dashboard_index_path, notice: 'Assertion was successfully created.' }
         format.json { render :show, status: :created, location: @assertion }
       else
-        format.html { render :new }
+        format.html { redirect_to dashboard_index_path }
         format.json { render json: @assertion.errors, status: :unprocessable_entity }
       end
     end
@@ -73,6 +74,6 @@ class AssertionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assertion_params
-      params.require(:assertion).permit(:user_id, :badge_id, :uid, :recipient, :badge, :verify, :issued_on, :expires)
+      params.require(:assertion).permit(:user_id, :badge_id, :uid, :recipient, :badge, :issued_on, :expires)
     end
 end
