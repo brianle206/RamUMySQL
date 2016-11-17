@@ -17,7 +17,7 @@
 					<td><%= link_to edit_quiz_path(quiz),class: "btn btn-primary" do %>
 	    					<span class="glyphicon glyphicon-pencil"></span>
 						<% end %></td>
-					<td><%=link_to quiz_path(quiz), :method => "delete", class: "btn btn-danger" do %>
+					<td><%=link_to quiz_path(quiz),data: {:confirm => 'Whoa now Jason Robertson! are you sure you want to do this? Think of all kids!'}, :method => "delete", class: "btn btn-danger" do %>
 							<span class="glyphicon glyphicon-trash"></span>
 							<% end %></td>
 				<% end %>
