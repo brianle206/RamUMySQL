@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   # Submit Exam, assign badge
-  post 'courses/:id/exam/:user_id' => 'exams#create_user_answer', as: :user_exam_answer
+  post 'courses/:id/exam' => 'exams#create_user_answer', as: :user_exam_answer
 
 
   #Progress Tracker

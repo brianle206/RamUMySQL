@@ -33,10 +33,10 @@ class AssertionsController < ApplicationController
 
     respond_to do |format|
       if @assertion.save
-        format.html { redirect_to dashboard_index_path, notice: 'Assertion was successfully created.' }
+        format.html { redirect_to assertions_path, notice: 'Assertion was successfully created.' }
         format.json { render :show, status: :created, location: @assertion }
       else
-        format.html { redirect_to dashboard_index_path }
+        format.html { render :new }
         format.json { render json: @assertion.errors, status: :unprocessable_entity }
       end
     end
