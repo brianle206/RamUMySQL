@@ -22,6 +22,9 @@
                 <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
               </div>
             </div>
+            <% else %>
+              <p class='white'><strong>People Currently enrolled: <%= @already.count%></strong></p>
+              <p class='white'><strong>Number of Sections: <%= @section.learns.count %></strong></p>
           <% end %>
         <% end %>
       </div>
