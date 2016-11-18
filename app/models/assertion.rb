@@ -56,11 +56,11 @@ class Assertion < ActiveRecord::Base
  #  end
   
  #  def open_badges_as_json
- #    as_json(  :only=>[:evidence, :expires, :issued_on],
- #              :methods=>[:recipient],
- #              :include=>{ :badge=>{
- #                          :only=>[:version, :name, :image, :description, :criteria],
- #                          :methods=>:issuer} }
+ #    as_json(  only: [:evidence, :expires, :issued_on],
+ #              methods: [:recipient],
+ #              include: { badge: {
+ #                          only: [:version, :name, :image, :description, :criteria],
+ #                          methods: :issuer} }
  #            )
  #  end
 
