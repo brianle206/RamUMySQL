@@ -1,10 +1,30 @@
 class AssertionsController < ApplicationController
-  before_action :set_assertion, only: [:show, :edit, :update, :destroy]
+  before_action :set_assertion, only: [:bake_callback, :show, :edit, :update, :destroy]
+
+  def bake_callback
+    respond_to do |format|
+      if @assertion and @assertion.uid = params[:uid]
+        format.html { render :show }
+        format.json { render json: @assertion.as_json }
+      else
+        format.html { render text: 'Cannot access badge assertion.', status: :unauthorized }
+        format.json {
+          error = { status: 'failure', error: 'unauthorized', reason: 'Cannot access badge assertion.' }
+          render json: error, status: :unauthorized
+        }
+      end
+    end
+  end
 
   # GET /assertions
   # GET /assertions.json
   def index
     @assertions = Assertion.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @assertions }
+    end
   end
 
   # GET /assertions/1
@@ -19,6 +39,11 @@ class AssertionsController < ApplicationController
   # GET /assertions/new
   def new
     @assertion = Assertion.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @assertion }
+    end
   end
 
   # GET /assertions/1/edit

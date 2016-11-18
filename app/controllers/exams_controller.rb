@@ -10,9 +10,6 @@ class ExamsController < ApplicationController
     @exam = Exam.find_by(params[:course_id])
   	@exam_result = UserExamResult.new
   	@user = User.find_by(id: current_user.id)
-  	puts @user
-    puts @course.id
-    puts @exam.id
   end
 
   def new
@@ -48,7 +45,6 @@ class ExamsController < ApplicationController
       end
     end
     puts "Total correct answers: #{@correct}"
-    puts "Course ID is #{@course.id}"
 
     record = ((@correct.to_f/params[:answer].count)*100).round
 
@@ -133,7 +129,7 @@ class ExamsController < ApplicationController
       end
     else
       redirect_to dashboard_index_path
-      flash[:notice] = "Sorry, you did not pass the exam. Please try again!"
+      flash[:alert] = "Sorry, you did not pass the exam. Please try again!"
     end
   end
 end
