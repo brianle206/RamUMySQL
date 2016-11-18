@@ -1,5 +1,5 @@
 <div class='home-banner'>
-	
+	<h1 class='text-center overlay'>RAM University</h1>
 </div>
 <div class='row'>
 	<div class='container-fluid bg-grey'>
@@ -10,7 +10,7 @@
 				<div class='blocks'>
 					<div class='col-sm-2 padding-none' align='center' >
 						<div class='flag red'>
-							<span class='glyphicon glyphicon-envelope'></span>
+							<span class='glyphicon glyphicon-headphones white'></span>
 						</div>
 					</div>
 					<div class='col-sm-10 padding-none'>
@@ -27,7 +27,7 @@
 				<div class='blocks'>
 					<div class='col-sm-2 padding-none' align='center' >
 						<div class='flag purple'>
-							<span class='glyphicon glyphicon-pencil'></span>
+							<span class='glyphicon glyphicon-pencil white'></span>
 						</div>
 					</div>
 					<div class='col-sm-10 padding-none'>
@@ -44,7 +44,7 @@
 				<div class='blocks'>
 					<div class='col-sm-2 padding-none' align='center' >
 						<div class='flag pink'>
-							<span class='glyphicon glyphicon-search'></span>
+							<span class='glyphicon glyphicon-search white'></span>
 						</div>
 					</div>
 					<div class='col-sm-10 padding-none'>
@@ -61,7 +61,7 @@
 				<div class='blocks'>
 					<div class='col-sm-2 padding-none' align='center' >
 						<div class='flag green'>
-							<span class='glyphicon glyphicon-envelope'></span>
+							<span class='glyphicon glyphicon-envelope white'></span>
 						</div>
 					</div>
 					<div class='col-sm-10 padding-none'>
@@ -78,7 +78,7 @@
 				<div class='blocks'>
 					<div class='col-sm-2 padding-none' align='center' >
 						<div class='flag light-blue'>
-							<span class='glyphicon glyphicon-leaf'></span>
+							<span class='glyphicon glyphicon-leaf white'></span>
 						</div>
 					</div>
 					<div class='col-sm-10 padding-none'>
@@ -95,7 +95,7 @@
 				<div class='blocks'>
 					<div class='col-sm-2 padding-none' align='center' >
 						<div class='flag orange'>
-							<span class='glyphicon glyphicon-thumbs-up'></span>
+							<span class='glyphicon glyphicon-thumbs-up white'></span>
 						</div>
 					</div>
 					<div class='col-sm-10 padding-none'>
@@ -113,7 +113,23 @@
 </div>
 <div class='row'>
 	<div class='container-fluid'>
-		<h2 class='text-center'>Latest Courses</h2>
+		<div class='container'>
+			<h2 class='text-center'>Latest Courses</h2>
+			<p class='text-center'><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum in cumque cupiditate mollitia consequuntur</i></p>
+			<% @course = Course.all %>
+				<% @course.each do |course| %>
+				<a href="/courses/<%=course.id%>">
+					<div class='col-sm-4'>
+						<div class='blocks2'>
+							<p class='course-block-header text-center'><%= course.title %></p>
+							<div class='block-text'>
+								<p><%= course.description %></p>	
+							</div>
+						</div>
+					</div>
+				</a>
+			<% end %>
+		</div>
 	</div>
 </div>
 <div class='row'>

@@ -24,3 +24,22 @@
 		transform: scale(1.1);
 	}
 }
+
+.course-banner{
+	font-size: 50px;
+	font-weight: bold;
+	background: #e38aae;
+	padding: 20px;
+	color: white;
+	box-shadow: 1px 1px 1px 1px #d1d0ce;
+	margin-bottom: 20px;
+}
+.add-padding{
+	padding: 20px;
+}
+.green-btn{
+	background-color: #59E817;
+}
+.btn.green-btn:hover{
+	background-color: #64e986
+}

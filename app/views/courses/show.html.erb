@@ -1,19 +1,33 @@
 <div class="container">
-  <br>
-  <h1><%= @course.title %></h1>
-  <p><%= @course.description %></p>
-
-  <% if current_user %>
-    <% is_enrolled(@course.id) %>
-  	<% if @enrolled != true %>
-      <div class="row">
-      	<p>Add this course now to start your journey on becoming RAM certified!</p>
-        <div class="btn btn-default">
-          <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
-        </div>
+  <div class='course-banner'>
+    <h1><%= @course.title %></h1>
+    
+  </div>
+  <div class='row'>
+    <div class='col-sm-8'>
+      <div class='blocks2'>
+        <p><%= @course.description %></p>
       </div>
-  	<% end %>
-  <% end %>
+    </div>
+    <div class='col-sm-4'>
+      <div class='blocks2 add-padding space-purple'>
+        <% if current_user %>
+          <% is_enrolled(@course.id) %>
+          <% if @enrolled != true %>
+            <div class="row">
+              <p class='white'><strong>Hurry up and enroll already!</strong></p>
+              <p class='white'><strong>People Currently enrolled: <%= @already.count%></strong></p>
+              <p class='white'><strong>Number of Sections: <%= @section.learns.count %></strong></p>
+              <div class="btn green-btn">
+                <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  
 
   <% @course.learns.each do |m| %>
     <%= link_to learn_path(m.id) do %>

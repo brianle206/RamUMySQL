@@ -30,6 +30,14 @@
 	color: white;
 	margin-bottom: 0 !important;
 }
+.course-block-header{
+	font-size: 14px;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+	background: #737ca1;
+	color: white;
+	margin-bottom: 0 !important;
+}
 .flag{
 	font-size: 40px;
 	background: white;
@@ -50,7 +58,11 @@
 .user-feedback{
 
 }
-
+.course-tile{
+	background-color: white;
+	border: 1px solid black;
+	box-shadow: 1px 1px 1px 1px green;
+}
 p.speech {
   position: relative;
   width: auto;
@@ -86,7 +98,14 @@ p.speech:after {
   border: 15px solid;
   border-color: #fff transparent transparent #fff;
 }
-/* Colors */
+.overlay{
+	margin: 0 !important;
+	padding-top: 20px;
+	text-shadow: 1px 1px 1px #e5e4e2;
+	font-size: 50px;
+	color: #4e9258;
+}
+/* Background Colors */
 
 .purple{
 	background: #a74ac7;
@@ -109,6 +128,11 @@ p.speech:after {
 .gold{
  	color: #fdd017;
 }
-span{
+.space-purple{
+	background: #a617e8;
+}
+/* Font Colors */
+.white{
 	color: white;
 }
+
