@@ -16,16 +16,17 @@
           <% if @enrolled != true %>
             <div class="row">
               <p class='white'><strong>Hurry up and enroll already!</strong></p>
-              <p class='white'><strong>People Currently enrolled: <%= @already.count%></strong></p>
-              <p class='white'><strong>Number of Sections: <%= @section.learns.count %></strong></p>
+              <!-- <p class='white'><strong>People Currently enrolled: <%#= @already.count%></strong></p>
+              <p class='white'><strong>Number of Sections: <%#= @section.learns.count %></strong></p> -->
               <div class="btn green-btn">
                 <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
               </div>
             </div>
-            <% else %>
-              <p class='white'><strong>People Currently enrolled: <%= @already.count%></strong></p>
-              <p class='white'><strong>Number of Sections: <%= @section.learns.count %></strong></p>
           <% end %>
+<!--         
+
+            <p class='white'><strong>People Currently enrolled: <%#= @already %></strong></p>
+            <p class='white'><strong>Number of Sections: <%#= @section %></strong></p>-->
         <% end %>
       </div>
     </div>
