@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   root 'articles#landing'
 
-  # BadgesEngine routes
-  resources :badges, controller: 'badges_engine/badges'
-  resources :assertions, controller: 'badges_engine/assertions' 
-  get 'assertion/:id/:uid.json' => 'badges_engine/assertions#bake_callback', defaults: { format: 'json' }, as: :secret_assertion
+  # BadgesEngine::Engine.routes.draw do
+  resources :badges
+  resources :assertions
+  get 'assertion/:id/:uid.json' => 'assertions#bake_callback', defaults: { format: 'json' }, as: :secret_assertion
 
   devise_for :users, controllers: { registrations: "registrations" }
   resources :articles, :admins, :questions, :courses, :quiz #, :data
