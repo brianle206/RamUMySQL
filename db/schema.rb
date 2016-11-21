@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117195933) do
+ActiveRecord::Schema.define(version: 20161118191701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,14 +68,15 @@ ActiveRecord::Schema.define(version: 20161117195933) do
   end
 
   create_table "badges", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "image"
-    t.string   "criteria"
-    t.string   "issuer"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "course_id"
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.string   "image",       limit: 255
+    t.string   "criteria",    limit: 255
+    t.string   "issuer",      limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "course_id",   limit: 4
+    t.string   "version",     limit: 255
   end
 
   create_table "categories", force: :cascade do |t|

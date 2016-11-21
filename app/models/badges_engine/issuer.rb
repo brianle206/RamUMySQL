@@ -3,7 +3,7 @@ module BadgesEngine
 		include ActiveModel::Validations
 		include ActiveModel::Serialization
 
-		validates_presence_of :origin, :name
+		validates_presence_of :name, :url
 
 		attr_accessor :name, :url
 

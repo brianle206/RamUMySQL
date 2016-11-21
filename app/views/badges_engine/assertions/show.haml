@@ -1,0 +1,30 @@
+.container
+	-# = @assertion.to_json
+
+	%p
+		%b User:
+		= @assertion.user_id
+	%p
+		%b Badge:
+		= @assertion.badge
+	%p
+		%b Recipient:
+		= @assertion.recipient
+	%p
+		%b Verify:
+		= @assertion.verify
+	%p
+		%b Issued on:
+		= @assertion.issued_on
+	%p
+		%b Expires:
+		= @assertion.expires
+	%p
+		%b Baking Callback URL
+		= link_to 'Baking Callback URL', secret_assertion_path(uid: @assertion.uid)
+	%br
+	%br
+	.row
+		= link_to 'Edit', edit_assertion_path(@assertion), class: 'btn btn-warning'
+
+
