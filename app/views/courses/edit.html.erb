@@ -7,37 +7,37 @@
 	<% @course.learns.each do |learn| %>
 		<div class='blocks2 add-padding'>
 		<h3><%= learn.title %></h3>
-		<div class='row add-padding'> 
-			<div class='col-sm-4'><%= link_to "Edit", edit_learn_path(learn), class: "btn btn-primary"%> </div>
-			<div class='col-sm-4'><%= link_to "Destroy", learn_path(learn), class: "btn btn-danger", data: {:confirm => 'Whoa now! are you Rick Phillips? Are you sure you want to do this Rick?'}, :method => :delete %></div>
-			<div class='col-sm-4'><%= link_to "New Lecture", new_learn_lecture_path(learn.id), class: "btn btn-default"%></div>
-		</div>
-		<table class='table table-striped'>
-			<tr>
-				<th>Lecture Title</th>
-				<th>Created at</th>
-				<th>Updated at</th>
-				<th>Edit</th>
-				<th>Delete</th>
-			</tr>
-			<% learn.lectures.each do |lecture| %>
-			<tr>
-				<td><%= lecture.title %></td>
-				<td><%= lecture.created_at.strftime('%m/%d/%Y') %></td>
-				<td><%= lecture.updated_at.strftime('%m/%d/%Y') %></td>
-				<td>
-					<%= link_to edit_lecture_path(lecture.id), class: "btn btn-primary" do %>
-						<span class="glyphicon glyphicon-pencil"></span>
-					<% end %>
-				</td>
-				<td>
-					<%= link_to lecture_path(lecture), :method => :delete, class: 'btn btn-danger' do %>
-						<span class="glyphicon glyphicon-trash"></span>
-					<% end %>
-				</td>
-			</tr>
-		<% end %>
-		</table>
+			<div class='row add-padding'> 
+				<div class='col-sm-4'><%= link_to "Edit", edit_learn_path(learn), class: "btn btn-primary"%> </div>
+				<div class='col-sm-4'><%= link_to "Destroy", learn_path(learn), class: "btn btn-danger", data: {:confirm => 'Whoa now! are you Rick Phillips? Are you sure you want to do this Rick?'}, :method => :delete %></div>
+				<div class='col-sm-4'><%= link_to "New Lecture", new_learn_lecture_path(learn.id), class: "btn btn-default"%></div>
+			</div>
+			<table class='table table-striped'>
+				<tr>
+					<th>Lecture Title</th>
+					<th>Created at</th>
+					<th>Updated at</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+				<% learn.lectures.each do |lecture| %>
+				<tr>
+					<td><%= lecture.title %></td>
+					<td><%= lecture.created_at.strftime('%m/%d/%Y') %></td>
+					<td><%= lecture.updated_at.strftime('%m/%d/%Y') %></td>
+					<td>
+						<%= link_to edit_lecture_path(lecture.id), class: "btn btn-primary" do %>
+							<span class="glyphicon glyphicon-pencil"></span>
+						<% end %>
+					</td>
+					<td>
+						<%= link_to lecture_path(lecture), data: {:confirm => 'Careful now Rick, now are you sure YOU want to do this?'}, class: 'btn btn-danger', :method => :delete, do %>
+							<span class="glyphicon glyphicon-trash"></span>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
 		</div>
 	<% end %>
 </div>

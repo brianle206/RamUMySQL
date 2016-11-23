@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   get '/search' => 'articles#search'
 
   #Dashboard Routes
-  get '/dashboard' => 'dashboard#show'
 
   # Enrollment Routes
   # !!!!!!! These two are probably post & patch
