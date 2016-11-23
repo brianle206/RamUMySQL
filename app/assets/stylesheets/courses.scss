@@ -28,7 +28,7 @@
 .course-banner{
 	font-size: 50px;
 	font-weight: bold;
-	background: #e38aae;
+	background: #3bb9ff;
 	padding: 20px;
 	color: white;
 	box-shadow: 1px 1px 1px 1px #d1d0ce;
@@ -42,4 +42,7 @@
 }
 .btn.green-btn:hover{
 	background-color: #64e986
+}
+.shadow-grey{
+	text-shadow: 1px 1px 1px #d1d0ce ;
 }

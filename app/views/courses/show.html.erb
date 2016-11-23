@@ -1,37 +1,33 @@
 <div class="container">
   <div class='course-banner'>
-    <h1><%= @course.title %></h1>
-    
+    <h1 class='text-center shadow-grey'><%= @course.title %></h1>
   </div>
   <div class='row'>
     <div class='col-sm-8'>
-      <div class='blocks2'>
-        <p><%= @course.description %></p>
+      <div class='blocks2 add-padding orange'>
+        <p class='white shadow-grey'><strong><%= @course.description %></strong></p>
       </div>
     </div>
     <div class='col-sm-4'>
-      <div class='blocks2 add-padding space-purple'>
-        <% if current_user %>
+      <% if current_user %>
+        <div class='blocks2 add-padding space-purple'>
           <% is_enrolled(@course.id) %>
           <% if @enrolled != true %>
             <div class="row">
-              <p class='white'><strong>Hurry up and enroll already!</strong></p>
-              <!-- <p class='white'><strong>People Currently enrolled: <%#= @already.count%></strong></p>
-              <p class='white'><strong>Number of Sections: <%#= @section.learns.count %></strong></p> -->
+              <p class='white shadow-grey'><strong>Hurry up and enroll already!</strong></p>
               <div class="btn green-btn">
                 <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
               </div>
             </div>
+            <% else %>
+            <div class='row'>
+              <p class='white'><strong>You're already enrolled great job!</strong></p>
+            </div>
           <% end %>
-<!--         
-
-            <p class='white'><strong>People Currently enrolled: <%#= @already %></strong></p>
-            <p class='white'><strong>Number of Sections: <%#= @section %></strong></p>-->
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
-
-  
+  </div>
 
   <% @course.learns.each do |m| %>
     <%= link_to learn_path(m.id) do %>
@@ -68,7 +64,6 @@
     <% end %>
   <% end %>
 
-
   <div class="row">
     <%= link_to course_exam_path(@course) do %>
       <div class="col-sm-8 col-sm-offset-2 flip-container">
@@ -96,15 +91,3 @@
     <% end %>
   </div>
 </div>
-
-<!-- 
-<% if current_user %>
-<% is_enrolled(@course.id) %>
-    <% if @enrolled != true %>
-      Add this course now to start your journey on becoming RAM certified!
-      <div class="btn btn-default">
-        <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
-      </div>
-    <% end %>
-<% end %>
--->

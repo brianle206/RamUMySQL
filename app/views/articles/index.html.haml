@@ -1,10 +1,11 @@
-- @article.each do |article|
-	-if article.category_id == 4
-		.col-sm-6
+.container
+	- @article.each do |article|
+		-if article.category_id == 4
+			.col-sm-6
+				%h2= link_to article.title, article
+		-else
 			%h2= link_to article.title, article
-	-else
-		%h2= link_to article.title, article
-		%p 
-			Published at 
-			= article.created_at.strftime('%b %d, %y')
-		%p= markdown(truncate(article.content, length: 200))
+			%p 
+				Published at 
+				= article.created_at.strftime('%b %d, %y')
+			%p= markdown(truncate(article.content, length: 200))
