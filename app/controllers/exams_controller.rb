@@ -86,8 +86,8 @@ class ExamsController < ApplicationController
         @users_exam.save
       end
     elsif @users_exam.blank?
-      @score = UserExamResult.new(exam_id: @exam, user_id: current_user.id, score: record)
-      if @score.save
+      @users_exam = UserExamResult.new(exam_id: @exam, user_id: current_user.id, score: record)
+      if @users_exam.save
         @notice = "You successfully submitted your exam!"
         update_attempt
       else
@@ -111,8 +111,9 @@ class ExamsController < ApplicationController
   end
 
   def generate_assertion
-    puts @score.score
-    if @score.score >= 85.00
+    puts @users_exam.score
+    if @users_exam.score >= 85.00
+      @users_exam[:passing] = true
       begin
         puts "START UP THE GENERATOR!!!!"
         recipient = { type: "email", identity: current_user.email, hashed: false }
