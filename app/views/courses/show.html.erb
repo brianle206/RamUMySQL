@@ -1,27 +1,27 @@
 <div class="container">
-  <div class='course-banner'>
+  <div class='course-banner pacific'>
     <h1 class='text-center shadow-grey'><%= @course.title %></h1>
   </div>
   <div class='row'>
     <div class='col-sm-8'>
-      <div class='blocks2 add-padding orange'>
-        <p class='white shadow-grey'><strong><%= @course.description %></strong></p>
+      <div class='blocks2 add-padding darkblue'>
+        <p class=''><strong><%= @course.description %></strong></p>
       </div>
     </div>
     <div class='col-sm-4'>
       <% if current_user %>
-        <div class='blocks2 add-padding space-purple'>
+        <div class='blocks2 add-padding minty'>
           <% is_enrolled(@course.id) %>
           <% if @enrolled != true %>
             <div class="row">
-              <p class='white shadow-grey'><strong>Hurry up and enroll already!</strong></p>
+              <p class=''><strong>Hurry up and enroll already!</strong></p>
               <div class="btn green-btn">
                 <%= link_to "Enroll Now!", "/enroll/#{@course.id}" %>
               </div>
             </div>
             <% else %>
             <div class='row'>
-              <p class='white'><strong>You're already enrolled great job!</strong></p>
+              <p class=''><strong>You're already enrolled great job!</strong></p>
             </div>
           <% end %>
         </div>
