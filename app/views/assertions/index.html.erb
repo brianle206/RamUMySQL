@@ -1,28 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-xs-10 col-xs-offset-1">
 
-<h1>Listing Assertions</h1>
+    <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+    <h1>Listing Assertions</h1>
 
-  <tbody>
-    <% @assertions.each do |assertion| %>
-      <tr>
-        <td class="hash-cell"><%= assertion.to_json %></td>
-        <td class="button-cell">
-          <%= link_to 'Show', assertion, class: 'btn btn-primary' %>
-          <%= link_to 'Edit', edit_assertion_path(assertion), class: 'btn btn-warning' %>
-          <%= link_to 'Destroy', assertion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
 
-<br>
+      <tbody>
+        <% @assertions.each do |assertion| %>
+          <tr>
+            <td class="hash-cell"><%= assertion.to_json %></td>
+            <td class="button-cell">
+              <%= link_to 'Show', assertion, class: 'btn btn-primary' %>
+              <%= link_to 'Edit', edit_assertion_path(assertion), class: 'btn btn-warning' %>
+              <%= link_to 'Destroy', assertion, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Assertion', new_assertion_path %>
+    <br>
+
+    <%= link_to 'New Assertion', new_assertion_path, class: 'btn btn-primary' %>
+  </div>
+</div>

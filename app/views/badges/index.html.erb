@@ -1,26 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-xs-10 col-xs-offset-1">
+    <p id="notice"><%= notice %></p>
 
-<h1>Listing Badges</h1>
+    <h1>Listing Badges</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Badge Image</th>
+          <th>Show</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @badges.each do |badge| %>
-      <tr class="badge-row">
-        <td><img src=<%= badge.image %> class="badge-img" /></td>
-        <td><%= link_to 'Show', badge, class: 'btn btn-primary' %></td>
-        <td><%= link_to 'Edit', edit_badge_path(badge), class: 'btn btn-warning' %></td>
-        <td><%= link_to 'Destroy', badge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @badges.each do |badge| %>
+          <tr class="badge-row">
+            <td><img src=<%= badge.image %> class="badge-img" /></td>
+            <td><%= link_to 'Show', badge, class: 'btn btn-primary' %></td>
+            <td><%= link_to 'Edit', edit_badge_path(badge), class: 'btn btn-warning' %></td>
+            <td><%= link_to 'Delete', badge, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<br>
+    <br>
 
-<%= link_to 'New Badge', new_badge_path %>
+    <%= link_to 'New Badge', new_badge_path, class: 'btn btn-primary' %>
+  </div>
+</div>

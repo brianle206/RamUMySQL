@@ -1,4 +1,17 @@
 class Badge < ActiveRecord::Base
-	# belongs_to :course
+	belongs_to :course
+	has_many :assertions
 	validates_uniqueness_of :name
+
+	before_validation(on: :create) do
+		self.version ||= BadgesEngine::Configuration.badge_version
+	end
+
+	# def issuer
+	# 	BadgesEngine::Configuration.issuer
+	# end
+
+	def criteria
+		read_attribute(:criteria).blank? ? badge_path(self) : read_attribute(:criteria)
+	end
 end

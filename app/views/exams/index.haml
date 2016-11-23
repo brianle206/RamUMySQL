@@ -1,0 +1,17 @@
+.container
+  .col-sm-10.col-sm-offset-1
+    %p#notice= notice
+    %h1 Listing Exams
+    %table.table
+      %thead
+        %tr
+          %th{:colspan => "4"}
+      %tbody
+        - @exams.each do |exam|
+          %tr
+            %td= link_to exam.title, course_exam_path(exam.course_id)
+            %td= link_to 'Show', course_exam_path(exam.course_id), class: 'btn btn-primary'
+            %td= link_to 'Edit', edit_exam_path(exam), class: 'btn btn-warning'
+            %td= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+    %br/
+    = link_to 'New Exam', new_exam_path, class: 'btn btn-primary'

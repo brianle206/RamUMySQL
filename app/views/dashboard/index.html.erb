@@ -1,8 +1,12 @@
 <div class="container">
+<<<<<<< HEAD
 	<div class='row'>
 	  	<h1 class='text-center'>Welcome to RAM University <%= @user.email%></h1>
 		<%= link_to "Settings" %>
 	</div>
+=======
+  <h1 class='text-center'>Welcome to RAM University <%= @user.email%></h1>
+>>>>>>> 8405030838448086108e5932bedcdfd9c68ca8f7
 	<div class='col-md-6'>
 		<div class='panel'>	
 			<div class='panel-body'>
@@ -36,3 +40,15 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  $(window).load(function() {
+    var assertion_origin = "<%= @assertion_origin %>";
+    if (assertion_origin !== null) {
+      OpenBadges.issue([assertion_origin], function(errors, successes) {
+        successes: console.log("You earned a badge!");
+        errors: console.log("Sorry, try again!");
+      });
+    }
+  });
+</script>

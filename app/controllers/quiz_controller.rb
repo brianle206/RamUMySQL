@@ -33,37 +33,21 @@ class QuizController < ApplicationController
   end
 
   def create_user_answer
-    grading = params[:answer]
-    @correct = 0
-    grading.each do |grading|
-      find_question(grading[0])
-      find_answer(grading[1])
-      if @answer == @question.answer
-        @correct+= 1
-      end
-    end
-    puts params[:quiz_id]
-    
+    grade_quiz
 
-    record = ((@correct.to_f/params[:answer].count)*100).round
+    check_quiz_attempts
 
-    if check_for_quiz(current_user.id, params[:quiz_id])
-      if @users_quiz.score < record
-        @users_quiz.update(score: record)
-        @users_quiz.attempts +=1
-        @users_quiz.save
+    if @score >= 80
+      @quiz_complete = QuizComplete.new(user_id: current_user.id, quiz_id: @quiz.id, status: true)
+      if @quiz_complete.save
+        redirect_to dashboard_path
+        @notice = "Congratulations! You passed this quiz!"
       else
-        @users_quiz.attempts +=1
-        @users_quiz.save
+        @alert = "Uh oh! Something went wrong."
       end
-    elsif @users_quiz.blank?
-      @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: record)
-      if @score.save
-        @success = "You successfully submitted your quiz!"
-        update_attempt
-      else
-        @success = "Uh Oh! something went wrong"
-      end
+    else
+      redirect_to dashboard_path
+      @alert = "Sorry, you did not pass the quiz. Please try again!"
     end
   end
 
@@ -97,6 +81,40 @@ class QuizController < ApplicationController
 
   def find_answer(id)
     @answer = Answer.find(id).content
+  end
+
+  def grade_quiz
+    grading = params[:answer]
+    @correct = 0
+    grading.each do |grading|
+      find_question(grading[0])
+      find_answer(grading[1])
+      if @answer == @question.answer
+        @correct+= 1
+      end
+    end
+    record = ((@correct.to_f/params[:answer].count)*100).round
+  end
+
+  def check_quiz_attempts
+    if check_for_quiz(current_user.id, params[:quiz_id])
+      if @users_quiz.score < record
+        @users_quiz.update(score: record)
+        @users_quiz.attempts +=1
+        @users_quiz.save
+      else
+        @users_quiz.attempts +=1
+        @users_quiz.save
+      end
+    elsif @users_quiz.blank?
+      @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: record)
+      if @score.save
+        @notice = "You successfully submitted your quiz!"
+        update_attempt
+      else
+        @alert = "Uh Oh! Something went wrong."
+      end
+    end
   end
 
   def update_attempt

@@ -80,13 +80,28 @@
 							<li>
 								<%= link_to "Quiz Options", quizzes_path %>
 							</li>
+							<li>
+								<%= link_to "Exams", exams_path %>
+							</li>
+							<li>
+								<%= link_to "Badges", badges_path %>
+							</li>
 						</ul>
 					</li>
 				<% end %>
 				</ul>
 			</div>
 		</div>
-	</div><!--/navbar--> 
+	</div><!--/navbar-->
+
+	<!-- Notification div -->
+	<div class="text-center notice-block">
+		<% if notice.present? %>
+		  <p class="alert alert-success"><%= notice %></p>
+		<% elsif alert.present? %>
+		  <p class="alert alert-danger"><%= alert %></p>
+		<% end %>
+	</div>
 </header>
 <% if !current_user.try(:admin?) && user_signed_in? %>
 	<%= render '/dashboard/user_dashboard' %>

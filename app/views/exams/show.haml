@@ -7,7 +7,7 @@
       %ol.questions
         - @course.learns.each do |learn|
           - @quiz = Quiz.find_by(learn_id: learn.id)
-          - @questions = Question.where(quiz_id: @quiz)
+          - @questions = Question.where(quiz_id: @quiz).sample(5)
           - @questions.each do |question|
             %li
               %h2= question.question

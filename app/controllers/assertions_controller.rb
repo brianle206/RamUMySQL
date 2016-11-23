@@ -1,10 +1,30 @@
 class AssertionsController < ApplicationController
-  before_action :set_assertion, only: [:show, :edit, :update, :destroy]
+  before_action :set_assertion, only: [:bake_callback, :show, :edit, :update, :destroy]
+
+  def bake_callback
+    respond_to do |format|
+      if @assertion and @assertion.uid = params[:uid]
+        format.html { render :show }
+        format.json { render json: @assertion.open_badges_as_json }
+      else
+        format.html { render text: 'Cannot access badge assertion.', status: :unauthorized }
+        format.json {
+          error = { status: 'failure', error: 'unauthorized', reason: 'Cannot access badge assertion.' }
+          render json: error, status: :unauthorized
+        }
+      end
+    end
+  end
 
   # GET /assertions
   # GET /assertions.json
   def index
-    @assertions = Assertion.all
+    @assertions = Assertion.all.sample(10)
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @assertions }
+    end
   end
 
   # GET /assertions/1
@@ -19,6 +39,11 @@ class AssertionsController < ApplicationController
   # GET /assertions/new
   def new
     @assertion = Assertion.new
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @assertion }
+    end
   end
 
   # GET /assertions/1/edit
@@ -29,10 +54,11 @@ class AssertionsController < ApplicationController
   # POST /assertions.json
   def create
     @assertion = Assertion.new(assertion_params)
+    @assertion[:verify] = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
 
     respond_to do |format|
       if @assertion.save
-        format.html { redirect_to @assertion, notice: 'Assertion was successfully created.' }
+        format.html { redirect_to assertions_path, notice: 'Assertion was successfully created.' }
         format.json { render :show, status: :created, location: @assertion }
       else
         format.html { render :new }
@@ -73,6 +99,6 @@ class AssertionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def assertion_params
-      params.require(:assertion).permit(:user_id, :badge_id, :uid, :recipient, :badge, :verify, :issued_on, :expires)
+      params.require(:assertion).permit(:user_id, :badge_id, :uid, :recipient, :badge, :issued_on, :expires)
     end
 end

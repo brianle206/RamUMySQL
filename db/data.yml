@@ -693,6 +693,21 @@ enrollments:
     - 2016-11-14 19:27:43.000000000 Z
 
 ---
+exams:
+  columns:
+  - id
+  - course_id
+  - title
+  - created_at
+  - updated_at
+  records:
+  - - 1
+    - 1
+    - RAM Certification Course Exam
+    - 2016-11-16 14:02:20.000000000 Z
+    - 2016-11-16 14:02:20.000000000 Z
+
+---
 learns:
   columns:
   - id

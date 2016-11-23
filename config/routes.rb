@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
   root 'articles#landing'
 
+  # BadgesEngine::Engine.routes.draw do
+  resources :badges
+  resources :assertions
+  get 'assertion/:id/:uid.json' => 'assertions#bake_callback', defaults: { format: 'json' }, as: :secret_assertion
+
   devise_for :users, controllers: { registrations: "registrations" }
-  resources :articles, :admins, :questions, :courses, :badges, :assertions, :quiz #, :data
+  resources :articles, :admins, :questions, :courses, :quiz #, :data
+  resources :exams, except: :show
   resources :dashboard
 
   resources :courses, shallow: true do
@@ -12,7 +18,7 @@ Rails.application.routes.draw do
     resource :exam, controller: 'exams', only: :show
   end
 
-  get '/exams' => 'exams#index', as: :exams_index
+  # Submit Exam, assign badge
   post 'courses/:id/exam' => 'exams#create_user_answer', as: :user_exam_answer
 
 
