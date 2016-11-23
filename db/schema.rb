@@ -68,15 +68,15 @@ ActiveRecord::Schema.define(version: 20161118191701) do
   end
 
   create_table "badges", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.string   "image",       limit: 255
-    t.string   "criteria",    limit: 255
-    t.string   "issuer",      limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "course_id",   limit: 4
-    t.string   "version",     limit: 255
+    t.string   "name"
+    t.text     "description"
+    t.string   "image"
+    t.string   "criteria"
+    t.string   "issuer"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "course_id"
+    t.string   "version"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -109,11 +109,11 @@ ActiveRecord::Schema.define(version: 20161118191701) do
   end
 
   create_table "exam_completes", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "exam_id",    limit: 4
+    t.integer  "user_id"
+    t.integer  "exam_id"
     t.boolean  "status"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "exams", force: :cascade do |t|
@@ -149,11 +149,11 @@ ActiveRecord::Schema.define(version: 20161118191701) do
   end
 
   create_table "quiz_completes", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.integer  "quiz_id",    limit: 4
+    t.integer  "user_id"
+    t.integer  "quiz_id"
     t.boolean  "status"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "quizzes", force: :cascade do |t|
