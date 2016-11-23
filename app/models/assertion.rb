@@ -14,7 +14,7 @@ class Assertion < ActiveRecord::Base
 	  self.uid = SecureRandom.urlsafe_base64(8)
 	end
 
-	after_commit :bake, :if => :update_assertion?
+	# after_commit :bake, :if => :update_assertion?
 
 	# def recipient
 	# 	self.user.try(:email)
@@ -24,15 +24,16 @@ class Assertion < ActiveRecord::Base
 		persisted? && !is_baked?
 	end
 
-	# def baking_callback_url
-	# 	#origin_uri = URI.parse(BadgesEngine::Configuration.issuer.url)
-	# 	@badge = Badge.find_by(id: self.badge_id)
-	# 	origin_uri = URI.parse(@badge.issuer)
-	# 	link_to origin_uri, secret_assertion_path(id: self.id, uid: self.uid, host: origin_uri.host)
+	def baking_callback_url
+		#origin_uri = URI.parse(BadgesEngine::Configuration.issuer.url)
+		#@badge = Badge.find_by(id: self.badge_id)
+		#origin_uri = URI.parse(@badge.issuer)
 
- #    # Badges Engine secret assertion url
-	# 	# secret_assertion_url(id: self.id, token: self.token, host: origin_uri.host)
-	# end
+		"/assertion/#{self.id}/#{self.uid}.json"
+
+    # Badges Engine secret assertion url
+		# secret_assertion_url(id: self.id, token: self.token, host: origin_uri.host)
+	end
 
   def bake
     #uri = URI.parse(BadgesEngine::Configuration.baker_url)

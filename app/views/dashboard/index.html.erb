@@ -1,6 +1,5 @@
 <div class="container">
   <h1 class='text-center'>Welcome to RAM University <%= @user.email%></h1>
-
 	<div class='col-md-6'>
 		<div class='panel'>	
 			<div class='panel-body'>
@@ -34,3 +33,15 @@
 		</div>
 	</div>
 </div>
+
+<script>
+  $(window).load(function() {
+    var assertion_origin = "<%= @assertion_origin %>";
+    if (assertion_origin !== null) {
+      OpenBadges.issue([assertion_origin], function(errors, successes) {
+        successes: console.log("You earned a badge!");
+        errors: console.log("Sorry, try again!");
+      });
+    }
+  });
+</script>

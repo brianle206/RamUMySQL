@@ -41,7 +41,9 @@ class ExamsController < ApplicationController
 
     grade_exam
 
-    check_exam_attempts
+    record = ((@correct.to_f/params[:answer].count)*100).round
+
+    check_exam_attempts(record)
 
     generate_assertion
   end
@@ -73,7 +75,7 @@ class ExamsController < ApplicationController
     @users_exam =  UserExamResult.find_by(exam_id: exam.to_i, user_id: user)
   end
 
-  def check_exam_attempts
+  def check_exam_attempts(record)
     if check_for_exam(current_user.id, @exam)
       if @users_exam.score < record
         @users_exam.update(score: record)
@@ -105,7 +107,7 @@ class ExamsController < ApplicationController
       end
     end
     puts "Total correct answers: #{@correct}"
-    record = ((@correct.to_f/params[:answer].count)*100).round
+    return @correct
   end
 
   def generate_assertion
@@ -123,23 +125,25 @@ class ExamsController < ApplicationController
         puts "Assertion: #{@assertion.to_json}"
         @assertion[:verify] = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
         puts "Assertion with verify: #{@assertion.to_json}"
+        # @assertion.bake
       rescue => err
         Rails.logger.error "Womp womp, no assertion for you!"
         Rails.logger.error "#{err.message}\n#{err.backtrace.join("\n")}"
       end
-
-      respond_to do |format|
-        if @assertion.save
-          format.html { redirect_to dashboard_index_path, notice: "Congratulations! You passed the Exam!" }
-          format.json { render :show, status: :created, location: @assertion }
-        else
-          format.html { redirect_to dashboard_index_path }
-          format.json { render json: @assertion.errors, status: :unprocessable_entity }
-        end
-      end
     else
       redirect_to dashboard_index_path
       flash[:alert] = "Sorry, you did not pass the exam. Please try again!"
+    end
+
+    respond_to do |format|
+      if @assertion.save
+        session[:assertion_origin] = secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
+        format.html { redirect_to dashboard_index_path, notice: "Congratulations! You passed the Exam!" }
+        format.json { render :show, status: :created, location: @assertion }
+      else
+        format.html { redirect_to dashboard_index_path }
+        format.json { render json: @assertion.errors, status: :unprocessable_entity }
+      end
     end
   end
 end

@@ -19,7 +19,7 @@ class AssertionsController < ApplicationController
   # GET /assertions
   # GET /assertions.json
   def index
-    @assertions = Assertion.all
+    @assertions = Assertion.all.sample(10)
 
     respond_to do |format|
       format.html

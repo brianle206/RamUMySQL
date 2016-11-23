@@ -3,7 +3,14 @@ class DashboardController < ApplicationController
   before_filter :find_user, :progress, :find_lessons
 
   def index
-    
+    @courses = Course.all
+    if session[:assertion_origin]
+      @assertion_origin = session[:assertion_origin]
+      @assertion_origin = "http://frozen-dawn-78535.herokuapp.com" + @assertion_origin
+      #@assertion_origin = "http://localhost:3000" + @assertion_origin.to_s
+      puts "Assertion origin: #{@assertion_origin}"
+    end
+    session[:assertion_origin] = nil
   end
 
   def settings
@@ -45,5 +52,4 @@ class DashboardController < ApplicationController
     @lessons = Lecture.joins("INNER JOIN learns ON lectures.learn_id = learns.id WHERE lectures.learn_id = learns.id").order('id ASC')
     @status = Complete.where(user_id: current_user.id)
   end
-
 end

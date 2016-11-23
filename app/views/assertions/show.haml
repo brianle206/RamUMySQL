@@ -24,7 +24,7 @@
 		= @assertion.expires
 	%p
 		%b Baking Callback URL
-		= link_to 'Baking Callback URL', secret_assertion_path(uid: @assertion.uid)
+		= link_to 'Baking Callback URL', secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
 	%br
 	%br
 	.row
