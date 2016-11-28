@@ -29,6 +29,7 @@ class QuizController < ApplicationController
 
   def show
     @quiz = Quiz.find_by(learn_id: params[:learn_id])
+    @learn = Learn.find_by(id: params[:learn_id])
     @questions = Question.where(quiz_id: params[:quiz_id]).sample(5)
   end
 
@@ -49,10 +50,22 @@ class QuizController < ApplicationController
       # redirect_to dashboard_path
       @alert = "Sorry, you did not pass the quiz. Please try again!"
     end
+
+    if @users_quiz.save
+      Rails.logger.info "Quiz saved!!!"
+      redirect_to quiz_user_answer_path
+    else
+      Rails.logger.error "Things ended badly..."
+      Rails.logger.error "#{err.message}\n#{err.backtrace.join("\n")}"
+    end
+  end
+
+  def user_answer
+    @quiz = Quiz.find(params[:id])
   end
 
   def destroy
-    @quiz = Quiz.find(params[:id])
+    @quiz = Quiz.find(params[:quiz_id])
     if @quiz.destroy
       redirect_to quizzes_path
     end
