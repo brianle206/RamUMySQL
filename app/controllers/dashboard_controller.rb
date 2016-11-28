@@ -20,7 +20,7 @@ class DashboardController < ApplicationController
   end
   
   def show
-    
+    @profile = Profile.new
   end
 
   def lessons
