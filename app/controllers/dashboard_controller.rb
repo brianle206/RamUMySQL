@@ -4,11 +4,14 @@ class DashboardController < ApplicationController
 
   def index
     @courses = Course.all
+    puts "Session: #{session.to_json}"
     if session[:assertion_origin]
       @assertion_origin = session[:assertion_origin]
       @assertion_origin = "http://frozen-dawn-78535.herokuapp.com" + @assertion_origin
       #@assertion_origin = "http://localhost:3000" + @assertion_origin.to_s
       puts "Assertion origin: #{@assertion_origin}"
+    else
+      @assertion_origin = nil
     end
     session[:assertion_origin] = nil
   end

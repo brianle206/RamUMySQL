@@ -53,10 +53,6 @@ class QuizController < ApplicationController
     end
   end
 
-  def user_answer
-    @quiz = Quiz.find(params[:id])
-  end
-
   def destroy
     @quiz = Quiz.find(params[:quiz_id])
     if @quiz.destroy
