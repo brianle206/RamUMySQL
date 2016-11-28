@@ -36,17 +36,17 @@ class QuizController < ApplicationController
     grade_quiz
 
     check_quiz_attempts
-
-    if @score >= 80
+    puts "this is the #{@score}"
+    if @record >= 80
       @quiz_complete = QuizComplete.new(user_id: current_user.id, quiz_id: @quiz.id, status: true)
       if @quiz_complete.save
-        redirect_to dashboard_path
+        
         @notice = "Congratulations! You passed this quiz!"
       else
         @alert = "Uh oh! Something went wrong."
       end
     else
-      redirect_to dashboard_path
+      
       @alert = "Sorry, you did not pass the quiz. Please try again!"
     end
   end
@@ -93,12 +93,12 @@ class QuizController < ApplicationController
         @correct+= 1
       end
     end
-    record = ((@correct.to_f/params[:answer].count)*100).round
+    @record = ((@correct.to_f/params[:answer].count)*100).round
   end
 
   def check_quiz_attempts
     if check_for_quiz(current_user.id, params[:quiz_id])
-      if @users_quiz.score < record
+      if @users_quiz.score < @record
         @users_quiz.update(score: record)
         @users_quiz.attempts +=1
         @users_quiz.save
@@ -107,7 +107,7 @@ class QuizController < ApplicationController
         @users_quiz.save
       end
     elsif @users_quiz.blank?
-      @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: record)
+      @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: @record)
       if @score.save
         @notice = "You successfully submitted your quiz!"
         update_attempt
