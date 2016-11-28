@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   # BadgesEngine::Engine.routes.draw do
   resources :badges, :assertions
-  get 'assertion/:id/:uid.json' => 'assertions#bake_callback', defaults: { format: 'json' }, as: :secret_assertion
+  get 'assertions/:id/:uid.json' => 'assertions#bake_callback', defaults: { format: 'json' }, as: :secret_assertion
 
   devise_for :users, controllers: { registrations: "registrations" }
   resources :articles, :admins, :questions, :courses, :quiz #, :data
