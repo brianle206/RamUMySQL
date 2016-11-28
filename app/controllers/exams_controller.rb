@@ -123,7 +123,7 @@ class ExamsController < ApplicationController
         puts "Badge: #{badge}"
         @assertion = Assertion.new(user_id: current_user.id, badge_id: @badge.id, recipient: recipient, badge: badge, issued_on: DateTime.now, expires: DateTime.now + 2.years)
         puts "Assertion: #{@assertion.to_json}"
-        @assertion[:verify] = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}" }
+        @assertion[:verify] = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" }
         puts "Assertion with verify: #{@assertion.to_json}"
         # @assertion.bake
       rescue => err
