@@ -29,7 +29,7 @@ class Assertion < ActiveRecord::Base
 		#@badge = Badge.find_by(id: self.badge_id)
 		#origin_uri = URI.parse(@badge.issuer)
 
-		"/assertion/#{self.id}/#{self.uid}.json"
+		"/assertions/#{self.id}/#{self.uid}.json"
 
     # Badges Engine secret assertion url
 		# secret_assertion_url(id: self.id, token: self.token, host: origin_uri.host)

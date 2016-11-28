@@ -4,7 +4,7 @@ class AssertionsController < ApplicationController
   def bake_callback
     respond_to do |format|
       if @assertion and @assertion.uid = params[:uid]
-        format.html { render :show }
+        # format.html { render :show }
         format.json { render json: @assertion.open_badges_as_json }
       else
         format.html { render text: 'Cannot access badge assertion.', status: :unauthorized }

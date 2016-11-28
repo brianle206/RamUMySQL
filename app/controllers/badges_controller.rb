@@ -14,7 +14,7 @@ class BadgesController < ApplicationController
   def show
     respond_to do |format|
       format.html
-      format.json { render json: @badge }
+      format.json { render json: @badge.open_badge_as_json }
     end
   end
 
