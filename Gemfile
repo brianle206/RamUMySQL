@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.4'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -59,5 +60,3 @@ end
   gem 'rails_12factor'
   gem 'pg', '~> 0.15'
 # end
-
-# ruby '2.2.4'
