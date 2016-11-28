@@ -6,8 +6,8 @@ class ExamsController < ApplicationController
   end
 
   def show
-  	@course = Course.find_by(params[:course_id])
-    @exam = Exam.find_by(params[:course_id])
+  	@course = Course.find(params[:course_id])
+    @exam = Exam.find_by(course_id: params[:course_id])
   	@exam_result = UserExamResult.new
   	@user = User.find_by(id: current_user.id)
   end
