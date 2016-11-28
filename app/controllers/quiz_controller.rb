@@ -50,14 +50,6 @@ class QuizController < ApplicationController
       # redirect_to dashboard_path
       @alert = "Sorry, you did not pass the quiz. Please try again!"
     end
-
-    if @users_quiz.save
-      Rails.logger.info "Quiz saved!!!"
-      redirect_to quiz_user_answer_path
-    else
-      Rails.logger.error "Things ended badly..."
-      Rails.logger.error "#{err.message}\n#{err.backtrace.join("\n")}"
-    end
   end
 
   def user_answer
