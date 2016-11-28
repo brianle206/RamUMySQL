@@ -14,8 +14,9 @@
 	<h1>You Got <%= @correct %> / <%= params[:answer].count%> correct!</h1>
 	<% if @correct < 3 %>
 		<h1 class='red'>Wow you got some more learn'n 'ta do <strong><%= current_user.email %></strong></h1>
+	<% else %>
+	  <h1><%= @notice %></h1>
 	<% end %>
-	<h1><%= @success %></h1>
 
-	<a href="/dashboard">Return To Dashboard</a>
+	<%= link_to "Return To Dashboard", "/dashboard", class: "btn btn-primary" %>
 </div>
