@@ -23,7 +23,10 @@ default: &default
 
 development:
   <<: *default
-  database: RamUniversity1_development
+  # adapter: mysql2
+  # encoding: utf8
+  # pool: 5
+  # database: RamUniversity1_development
   # host: localhost
   # username: root
   # password: hoyohom7

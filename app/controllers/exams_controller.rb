@@ -41,9 +41,7 @@ class ExamsController < ApplicationController
 
     grade_exam
 
-    record = ((@correct.to_f/params[:answer].count)*100).round
-
-    check_exam_attempts(record)
+    check_exam_attempts
 
     generate_assertion
   end
@@ -75,27 +73,6 @@ class ExamsController < ApplicationController
     @users_exam =  UserExamResult.find_by(exam_id: exam.to_i, user_id: user)
   end
 
-  def check_exam_attempts(record)
-    if check_for_exam(current_user.id, @exam)
-      if @users_exam.score < record
-        @users_exam.update(score: record)
-        @users_exam.attempts += 1
-        @users_exam.save
-      else
-        @users_exam.attempts += 1
-        @users_exam.save
-      end
-    elsif @users_exam.blank?
-      @score = UserExamResult.new(exam_id: @exam, user_id: current_user.id, score: record)
-      if @score.save
-        @notice = "You successfully submitted your exam!"
-        update_attempt
-      else
-        @notice = "Uh Oh! something went wrong"
-      end
-    end
-  end
-
   def grade_exam
     grading = params[:answer]
     @correct = 0
@@ -107,12 +84,35 @@ class ExamsController < ApplicationController
       end
     end
     puts "Total correct answers: #{@correct}"
-    return @correct
+    @record = ((@correct.to_f/params[:answer].count)*100).round
+  end
+
+  def check_exam_attempts
+    if check_for_exam(current_user.id, @exam)
+      if @users_exam.score < @record
+        @users_exam.update(score: @record)
+        @users_exam.attempts += 1
+        @users_exam.save
+      else
+        @users_exam.attempts += 1
+        @users_exam.save
+      end
+    elsif @users_exam.blank?
+      @users_exam = UserExamResult.new(exam_id: @exam, user_id: current_user.id, score: @record)
+      if @users_exam.save
+        @notice = "You successfully submitted your exam!"
+        update_attempt
+      else
+        @notice = "Uh Oh! something went wrong"
+      end
+    end
   end
 
   def generate_assertion
-    puts @score.score
-    if @score.score >= 85.00
+    puts @users_exam.score
+    if @users_exam.score >= 85.00
+      @users_exam[:passing] = true
+      
       begin
         puts "START UP THE GENERATOR!!!!"
         recipient = { type: "email", identity: current_user.email, hashed: false }
@@ -130,20 +130,20 @@ class ExamsController < ApplicationController
         Rails.logger.error "Womp womp, no assertion for you!"
         Rails.logger.error "#{err.message}\n#{err.backtrace.join("\n")}"
       end
+
+      respond_to do |format|
+        if @assertion.save
+          session[:assertion_origin] = secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
+          format.html { redirect_to dashboard_index_path, notice: "Congratulations! You passed the Exam!" }
+          format.json { render :show, status: :created, location: @assertion }
+        else
+          format.html { redirect_to dashboard_index_path }
+          format.json { render json: @assertion.errors, status: :unprocessable_entity }
+        end
+      end
     else
       redirect_to dashboard_index_path
       flash[:alert] = "Sorry, you did not pass the exam. Please try again!"
-    end
-
-    respond_to do |format|
-      if @assertion.save
-        session[:assertion_origin] = secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
-        format.html { redirect_to dashboard_index_path, notice: "Congratulations! You passed the Exam!" }
-        format.json { render :show, status: :created, location: @assertion }
-      else
-        format.html { redirect_to dashboard_index_path }
-        format.json { render json: @assertion.errors, status: :unprocessable_entity }
-      end
     end
   end
 end

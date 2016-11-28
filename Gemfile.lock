@@ -95,7 +95,6 @@ GEM
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     orm_adapter (0.5.0)
-    pg (0.18.4)
     pkg-config (1.1.7)
     posix-spawn (0.3.11)
     pygments.rb (0.6.3)
@@ -200,7 +199,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   mysql2
-  pg (~> 0.15)
   pygments.rb
   rails (= 4.2.6)
   rails-bootstrap-markdown

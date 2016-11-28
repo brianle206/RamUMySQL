@@ -29,6 +29,7 @@ class QuizController < ApplicationController
 
   def show
     @quiz = Quiz.find_by(learn_id: params[:learn_id])
+    @learn = Learn.find_by(id: params[:learn_id])
     @questions = Question.where(quiz_id: params[:quiz_id]).sample(5)
   end
 
@@ -36,23 +37,24 @@ class QuizController < ApplicationController
     grade_quiz
 
     check_quiz_attempts
-    puts "this is the #{@score}"
+    # puts "this is the #{@score}"
+    puts "this is the #{@users_quiz}"
     if @record >= 80
-      @quiz_complete = QuizComplete.new(user_id: current_user.id, quiz_id: @quiz.id, status: true)
-      if @quiz_complete.save
-        
-        @notice = "Congratulations! You passed this quiz!"
+      # @score[:retake] = false
+      # if @score.save
+      @users_quiz[:retake] = false
+      if @users_quiz.save
+        @notice = "Congratulations! You passed the quiz!"
       else
         @alert = "Uh oh! Something went wrong."
       end
     else
-      
       @alert = "Sorry, you did not pass the quiz. Please try again!"
     end
   end
 
   def destroy
-    @quiz = Quiz.find(params[:id])
+    @quiz = Quiz.find(params[:quiz_id])
     if @quiz.destroy
       redirect_to quizzes_path
     end
@@ -99,7 +101,7 @@ class QuizController < ApplicationController
   def check_quiz_attempts
     if check_for_quiz(current_user.id, params[:quiz_id])
       if @users_quiz.score < @record
-        @users_quiz.update(score: record)
+        @users_quiz.update(score: @record)
         @users_quiz.attempts +=1
         @users_quiz.save
       else
@@ -107,8 +109,10 @@ class QuizController < ApplicationController
         @users_quiz.save
       end
     elsif @users_quiz.blank?
-      @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: @record)
-      if @score.save
+      # @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: @record)
+      # if @score.save
+      @users_quiz = UserQuizResult.new(quiz_id: @quiz, user_id: current_user.id, score: record)
+      if @users_quiz.save
         @notice = "You successfully submitted your quiz!"
         update_attempt
       else
