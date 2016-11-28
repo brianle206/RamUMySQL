@@ -124,13 +124,10 @@ GEM
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
-<<<<<<< HEAD
     pg (0.19.0)
     posix-spawn (0.3.12)
-=======
     pkg-config (1.1.7)
     posix-spawn (0.3.11)
->>>>>>> 058267af82538b54010a9e872a9462f450f960bd
     pygments.rb (0.6.3)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.2.0)
