@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations" }
   resources :articles, :admins, :questions, :courses, :quiz #, :data
   resources :exams, except: :show
-  resources :dashboard
+  resources :dashboard, :profiles
+
+
 
   resources :courses, shallow: true do
     resources :learns, shallow: true do
@@ -37,8 +39,7 @@ Rails.application.routes.draw do
   get '/search' => 'articles#search'
 
   #Dashboard Routes
-  get '/dashboard/settings' => 'dashboard#settings', as: :settings
-  post '/dashboard/profile' => "dashboard#profile", as: :profiles
+  
   # Enrollment Routes
   # !!!!!!! These two are probably post & patch
   get 'enrollment/add'

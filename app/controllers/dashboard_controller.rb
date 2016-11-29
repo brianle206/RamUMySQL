@@ -3,6 +3,7 @@ class DashboardController < ApplicationController
   before_filter :find_user, :progress, :find_lessons
 
   def index
+    @profile = Profile.find_by(user_id: current_user.id)
     @courses = Course.all
     puts "Session: #{session.to_json}"
     if session[:assertion_origin]
@@ -39,17 +40,11 @@ class DashboardController < ApplicationController
     render 'progress'
   end
 
-  def profile
-    @profile = Profile.create(profile_params)
-    if @profile.save
-      redirect_to dashboard_path
-    end
-  end
 
   private
 
-  def profile_params
-    params.require(:profile).permit(:firstName, :lastName, :address, :country, :state, :zipcode, :phoneNumber, :user_id)
+  def find_name
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
   def find_user

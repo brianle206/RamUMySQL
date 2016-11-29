@@ -1,0 +1,7 @@
+<div class='container'>
+	<% if @profile %>
+		<%= render 'form' %>
+	<% else %>
+		<%= link_to "Create Profile", new_profile_path %>
+	<% end %>
+</div>

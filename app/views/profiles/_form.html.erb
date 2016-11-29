@@ -1,0 +1,20 @@
+<div class='container'>
+
+	<legend>Profile</legend>
+
+	<div class='col-md-8 col-md-offset-2'>
+	<%= simple_form_for @profile, :class => 'form-horizontal' do |f| %>
+		<%= f.input :firstName %>
+		<%= f.input :lastName %>
+		<%= f.input :address %>
+		<%= f.input :country, collection: CountryStateSelect.countries_collection %>
+		<% options = { form: f, field_names: { :country => :country, :state => :state } } %>
+		<%= f.input :state, CountryStateSelect.state_options(options) %>
+		<%= f.input :zipcode %>
+		<%= f.input :phoneNumber %>
+		<%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
+		<%= f.submit %>
+	<% end %>
+	</div>
+
+</div>

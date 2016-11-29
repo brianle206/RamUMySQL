@@ -1,40 +1,55 @@
 <div class="container">
 
-	<div class='row'>
-	  	<h1 class='text-center'>Welcome to RAM University <%= @user.email%></h1>
-		<%= link_to "Settings", settings_path %>
+	<div class='row add-padding'>
+	  	<h1 class='text-center'>Welcome to RAM University <% if @profile %> <%= @profile.firstName %> <% else %> <%= @user.email%><% end %></h1>
+		<%= link_to "Settings", profiles_path %>
+		<ul class="nav nav-tabs">
+		    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+		    <li><a data-toggle="tab" href="#settings">Settings</a></li>
+		    <li><a data-toggle="tab" href="#none">Profile</a></li>
+		    <li><a data-toggle="tab" href="#drumcameras">Something Else</a></li>
+		    <li><a data-toggle="tab" href="#drumcupholders">Haven't decided</a></li>
+		    <li><a data-toggle="tab" href="#drumcontrollers">Cool Feature</a></li>
+		    <li><a data-toggle="tab" href="#druminterface">Awesome Feature</a></li>
+	  	</ul>
 	</div>
-
-	<div class='col-md-6'>
-		<div class='panel'>	
-			<div class='panel-body'>
-				<%= render 'dashboard/progress' %>
-			</div>	
-		</div>
-		<div class='panel'>	
-			<div class='panel-body'>
-				<%= render 'dashboard/scores' %>
-			</div>	
-		</div>
-	</div>
-	<div class='col-md-6'>
-		<div class='panel'>
-			<div class='panel-body'>
-				<h4 class='black'>Rewards</h4>
-				<p class='grey'>Your latest achievements</p>
-				<div class="icon-block half img-circle bg-purple-300">
-	        <i class="fa fa-star"></i>
-	      </div>
+	<div class='container tab-content'>
+		<div id='home' class='tab-pane fade in active'>
+			<div class='col-md-6'>
+				<div class='panel'>	
+					<div class='panel-body'>
+						<%= render 'dashboard/progress' %>
+					</div>	
+				</div>
+				<div class='panel'>	
+					<div class='panel-body'>
+						<%= render 'dashboard/scores' %>
+					</div>	
+				</div>
+			</div>
+			<div class='col-md-6'>
+				<div class='panel'>
+					<div class='panel-body'>
+						<h4 class='black'>Rewards</h4>
+						<p class='grey'>Your latest achievements</p>
+						<div class="icon-block half img-circle bg-purple-300">
+			        <i class="fa fa-star"></i>
+			      </div>
+					</div>
+				</div>
+				<div class='panel'>
+					<div class='panel-body'>
+						<h4 class='black'>Certificates</h4>
+						<hr>
+						<div class="icon-block half img-circle bg-grey-300">
+			        <i class="fa fa-file-text"></i>
+			      </div>
+					</div>
+				</div>
 			</div>
 		</div>
-		<div class='panel'>
-			<div class='panel-body'>
-				<h4 class='black'>Certificates</h4>
-				<hr>
-				<div class="icon-block half img-circle bg-grey-300">
-	        <i class="fa fa-file-text"></i>
-	      </div>
-			</div>
+		<div id='none' class='tab-pane fade in'>
+			Profile
 		</div>
 	</div>
 </div>
