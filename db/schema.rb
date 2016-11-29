@@ -36,10 +36,8 @@ ActiveRecord::Schema.define(version: 20161128224522) do
     t.text     "recipient",  limit: 65535
     t.string   "badge",      limit: 255
     t.text     "verify",     limit: 65535
-    t.integer  "issued_on",  limit: 4
-    t.integer  "expires",    limit: 4
-    t.string   "token",      limit: 255
-    t.boolean  "is_baked"
+    t.datetime "issued_on"
+    t.datetime "expires"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
