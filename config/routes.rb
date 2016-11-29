@@ -37,7 +37,8 @@ Rails.application.routes.draw do
   get '/search' => 'articles#search'
 
   #Dashboard Routes
-  get '/dashboard/profile' => "dashboard#settings", as: :profiles
+  get '/dashboard/settings' => 'dashboard#settings', as: :settings
+  post '/dashboard/profile' => "dashboard#profile", as: :profiles
   # Enrollment Routes
   # !!!!!!! These two are probably post & patch
   get 'enrollment/add'

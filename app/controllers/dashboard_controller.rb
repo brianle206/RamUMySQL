@@ -20,7 +20,7 @@ class DashboardController < ApplicationController
   end
   
   def show
-    @profile = Profile.new
+    @profile = Profile.find_by(user_id: current_user.id)
   end
 
   def lessons
@@ -39,7 +39,18 @@ class DashboardController < ApplicationController
     render 'progress'
   end
 
+  def profile
+    @profile = Profile.create(profile_params)
+    if @profile.save
+      redirect_to dashboard_path
+    end
+  end
+
   private
+
+  def profile_params
+    params.require(:profile).permit(:firstName, :lastName, :address, :country, :state, :zipcode, :phoneNumber, :user_id)
+  end
 
   def find_user
     @user = User.find(current_user.id)
