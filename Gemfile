@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-#ruby '2.2.4'
+# ruby '2.2.4'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -38,9 +38,7 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'simple_form'
 gem 'yaml_db'
-# This gem right here is for countries and states
-gem 'chosen-rails'
-gem 'country_state_select', '3.0.0'
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

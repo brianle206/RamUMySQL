@@ -7,8 +7,8 @@ class CreateAssertions < ActiveRecord::Migration
     	t.text :recipient
     	t.string :badge
     	t.text :verify
-    	t.datetime :issued_on
-    	t.datetime :expires
+    	t.integer :issued_on
+    	t.integer :expires
 
     	t.string :token
     	t.boolean :is_baked
