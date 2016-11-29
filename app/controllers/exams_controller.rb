@@ -121,7 +121,7 @@ class ExamsController < ApplicationController
         puts "Badge ID: #{@badge.id}"
         badge = "http://frozen-dawn-78535.herokuapp.com/badges/#{@badge.id}.json"
         puts "Badge: #{badge}"
-        @assertion = Assertion.new( user_id: current_user.id, badge_id: @badge.id, recipient: recipient, badge: badge, issued_on: Time.current.utc.iso8601, expires: (2.years.from_now).utc.iso8601 )
+        @assertion = Assertion.new( user_id: current_user.id, badge_id: @badge.id, recipient: recipient, badge: badge, issued_on: Time.current.to_i, expires: (2.years.from_now).to_i )
         puts "Assertion: #{@assertion.to_json}"
         @assertion.save
         # @assertion[:verify] = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" }
