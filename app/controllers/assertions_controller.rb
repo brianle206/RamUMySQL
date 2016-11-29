@@ -1,11 +1,16 @@
+require 'json'
+
 class AssertionsController < ApplicationController
   before_action :set_assertion, only: [:bake_callback, :show, :edit, :update, :destroy]
 
   def bake_callback
     respond_to do |format|
       if @assertion and @assertion.uid = params[:uid]
+        @assertion = @assertion.open_badges_as_json
+        @assertion["recipient"] = eval(@assertion["recipient"])
+        @assertion["verify"] = eval(@assertion["verify"])
         # format.html { render :show }
-        format.json { render json: @assertion.open_badges_as_json }
+        format.json { render json: @assertion }
       else
         format.html { render text: 'Cannot access badge assertion.', status: :unauthorized }
         format.json {

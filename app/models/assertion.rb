@@ -17,8 +17,12 @@ class Assertion < ActiveRecord::Base
 	# after_commit :bake, :if => :update_assertion?
 
 	# def recipient
-	# 	self.user.try(:email)
+	# 	self.recipient.to_json
 	# end
+
+  # def verify
+  #   self.verify.to_json
+  # end
 		
 	def update_assertion?
 		persisted? && !is_baked?
@@ -63,12 +67,7 @@ class Assertion < ActiveRecord::Base
   end
   
   def open_badges_as_json
-    as_json(  only: [:uid, :recipient.to_json, :badge, :verify.to_json, :issued_on, :expires] )
-              #methods: [:recipient],
-              #include: { badge: {
-                          #only: [:version, :name, :image, :description, :criteria],
-                          #methods: :issuer} }
-            #)
+    as_json( only: [:uid, :recipient, :badge, :verify, :issued_on, :expires] )
   end
 end
 
