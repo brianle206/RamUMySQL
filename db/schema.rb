@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20161128224522) do
     t.text     "recipient",  limit: 65535
     t.string   "badge",      limit: 255
     t.text     "verify",     limit: 65535
-    t.datetime "issued_on"
-    t.datetime "expires"
+    t.string   "issued_on",  limit: 255
+    t.string   "expires",    limit: 255
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
