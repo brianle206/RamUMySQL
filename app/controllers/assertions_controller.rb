@@ -9,8 +9,6 @@ class AssertionsController < ApplicationController
         @assertion = @assertion.open_badges_as_json
         @assertion["recipient"] = eval(@assertion["recipient"])
         @assertion["verify"] = eval(@assertion["verify"])
-        @assertion["issued_on"] = @assertion["issued_on"].to_s.slice(0, 10)
-        @assertion["expires"] = @assertion["expires"].to_s.slice(0, 10)
         # format.html { render :show }
         format.json { render json: @assertion }
       else
