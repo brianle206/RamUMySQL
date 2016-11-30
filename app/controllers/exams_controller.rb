@@ -121,10 +121,9 @@ class ExamsController < ApplicationController
         puts "Badge ID: #{@badge.id}"
         badge = "http://frozen-dawn-78535.herokuapp.com/badges/#{@badge.id}.json"
         puts "Badge: #{badge}"
-        issued_on = (Date.current.iso8601).slice!(0, 10)
+        issued_on = Date.current.iso8601
         puts "Issued on: #{issued_on}"
         expires = (Date.current + 2.years).iso8601
-        expires = expires.slice!(0, 10)
         puts "Expires: #{expires}"
         @assertion = Assertion.new( user_id: current_user.id, badge_id: @badge.id, recipient: recipient, badge: badge, issued_on: issued_on, expires: expires )
         puts "Assertion: #{@assertion.to_json}"
