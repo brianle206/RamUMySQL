@@ -7,7 +7,7 @@ class CreateAssertions < ActiveRecord::Migration
     	t.text :recipient
     	t.string :badge
     	t.text :verify
-    	t.integer :issued_on
+    	t.integer :issuedOn
     	t.integer :expires
 
       t.timestamps null: false
