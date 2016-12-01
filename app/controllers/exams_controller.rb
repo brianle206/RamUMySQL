@@ -129,7 +129,7 @@ class ExamsController < ApplicationController
         puts "Assertion: #{@assertion.to_json}"
         @assertion.save
         # @assertion[:verify] = { type: "hosted", url: "https://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" }
-        @assertion.update( verify: { type: "hosted", url: "https://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" })
+        @assertion.update( verify: { type: "hosted", url: "https://frozen-dawn-78535.herokuapp.com/badge-award-#{@assertion.uid}.json" })
         puts "Assertion with verify: #{@assertion.to_json}"
       rescue => err
         Rails.logger.error "Womp womp, no assertion for you!"
