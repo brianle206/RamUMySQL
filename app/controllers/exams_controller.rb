@@ -131,7 +131,6 @@ class ExamsController < ApplicationController
         # @assertion[:verify] = { type: "hosted", url: "https://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" }
         @assertion.update( verify: { type: "hosted", url: "https://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" })
         puts "Assertion with verify: #{@assertion.to_json}"
-        # @assertion.bake
       rescue => err
         Rails.logger.error "Womp womp, no assertion for you!"
         Rails.logger.error "#{err.message}\n#{err.backtrace.join("\n")}"
@@ -139,7 +138,14 @@ class ExamsController < ApplicationController
 
       respond_to do |format|
         if @assertion.save
-          session[:assertion_origin] = secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
+          json_data = []
+          json_data << @assertion
+          File.open("public/badge-award-#{@assertion.uid}.json", "w") do |f|
+            f.write(json_data.to_json)
+          end
+
+          # session[:assertion_origin] = secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
+          session[:assertion_origin] = "https://frozen-dawn-78535.herokuapp.com/badge-award-#{@assertion.uid}.json"
           format.html { redirect_to dashboard_index_path, notice: "Congratulations! You passed the Exam!" }
           format.json { render :show, status: :created, location: @assertion }
         else
