@@ -138,10 +138,11 @@ class ExamsController < ApplicationController
 
       respond_to do |format|
         if @assertion.save
-          json_data = []
-          json_data << @assertion
+          @assertion = @assertion.open_badges_as_json
+          @assertion["recipient"] = eval(@assertion["recipient"])
+          @assertion["verify"] = eval(@assertion["verify"])
           File.open("public/badge-award-#{@assertion.uid}.json", "w") do |f|
-            f.write(json_data.to_json)
+            f.write(@assertion)
           end
 
           # session[:assertion_origin] = secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
