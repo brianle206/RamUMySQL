@@ -141,12 +141,12 @@ class ExamsController < ApplicationController
           @assertion = @assertion.open_badges_as_json
           @assertion["recipient"] = eval(@assertion["recipient"])
           @assertion["verify"] = eval(@assertion["verify"])
-          File.open("public/badge-award-#{@assertion.uid}.json", "w") do |f|
-            f.write(@assertion)
+          File.open("public/badge-award-#{@assertion["uid"]}.json", "w") do |f|
+            f.write(@assertion.to_json)
           end
 
           # session[:assertion_origin] = secret_assertion_path(id: @assertion.id, uid: @assertion.uid)
-          session[:assertion_origin] = "https://frozen-dawn-78535.herokuapp.com/badge-award-#{@assertion.uid}.json"
+          session[:assertion_origin] = "https://frozen-dawn-78535.herokuapp.com/badge-award-#{@assertion["uid"]}.json"
           format.html { redirect_to dashboard_index_path, notice: "Congratulations! You passed the Exam!" }
           format.json { render :show, status: :created, location: @assertion }
         else
