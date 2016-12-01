@@ -119,7 +119,7 @@ class ExamsController < ApplicationController
         puts "Recipient: #{recipient}"
         @badge = Badge.find_by(course_id: @course)
         puts "Badge ID: #{@badge.id}"
-        badge = "https://frozen-dawn-78535.herokuapp.com/badges/#{@badge.id}.json"
+        badge = "https://frozen-dawn-78535.herokuapp.com/badge-class-#{@badge.id}.json"
         puts "Badge: #{badge}"
         issuedOn = Time.current.to_i
         puts "Issued on: #{issuedOn}"

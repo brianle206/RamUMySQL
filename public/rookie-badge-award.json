@@ -6,7 +6,7 @@
     "hashed": false
   },
   "issuedOn":  1480620089,
-  "badge": "https://frozen-dawn-78535.herokuapp.com/rookie-badge-class.json",
+  "badge": "https://frozen-dawn-78535.herokuapp.com/badge-class-1.json",
   "verify": {
     "type": "hosted",
     "url": "https://frozen-dawn-78535.herokuapp.com/rookie-badge-award.json"
