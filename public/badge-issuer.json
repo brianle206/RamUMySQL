@@ -1,4 +1,10 @@
 {
-    "name": "RAM Mounts",
-    "url": "http://frozen-dawn-78535.herokuapp.com"
+    "@context": "https://w3id.org/openbadges/v1",
+    "type": "Issuer",
+    // "id": "https://http://frozen-dawn-78535.herokuapp.com/organization.json",
+    "name": "RAM University",
+    "image": "https://www.rammount.com/images/ramu/ramulogo.png",
+    "url": "http://frozen-dawn-78535.herokuapp.com",
+    "email": "info@rammount.com"
+    // "revocationList": "http://frozen-dawn-78535.herokuapp.com/revoked.json"
 }
