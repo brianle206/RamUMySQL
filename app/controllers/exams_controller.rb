@@ -119,7 +119,7 @@ class ExamsController < ApplicationController
         puts "Recipient: #{recipient}"
         @badge = Badge.find_by(course_id: @course)
         puts "Badge ID: #{@badge.id}"
-        badge = "http://frozen-dawn-78535.herokuapp.com/badges/#{@badge.id}.json"
+        badge = "https://frozen-dawn-78535.herokuapp.com/badges/#{@badge.id}.json"
         puts "Badge: #{badge}"
         issuedOn = Time.current.to_i
         puts "Issued on: #{issuedOn}"
@@ -128,8 +128,8 @@ class ExamsController < ApplicationController
         @assertion = Assertion.new( user_id: current_user.id, badge_id: @badge.id, recipient: recipient, badge: badge, issuedOn: issuedOn, expires: expires )
         puts "Assertion: #{@assertion.to_json}"
         @assertion.save
-        # @assertion[:verify] = { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" }
-        @assertion.update( verify: { type: "hosted", url: "http://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" })
+        # @assertion[:verify] = { type: "hosted", url: "https://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" }
+        @assertion.update( verify: { type: "hosted", url: "https://frozen-dawn-78535.herokuapp.com/assertions/#{@assertion.id}/#{@assertion.uid}.json" })
         puts "Assertion with verify: #{@assertion.to_json}"
         # @assertion.bake
       rescue => err

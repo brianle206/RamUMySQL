@@ -1,9 +1,9 @@
 {
     "@context": "https://w3id.org/openbadges/v1",
     "type": "Issuer",
-    "id": "https://http://frozen-dawn-78535.herokuapp.com/badge-issuer.json",
+    "id": "https://https://frozen-dawn-78535.herokuapp.com/badge-issuer.json",
     "name": "RAM University",
     "image": "https://www.rammount.com/images/ramu/ramulogo.png",
-    "url": "http://frozen-dawn-78535.herokuapp.com",
+    "url": "https://frozen-dawn-78535.herokuapp.com",
     "email": "info@rammount.com"
 }
