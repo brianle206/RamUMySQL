@@ -9,7 +9,6 @@ class AssertionsController < ApplicationController
         @assertion = @assertion.open_badges_as_json
         @assertion["recipient"] = eval(@assertion["recipient"])
         @assertion["verify"] = eval(@assertion["verify"])
-        # format.html { render :show }
         format.json { render json: @assertion }
       else
         format.html { render text: 'Cannot access badge assertion.', status: :unauthorized }
