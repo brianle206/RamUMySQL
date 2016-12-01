@@ -63,8 +63,11 @@
         successes: console.log("You earned a badge!");
         errors: console.log("Sorry, try again!");
       });
-      // $('#templates').css('display', 'block !important');
-      // $('#badge-ask-template').css('display', 'block !important');
+      setTimeout(function() {
+        $('#templates').css('display', 'block !important');
+        $('#badge-ask-template').css('display', 'block !important');
+        $('#badge-ask-template .row .management img').attr('src', 'http://frozen-dawn-78535.herokuapp.com/rookie-badge-issuer.png');
+      }, 3000);
     }
   });
 </script>
