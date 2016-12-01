@@ -60,8 +60,11 @@
     if (assertion_origin) {
     	console.log(assertion_origin);
       OpenBadges.issue([assertion_origin], function(errors, successes) {
-        successes: console.log("You earned a badge!");
-        errors: console.log("Sorry, try again!");
+        if (successes) {
+        	console.log("You earned a badge!");
+        } else if (errors) {
+        	console.log("Something went wrong: " + errors);
+        }
       });
       // setTimeout(function() {
       //   $('#templates').css('display', 'block !important');
