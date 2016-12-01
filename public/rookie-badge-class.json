@@ -1,7 +1,7 @@
 {
     "name": "Rookie Badge Issuer",
     "description": "Issues great new Open Badges to self.",
-    "image": "http://frozen-dawn-78535.herokuapp.com/rookie-badge-issuer.png",
-    "criteria": "http://frozen-dawn-78535.herokuapp.com/articles/landing.html.haml",
-    "issuer": "http://frozen-dawn-78535.herokuapp.com/badge-issuer.json"
+    "image": "https://frozen-dawn-78535.herokuapp.com/rookie-badge-issuer.png",
+    "criteria": "https://frozen-dawn-78535.herokuapp.com/courses/1",
+    "issuer": "https://frozen-dawn-78535.herokuapp.com/badge-issuer.json"
 }

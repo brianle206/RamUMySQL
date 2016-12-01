@@ -56,18 +56,19 @@
 
 <script>
   $(window).load(function() {
-    var assertion_origin = "<%= @assertion_origin %>";
-    if (assertion_origin) {
-    	console.log(assertion_origin);
-      OpenBadges.issue([assertion_origin], function(errors, successes) {
-        successes: console.log("You earned a badge!");
-        errors: console.log("Sorry, try again!");
-      });
-      setTimeout(function() {
-        $('#templates').css('display', 'block !important');
-        $('#badge-ask-template').css('display', 'block !important');
-        $('#badge-ask-template .row .management img').attr('src', 'https://frozen-dawn-78535.herokuapp.com/rookie-badge-issuer.png');
-      }, 3000);
-    }
+    // var assertion_origin = "<%# @assertion_origin %>";
+    // if (assertion_origin) {
+    // 	console.log(assertion_origin);
+    //   OpenBadges.issue([assertion_origin], function(errors, successes) {
+    //     successes: console.log("You earned a badge!");
+    //     errors: console.log("Sorry, try again!");
+    //   });
+    //   setTimeout(function() {
+    //     $('#templates').css('display', 'block !important');
+    //     $('#badge-ask-template').css('display', 'block !important');
+    //     $('#badge-ask-template .row .management img').attr('src', 'https://frozen-dawn-78535.herokuapp.com/rookie-badge-issuer.png');
+    //   }, 6000);
+    // }
+    OpenBadges.issue(['https://frozen-dawn-78535.herokuapp.com/rookie-badge-award.json'], function(errors, successes) {});
   });
 </script>
