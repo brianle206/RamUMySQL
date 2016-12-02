@@ -2,8 +2,8 @@
 <% if current_user.admin == false %>
   <h2 class='black'>Current Courses Progress</h2>
   <% enrollments_lookup %>
-  <% @enrollments.each do |course| %>
-    <% find_course(course.course_id) %>
+  <% @enrollments.each do |enroll| %>
+    <% find_course(enroll.course_id) %>
     <h3><%= @course.title %></h3>
     <% @course.learns.each do |learn| %>
       <% find_learn(learn.id) %>
@@ -41,13 +41,18 @@
         </div>
       </div>
     <% end %>
+    <% count_quiz_passes %>
     <div class="row">
       <hr>
       <div class="col-sm-7">
         <h5 class="grey">Final Exam</h5>
       </div>
       <div class="col-sm-5 text-center">
-        <%= link_to "Take Exam", course_exam_path(course.course_id), class: "btn btn-primary" %>
+        <% if @pass_count == @number_of_learns %>
+          <%= link_to "Take Exam", course_exam_path(@course), class: "btn btn-primary" %>
+        <% else %>
+          <button class="btn btn-disabled" data-toggle="tooltip" title="You must pass all quizzes in this course to take the exam!">Take Exam</button>
+        <% end %>
       </div>
     </div>
   <% end %>
