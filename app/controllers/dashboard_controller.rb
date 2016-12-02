@@ -37,6 +37,8 @@ class DashboardController < ApplicationController
 
   def progress
     render 'progress'
+    # @quiz_results = []
+    # Find number of completed quizzes per user
   end
 
 

@@ -3,7 +3,7 @@
   <h2 class='black'>Current Courses Progress</h2>
   <% enrollments_lookup %>
   <% @enrollments.each do |course| %>
-  <% find_course(course.course_id) %>
+    <% find_course(course.course_id) %>
     <h3><%= @course.title %></h3>
     <% @course.learns.each do |learn| %>
       <% find_learn(learn.id) %>
@@ -41,5 +41,14 @@
         </div>
       </div>
     <% end %>
+    <div class="row">
+      <hr>
+      <div class="col-sm-7">
+        <h5 class="grey">Final Exam</h5>
+      </div>
+      <div class="col-sm-5 text-center">
+        <%= link_to "Take Exam", course_exam_path(course.course_id), class: "btn btn-primary" %>
+      </div>
+    </div>
   <% end %>
 <% end %>
