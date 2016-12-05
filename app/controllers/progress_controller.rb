@@ -1,8 +1,11 @@
 class ProgressController < ApplicationController
   def add
-  	@progress = Complete.create(user_id: params[:user_id], lecture_id: params[:lecture_id], status: true, learn_id: params[:learn_id])
+    puts params[:complete]
+   
+
+  	@progress = Complete.create(user_id: params[:complete][:user_id], lecture_id: params[:complete][:lecture_id], status: params[:complete][:status], learn_id: params[:complete][:learn_id])
   	if @progress.save
-  		redirect_to :back
+      puts "It Saved"
   	end
   end
   private 

@@ -66,3 +66,24 @@
 .darkGrey{
      color: #4c4c4c;
 }
+
+.theme-box{
+   background-color: #F4F4F4;
+    border: solid 1px #000;
+    border-radius: 10px;
+    color: #222 !important;
+    box-shadow: 5px 5px 5px rgba(34, 34, 34, 0.45);
+    transition: all .5s ease;
+    padding: 10px;
+    margin: 10px 0px;
+    &:hover {
+        text-decoration: none;
+        transform: scale(1.1);
+    }
+}
+.avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+
+}

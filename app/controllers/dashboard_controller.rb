@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   before_filter :find_user, :progress, :find_lessons
 
   def index
-    @profile = Profile.find_by(user_id: current_user.id)
+    find_name
     @courses = Course.all
     puts "Session: #{session.to_json}"
     if session[:assertion_origin]

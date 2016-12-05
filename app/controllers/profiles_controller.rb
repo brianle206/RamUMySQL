@@ -13,6 +13,9 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    find_profile
+    @profile.update(profile_params)
+    redirect_to dashboard_index_path
   end
 
   def destroy
@@ -29,7 +32,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:firstName, :lastName, :address, :country, :state, :zipcode, :phoneNumber, :user_id)
+    params.require(:profile).permit(:firstName, :lastName, :address, :country, :state, :zipcode, :phoneNumber, :user_id, :avatar)
   end
 
   def find_profile

@@ -21,6 +21,7 @@ class LearnsController < ApplicationController
   
   def show
     @lecture = Lecture.where(learn_id: params[:id]).order('id ASC')
+    @complete = Complete.new
   end
   
   def update

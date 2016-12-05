@@ -1,16 +1,16 @@
 <div class="container">
 
 	<div class='row add-padding'>
-	  	<h1 class='text-center'>Welcome to RAM University <% if @profile %> <%= @profile.firstName %> <% else %> <%= @user.email%><% end %></h1>
-		<%= link_to "Settings", profiles_path %>
+	  	<h1 class='text-center'>Welcome to RAM University <% if @profile %> <%= @profile.firstName %> <%= image_tag @profile.avatar, :class  => "avatar"%> <% else %> <%= @user.email%><% end %></h1>
+
 		<ul class="nav nav-tabs">
 		    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+		    <li><a data-toggle="tab" href="#profile">Profile</a></li>
+		    <li><a data-toggle="tab" href="#theme">Theme</a></li>
+		    <li><a data-toggle="tab" href="#havent">Haven't decided</a></li>
+		    <li><a data-toggle="tab" href="#feature">Cool Feature</a></li>
+		    <li><a data-toggle="tab" href="#awesome">Awesome Feature</a></li>
 		    <li><a data-toggle="tab" href="#settings">Settings</a></li>
-		    <li><a data-toggle="tab" href="#none">Profile</a></li>
-		    <li><a data-toggle="tab" href="#drumcameras">Something Else</a></li>
-		    <li><a data-toggle="tab" href="#drumcupholders">Haven't decided</a></li>
-		    <li><a data-toggle="tab" href="#drumcontrollers">Cool Feature</a></li>
-		    <li><a data-toggle="tab" href="#druminterface">Awesome Feature</a></li>
 	  	</ul>
 	</div>
 	<div class='container tab-content'>
@@ -48,8 +48,44 @@
 				</div>
 			</div>
 		</div>
-		<div id='none' class='tab-pane fade in'>
-			Profile
+		<div id='settings' class='tab-pane fade in'>
+			<div class='container'>
+				<% if @profile %>
+					<%= render 'profiles/form' %>
+				<% else %>
+					<%= link_to "Create Profile", new_profile_path %>
+				<% end %>
+			</div>
+		</div>
+		<div id='profile' class='tab-pane fade in'>
+			<% if @profile %>
+				<div class='col-sm-4'>
+					<%= image_tag @profile.avatar %>
+				</div>
+				<div class='col-sm-8'>
+					<h2>Here is your information</h2>
+					<h4>First Name: <%= @profile.firstName %></h4>
+					<h4>Last Name: <%= @profile.lastName %></h4>
+					<h4>Address: <%= @profile.address %></h4>
+					<h4>Country: <%= @profile.country %></h4>
+					<h4>State: <%= @profile.state %></h4>
+					<h4>Phone Number: <%= @profile.phoneNumber %></h4>
+				</div>
+			<% else %>
+				<h2>Create your profile now</h2>
+			<% end %>
+		</div>
+		<div id='theme' class= 'tab-pane fade in'>
+			<%= render 'theme' %>
+		</div>
+		<div id='havent' class='tab-pane fade in'>
+			Haven't decided	
+		</div>
+		<div id='feature' class='tab-pane fade in'>
+			Features
+		</div>
+		<div id='awesome' class='tab-pane fade in'>
+			AWESOME!
 		</div>
 	</div>
 </div>

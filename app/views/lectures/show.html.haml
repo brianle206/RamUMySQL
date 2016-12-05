@@ -10,5 +10,8 @@
 		.btn-group
 			%button.btn.btn-success Completed
 -if @status.empty?
-	.btn-group
-		= link_to "Complete", "/progress/add/#{params[:id]}/#{current_user.id}/#{lecture.id}", class: "btn btn-warning complete"
+	=simple_form_for Complete.new do f
+		=f.hidden_field :user_id, value: => "#{current_user.id}"
+		=f.hidden_filed :lecture_id, value: => "#{@lecture.id}"
+		=f.hidden_field :learn_id, value: => "#{params[:id]}"
+		=f.submit

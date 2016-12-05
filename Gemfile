@@ -42,7 +42,8 @@ gem 'yaml_db'
 gem 'chosen-rails'
 gem 'country_state_select'
 gem 'puma'
-
+gem 'rmagick'
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
 
   #Progress Tracker
-  get '/progress/add/:learn_id/:user_id/:lecture_id' => 'progress#add'
+  post '/progress/add/' => 'progress#add', as: :progress
 
   #Admin Routes
   get '/destroy/:id' => 'admins#destroy'
