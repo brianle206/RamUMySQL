@@ -30,6 +30,7 @@ class CoursesController < ApplicationController
 
   def show
   	@course = Course.find(params[:id])
+    @badge = Badge.find_by(id: @course.id)
   end
 
   def new 

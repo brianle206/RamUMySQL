@@ -6,25 +6,24 @@
 .menu-wrap
   .menu-sidebar
     %ul.menu
-    - enrollments_lookup
-    - if @enrollments.empty?
-      %h3 You are currently not enrolled in any courses
-    - else
-      - @enrollments.each do |roll|
-        - find_course(roll.course_id)
-        %h4= @course.title
-        - @course.learns.each do |learn|
-          %ul
-            - find_learn(learn.id)
-            - @learn.each do |learn|
-              .dropdown
+      - enrollments_lookup
+      - if @enrollments.empty?
+        %h3 You are currently not enrolled in any courses
+      - else
+        - @enrollments.each do |roll|
+          - find_course(roll.course_id)
+          %h4= @course.title
+          - @course.learns.each do |learn|
+            %ul
+              - find_learn(learn.id)
+              - @learn.each do |learn|
                 .row
-                  %li.dropdown-toggle{"data-toggle" => "dropdown"}
-                    = learn.title
-                    %span.caret
-                  %ul.dropdown-menu.relative.dashboard
-                    - learn.lectures.each do |lecture|
-                      %li
-                        = link_to lecture.title, learn_path(learn)
+                  %li.user-dash-dropdown
+                    %a{href: '#'}
+                      = learn.title 
+                      %span.caret
+                    %ul.user-dash-sub-menu.hidden
+                      - learn.lectures.each do |lecture|
+                        %li= link_to lecture.title, learn_path(learn)
 
 

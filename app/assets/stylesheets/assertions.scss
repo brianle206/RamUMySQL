@@ -8,3 +8,11 @@
   	margin-bottom: 10px;
   }
 }
+
+iframe html body #templates {
+	display: block !important;
+
+	#badge-ask-template {
+		display: block !important;
+	}
+}

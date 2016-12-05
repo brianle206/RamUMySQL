@@ -93,3 +93,14 @@ body{
 	color: white;
   padding: 10px;
 }
+
+.btn-disabled {
+	@extend .btn-primary;
+	background-color: darkgrey;
+	border-color: #333;
+  
+  &:hover {
+  	background-color: red;
+  	border-color: #333;
+  }
+}
