@@ -46,12 +46,16 @@ body {
   top: 110px;
 }
 .menu-sidebar li {
-  padding: 18px 22px 0;
+  padding: 18px 10px 0;
 }
 .menu-sidebar li > a {
-  color: #f3f3f3;
-  font-size: 1.18em;
+  color: rgb(51,51,51);
+  font-size: 1em;
   position: relative;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
 }
 .menu-sidebar li > a::after {
   content: "";
@@ -62,7 +66,7 @@ body {
   width: 100%;
   left: 50%;
   transform: translate(-50%);
-  background-image: linear-gradient(to right, transparent 50.3%, #FFFA3B 50.3%);
+  background-image: linear-gradient(to right, transparent 50.3%, #CD1E27 50.3%);
   transition: background-position .2s .1s ease-out;
   background-size: 200% auto;
 }
