@@ -73,7 +73,9 @@
               <%= @course.title %> Exam
             </div>
             <div class="col-sm-4">
+              <% if @badge %>
               <img class="badge-img" src="<%= @badge.image %>"/>
+              <% end %>
             </div>
             <div class="col-sm-8">
               <p>

@@ -60,7 +60,7 @@
 		<div id='profile' class='tab-pane fade in'>
 			<% if @profile %>
 				<div class='col-sm-4'>
-					<%= image_tag @profile.avatar %>
+					<%= image_tag @profile.avatar, class: 'img-responsive' %>
 				</div>
 				<div class='col-sm-8'>
 					<h2>Here is your information</h2>

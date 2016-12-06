@@ -13,6 +13,16 @@ module LearnHelper
 		nil
 
 	end
+
+	def is_legal
+		course_id = Learn.find(params[:id])
+		if Enrollment.where(user_id: current_user.id, course_id: course_id.course_id)
+			puts "it Returned something"
+			return @true
+		else
+			return @false
+		end
+	end
 	def find_status(params)
 	    @lecture = Lecture.find(params)
 	    @status = Complete.where(user_id: current_user.id, lecture_id: @lecture.id)
