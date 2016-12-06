@@ -1,3 +1,23 @@
 // Place all the styles related to the lecture controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.hidden{
+	display: none;
+}
+.status-badge{
+	display: block;
+	background:green;
+	border-radius: 150px;
+	width: 150px;
+	height: 150px;
+	padding: 30px;
+}
+.status-image{
+	width: 80px;
+	height: 80px;
+}
+.status-box{
+	padding: 20px;
+	background: pink;
+	font-weight: bold;
+}
