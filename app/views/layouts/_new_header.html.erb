@@ -43,18 +43,33 @@
 					<li class='scroll'>
 						<%= link_to "Sign In", new_user_session_path %>
 					</li>
-				<% else %>
-					<li class='scroll'>
-						<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-					</li>
+				<%# else %>
+					<!-- <li class='scroll'>
+						<%#= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+					</li> -->
 				<% end %>
 				<% if !current_user.try(:admin?) && user_signed_in? %>
-					<li class='scroll'>
-						<%= link_to "Dashboard", "/dashboard" %> 
-					</li>
+					
 					<li class='scroll'>
 						<% grab_profile(current_user.id) %>
-							<%= image_tag "#{@avatar.avatar}", class: 'avatar' %>
+							<a class='dropdown-toggle scroll' data-toggle='dropdown'>
+								<% if @avatar %>
+									<%= image_tag "#{@avatar.avatar}", class: 'avatar' %>
+								<% else %>
+									<span class='glyphicon glyphicon-user'></span>
+								<% end %>
+							</a>
+						<ul class='two dropdown-menu'>
+							
+								<li class='scroll'>
+									<%= link_to "Dashboard", "/dashboard" %> 
+								</li>
+								<li class='scroll'>
+									<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+								</li>
+							
+						</ul>
+							
 						
 					</li>
 				<% end %>
@@ -93,6 +108,9 @@
 							</li>
 							<li>
 								<%= link_to "Assertions", assertions_path %>
+							</li>
+							<li>
+								<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
 							</li>
 						</ul>
 					</li>
