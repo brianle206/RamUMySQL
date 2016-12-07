@@ -13,7 +13,7 @@
 		<%= f.input :zipcode %>
 		<%= f.input :phoneNumber %>
 		<%= f.hidden_field :user_id, :value => "#{current_user.id}" %>
-		<%= f.file_field :avatar %>
+		<%= f.file_field :avatar, accept: "image/jpg, image/jpeg, image/png, image/gif"  %>
 		<%= f.submit %>
 	<% end %>
 	</div>
