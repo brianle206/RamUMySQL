@@ -31,14 +31,14 @@
 						<%= link_to "Learn", courses_path, class: "category" %>
 					</li>
 				<% end %>
-					<li >
+					<!-- <li >
 						<form action="/search" class='form-inline'>
 							<div class='form-group'>
-								<%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: "form-control"%>
-								<%= submit_tag "Search", class: "btn btn-default" %>
+								<#%= text_field_tag :search, params[:search], placeholder: "Search Posts", class: "form-control"%>
+								<%#= submit_tag "Search", class: "btn btn-default" %>
 							</div>
 						</form>
-					</li>
+					</li> -->
 				<% if !user_signed_in? %>
 					<li class='scroll'>
 						<%= link_to "Sign In", new_user_session_path %>
@@ -51,6 +51,11 @@
 				<% if !current_user.try(:admin?) && user_signed_in? %>
 					<li class='scroll'>
 						<%= link_to "Dashboard", "/dashboard" %> 
+					</li>
+					<li class='scroll'>
+						<% grab_profile(current_user.id) %>
+							<%= image_tag "#{@avatar.avatar}", class: 'avatar' %>
+						
 					</li>
 				<% end %>
 			

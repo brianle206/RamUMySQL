@@ -24,12 +24,12 @@
 		</ul>
 		<% end %>
 		<ul class="nav navbar-nav navbar-right">
-			<li class="vertical-align">
+			<!-- <li class="vertical-align">
 				<form action="/search">
-					<%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
-					<%= submit_tag "Search" %>
+					<%#= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+					<%#= submit_tag "Search" %>
 				</form>
-			</li>
+			</li> -->
 			<% if !user_signed_in? %>
 			<li>
 				<%= link_to "Sign In", new_user_session_path %>

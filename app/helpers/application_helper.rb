@@ -18,4 +18,9 @@ module ApplicationHelper
 	    end
 	    super *[collection_or_options, options].compact
 	end
+
+	def grab_profile(id)
+		@avatar = Profile.find_by(user_id: id)
+	end
+
 end
