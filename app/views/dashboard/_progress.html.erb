@@ -1,9 +1,6 @@
 
 <% if current_user.admin == false %>
-<% @@number =0  %>
-<% @@finsihed = 0%>
   <h2 class='black'>Current Courses Progress</h2>
-  <h2><%= @@number %></h2>
   <% enrollments_lookup %>
   <% @enrollments.each do |enroll| %>
     <% find_course(enroll.course_id) %>
@@ -18,7 +15,6 @@
               <%= learn.title %><span class='caret'></span>
             </h5>
               <% learn.lectures.each do |lecture| %>
-                <% @@number += 1  %>
                 <ul class='dropdown-menu relative dashboard'>
                   <%= lecture.title %> <% complete(current_user.id, lecture.id, learn.id) %> 
                   <% if @done %> 
@@ -60,5 +56,4 @@
       </div>
     </div>
   <% end %>
-  <h2><%= @@number %></h2>
 <% end %>

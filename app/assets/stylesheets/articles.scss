@@ -24,7 +24,7 @@
 }
 .block-header{
 	font-size: 24px;
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	
 	font-weight: bold;
 	background: #78c7c7;
 	color: white;
@@ -32,7 +32,7 @@
 }
 .course-block-header{
 	font-size: 14px;
-	font-family: "Comic Sans MS", cursive, sans-serif;
+	
 	font-weight: bold;
 	background: #737ca1;
 	color: white;
@@ -103,9 +103,10 @@ p.speech:after {
 	padding-top: 20px;
 	text-shadow: 1px 1px 1px #e5e4e2;
 	font-size: 50px;
-	color: #4e9258;
 }
+
 /* Background Colors */
+
 .darkblue{
 	background: #003399;
 	color: #66ccff;
@@ -151,7 +152,9 @@ p.speech:after {
 .white-bg{
 	background: white;
 }
+
 /* Font Colors */
+
 .white{
 	color: white;
 }
