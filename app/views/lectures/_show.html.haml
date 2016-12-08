@@ -2,6 +2,8 @@
 	%h2= lecture.title
 	-if user_signed_in?
 		.htmlMarkUp
+			-if flash[:notice]
+				%h2= flash[:notice]
 			%p= markdown(lecture.content)
 		
 	-find_status(lecture.id)
@@ -14,10 +16,10 @@
 		.status-box.text-center
 			%p Have you completed this course? 
 			=image_tag 'no-button-md.png', class: 'status-image'
-			.hidden
-				=simple_form_for @complete, :url => progress_path, :remote => true  do |f|
-					= f.hidden_field :user_id, value: "#{current_user.id}" 
-					= f.hidden_field :lecture_id, value: "#{@lecture.id}"
-					= f.hidden_field :learn_id, value: "#{params[:id]}"
-					= f.hidden_field :status, value: "true"
-					=f.submit
+			
+			=simple_form_for @complete, :url => progress_path, :remote => true  do |f|
+				= f.hidden_field :user_id, value: "#{current_user.id}" 
+				= f.hidden_field :lecture_id, value: "#{@lecture.id}"
+				= f.hidden_field :learn_id, value: "#{params[:id]}"
+				= f.hidden_field :status, value: "true"
+				=f.submit "Yes I Have!"

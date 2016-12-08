@@ -7,6 +7,7 @@ class ProgressController < ApplicationController
   	if @progress.save
       puts "It Saved"
       flash[:notice] = "Congrats on completing that lecture!!"
+      redirect_to :back
   	end
   end
   private 

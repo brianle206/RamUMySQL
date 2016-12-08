@@ -111,7 +111,7 @@ class QuizController < ApplicationController
     elsif @users_quiz.blank?
       # @score = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: @record)
       # if @score.save
-      @users_quiz = UserQuizResult.new(quiz_id: @quiz, user_id: current_user.id, score: record)
+      @users_quiz = UserQuizResult.new(quiz_id: params[:quiz_id], user_id: current_user.id, score: @record)
       if @users_quiz.save
         @notice = "You successfully submitted your quiz!"
         update_attempt
